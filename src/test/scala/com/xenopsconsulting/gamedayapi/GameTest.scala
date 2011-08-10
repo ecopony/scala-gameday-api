@@ -8,8 +8,8 @@ class GameTest extends AssertionsForJUnit {
 
   @Test def testInitialization() {
     val game = new Game("Tigers", "1-2-2001")
-    assertEquals("Tigers", game.tm())
-    assertEquals("1-2-2001", game.dt())
+    assertEquals("Tigers", game.tm)
+    assertEquals("1-2-2001", game.dt)
   }
 }
 
