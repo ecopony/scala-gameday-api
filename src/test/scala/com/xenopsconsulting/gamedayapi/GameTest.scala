@@ -26,7 +26,7 @@ class GameTest extends AssertionsForJUnit {
 
 object TestFetchStrategy extends FetchStrategy {
   def fetch: Elem = {
-    XML.loadString("<boxscore home_fname='San Francisco Giants'></boxscore>")
+    <boxscore home_fname='San Francisco Giants'></boxscore>
   }
 }
 
