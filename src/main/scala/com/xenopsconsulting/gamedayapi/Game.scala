@@ -1,8 +1,9 @@
 package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
+import java.util.Date
 
-class Game(team: String, date: String) {
+class Game(date: Date, team: String) {
   private var _xml:Elem = null
   var fetch_strategy: FetchStrategy = MlbFetchStrategy
 
@@ -19,7 +20,7 @@ class Game(team: String, date: String) {
   }
 
   def fetch() = {
-    _xml = fetch_strategy.fetch
+    _xml = fetch_strategy.fetch_game(date, team)
   }
 
 }

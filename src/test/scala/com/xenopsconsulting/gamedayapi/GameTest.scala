@@ -5,28 +5,30 @@ import org.junit.Test
 import org.junit.Assert._
 import org.junit.Before
 import xml.{XML, Elem}
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class GameTest extends AssertionsForJUnit {
   var game: Game = _
+  var date: Date = _
+  var team: String = _
   
   @Before def initialize() {
-    game = new Game("Tigers", "1-2-2001")
+    date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
+    team = "San Francisco Giants"
+    game = new Game(date, team)
     game.fetch_strategy = TestFetchStrategy
   }
 
   @Test def testInitialization() {
-    assertEquals("Tigers", game.tm)
-    assertEquals("1-2-2001", game.dt)
+    assertEquals(team, game.tm)
+    assertEquals(date, game.dt)
   }
 
   @Test def testHomeFname() {
-    assertEquals("San Francisco Giants", game.homeFname())
+    assertEquals(team, game.homeFname())
   }
 }
 
-object TestFetchStrategy extends FetchStrategy {
-  def fetch: Elem = {
-    <boxscore home_fname='San Francisco Giants'></boxscore>
-  }
-}
+
 
