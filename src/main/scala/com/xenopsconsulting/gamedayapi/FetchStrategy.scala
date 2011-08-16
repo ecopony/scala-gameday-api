@@ -1,8 +1,8 @@
 package com.xenopsconsulting.gamedayapi
 
-import xml.Elem
 import java.util.Date
 import java.text.SimpleDateFormat
+import xml.Elem
 
 trait FetchStrategy {
   private val base_mlb_url: String = "http://gd2.mlb.com/components/game/mlb"
@@ -24,13 +24,12 @@ trait FetchStrategy {
   }
   
   def game_url(date: Date, team: String): String = {
-    /*
-    TODO:
-      - Get the epg xml for the date
-      - Spin through the game elements, get the gid for the first game for the team provided
-      - Build the url based on the gameday attribute
-     */
     val url_buffer: StringBuffer = new StringBuffer(base_mlb_url)
+    val epg_xml: Elem = fetch_epg(date)
+    val gameday = (epg_xml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_"}
+    val gid:String = "/gid_" + gameday.getOrElse("")
+    url_buffer.append(gid)
+    url_buffer.append("/game.xml")
     url_buffer.toString
   }
 }

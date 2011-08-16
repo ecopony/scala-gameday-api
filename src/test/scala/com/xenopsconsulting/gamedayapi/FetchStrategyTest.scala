@@ -13,7 +13,7 @@ class FetchStrategyTest extends AssertionsForJUnit {
 
   @Before def initialize() {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
-    team = "Seattle Mariners"
+    team = "sea"
   }
 
   @Test def testEpgUrlGeneration() {
