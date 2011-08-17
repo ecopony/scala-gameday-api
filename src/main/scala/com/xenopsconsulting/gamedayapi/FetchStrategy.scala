@@ -21,7 +21,7 @@ trait FetchStrategy {
     val url_buffer: StringBuffer = new StringBuffer(base_mlb_url)
     url_buffer.append(date_path(date))
     val epg_xml: Elem = fetch_epg(date)
-    val gameday = (epg_xml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_"}
+    val gameday = (epg_xml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }
     val gid:String = "/gid_" + gameday.getOrElse("")
     url_buffer.append(gid)
     url_buffer.append("/game.xml")
