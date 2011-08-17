@@ -25,8 +25,8 @@ class GameTest extends AssertionsForJUnit {
     assertEquals(date, game.dt)
   }
 
-  @Test def testHomeFname() {
-    assertEquals(team, game.homeFname())
+  @Test def testGameTime() {
+    assertEquals("10:10 PM", game.gameTimeEt)
   }
 }
 

@@ -12,7 +12,8 @@ object MlbFetchStrategy extends FetchStrategy {
   }
 
   def fetch_game(date: Date, team: String): Elem = {
-    <game></game>
+    val http = new Http
+    XML.loadString(http(url(game_url(date, team)) as_str))
   }
 
 }

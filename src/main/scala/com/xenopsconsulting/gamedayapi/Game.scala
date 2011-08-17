@@ -15,8 +15,8 @@ class Game(date: Date, team: String) {
     _xml
   }
 
-  def homeFname():String = {
-    (xml \\ "boxscore" \\ "@home_fname").text
+  def gameTimeEt():String = {
+    (xml \\ "game" \\ "@game_time_et").text
   }
 
   def fetch() = {
