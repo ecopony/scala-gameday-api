@@ -23,7 +23,7 @@ class FetchStrategyTest extends AssertionsForJUnit {
 
   @Test def testGameUrlGeneration() {
     val game_url = TestFetchStrategy.game_url(date, team)
-    assertEquals("http://gd2.mlb.com/components/game/mlb/gid_2011_08_13_bosmlb_seamlb_1/game.xml", game_url)
+    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/gid_2011_08_13_bosmlb_seamlb_1/game.xml", game_url)
   }
 }
 
