@@ -4,9 +4,6 @@ import xml.Elem
 import java.util.Date
 
 object TestFetchStrategy extends FetchStrategy {
-  def fetch: Elem = {
-    <boxscore home_fname='San Francisco Giants'></boxscore>
-  }
 
   def fetch_epg(date: Date): Elem = {
     <epg date="20110813" last_modified="2011-08-14T17:52:23Z" display_time_zone="ET">
@@ -1160,6 +1157,5 @@ object TestFetchStrategy extends FetchStrategy {
         <stadium id="680" name="Safeco Field" venue_w_chan_loc="USWA0395" location="Seattle, WA"/>
     </game>
   }
-
 
 }
