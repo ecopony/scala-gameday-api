@@ -5,7 +5,7 @@ import java.util.Date
 
 object TestFetchStrategy extends FetchStrategy {
 
-  def fetch_epg(date: Date): Elem = {
+  def fetchEpg(date: Date): Elem = {
     <epg date="20110813" last_modified="2011-08-14T17:52:23Z" display_time_zone="ET">
       <game calendar_event_id="14-288681-2011-08-13" start="2011-08-13T13:07:00-0400"
             id="2011/08/13/anamlb-tormlb-1"
@@ -1150,12 +1150,74 @@ object TestFetchStrategy extends FetchStrategy {
     </epg>
   }
 
-  def fetch_game(date: Date, team: String): Elem = {
+  def fetchGame(date: Date, team: String): Elem = {
     <game type="R" local_game_time="19:10" game_pk="288682" game_time_et="10:10 PM" gameday_sw="P">
         <team type="home" code="sea" file_code="sea" abbrev="SEA" id="136" name="Seattle" name_full="Seattle Mariners" name_brief="Mariners" w="51" l="67" division_id="200" league_id="103" league="AL"/>
         <team type="away" code="bos" file_code="bos" abbrev="BOS" id="111" name="Boston" name_full="Boston Red Sox" name_brief="Red Sox" w="73" l="45" division_id="201" league_id="103" league="AL"/>
         <stadium id="680" name="Safeco Field" venue_w_chan_loc="USWA0395" location="Seattle, WA"/>
     </game>
+  }
+
+  def fetchBoxScore(date: Date, team: String): Elem = {
+    <boxscore game_id="2011/08/13/bosmlb-seamlb-1" game_pk="288682" venue_id="680" venue_name="Safeco Field" home_sport_code="mlb" away_team_code="bos" home_team_code="sea" away_id="111" home_id="136" away_fname="Boston Red Sox" home_fname="Seattle Mariners" away_sname="Boston" home_sname="Seattle" date="August 13, 2011" away_wins="73" away_loss="45" home_wins="51" home_loss="67" status_ind="F">
+      <linescore away_team_runs="4" home_team_runs="5" away_team_hits="10" home_team_hits="9" away_team_errors="0" home_team_errors="1">
+          <inning_line_score away="0" home="5" inning="1"/>
+          <inning_line_score away="0" home="0" inning="2"/>
+          <inning_line_score away="0" home="0" inning="3"/>
+          <inning_line_score away="0" home="0" inning="4"/>
+          <inning_line_score away="0" home="0" inning="5"/>
+          <inning_line_score away="4" home="0" inning="6"/>
+          <inning_line_score away="0" home="0" inning="7"/>
+          <inning_line_score away="0" home="0" inning="8"/>
+          <inning_line_score away="0" home="x" inning="9"/>
+      </linescore>
+      <pitching team_flag="away" out="24" h="9" r="5" er="5" bb="1" so="12" hr="2" bf="33" era="3.93">
+          <pitcher id="277417" name="Beckett" name_display_first_last="Josh Beckett" pos="P" out="15" bf="23" er="5" r="5" h="8" so="6" hr="2" bb="1" w="9" l="5" sv="0" bs="0" hld="0" era="2.40" note="(L, 9-5)"/>
+          <pitcher id="458006" name="Albers" name_display_first_last="Matt Albers" pos="P" out="5" bf="6" er="0" r="0" h="1" so="3" hr="0" bb="0" w="4" l="3" sv="0" bs="2" hld="8" era="2.37"/>
+          <pitcher id="462985" name="Morales, F" name_display_first_last="Franklin Morales" pos="P" out="2" bf="2" er="0" r="0" h="0" so="1" hr="0" bb="0" w="0" l="2" sv="0" bs="0" hld="6" era="4.13"/>
+          <pitcher id="469686" name="Aceves" name_display_first_last="Alfredo Aceves" pos="P" out="2" bf="2" er="0" r="0" h="0" so="2" hr="0" bb="0" w="8" l="1" sv="1" bs="2" hld="7" era="3.26"/>
+      </pitching>
+      <batting team_flag="home" ab="32" r="5" h="9" d="2" t="0" hr="2" rbi="5" bb="1" po="27" da="13" so="12" lob="11" avg=".230">
+          <batter id="400085" name="Suzuki, I" name_display_first_last="Ichiro Suzuki" pos="RF" bo="100" ab="4" po="1" r="1" a="1" bb="0" sac="0" t="0" sf="0" h="1" e="0" d="0" hbp="0" so="2" hr="1" rbi="1" lob="2" fldg="1.000" sb="0" s_hr="2" s_rbi="28" avg=".267"/>
+          <batter id="429711" name="Gutierrez, F" name_display_first_last="Franklin Gutierrez" pos="CF" bo="200" ab="4" po="2" r="1" a="0" bb="0" sac="0" t="0" sf="0" h="2" e="0" d="0" hbp="0" so="1" hr="0" rbi="0" lob="0" fldg="1.000" sb="1" s_hr="1" s_rbi="11" avg=".221"/>
+          <batter id="554429" name="Ackley" name_display_first_last="Dustin Ackley" pos="2B" bo="300" ab="4" po="3" r="1" a="3" bb="0" sac="0" t="0" sf="0" h="1" e="0" d="1" hbp="0" so="2" hr="0" rbi="0" lob="2" fldg="1.000" sb="0" s_hr="5" s_rbi="24" avg=".297"/>
+          <batter id="455077" name="Carp" name_display_first_last="Mike Carp" pos="1B" bo="400" ab="3" po="7" r="1" a="3" bb="1" sac="0" t="0" sf="0" h="1" e="1" d="0" hbp="0" so="1" hr="0" rbi="2" lob="0" fldg=".909" sb="0" s_hr="4" s_rbi="23" avg=".323"/>
+          <batter id="276377" name="Pena" name_display_first_last="Wily Mo Pena" pos="DH" bo="500" ab="4" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="2" hr="0" rbi="0" lob="4" fldg=".000" sb="0" s_hr="5" s_rbi="7" avg=".180"/>
+          <batter id="489413" name="Wells, C" name_display_first_last="Casper Wells" pos="LF" bo="600" ab="4" po="2" r="1" a="0" bb="0" sac="0" t="0" sf="0" h="2" e="0" d="0" hbp="0" so="2" hr="1" rbi="2" lob="0" fldg="1.000" sb="0" s_hr="6" s_rbi="20" avg=".274"/>
+          <batter id="408036" name="Bard" name_display_first_last="Josh Bard" pos="C" bo="700" ab="3" po="5" r="0" a="1" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="1" hr="0" rbi="0" lob="1" fldg="1.000" sb="0" s_hr="1" s_rbi="6" avg=".212"/>
+          <batter id="425904" name="Rodriguez, L" name_display_first_last="Luis Rodriguez" pos="3B" bo="800" ab="3" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="1" fldg=".000" sb="0" s_hr="1" s_rbi="11" avg=".171"/>
+          <batter id="333292" name="Wilson, Ja" name_display_first_last="Jack Wilson" pos="SS" bo="900" ab="3" po="5" r="0" a="3" bb="0" sac="0" t="0" sf="0" h="2" e="0" d="1" hbp="0" so="1" hr="0" rbi="0" lob="1" fldg="1.000" sb="0" s_hr="0" s_rbi="9" avg=".244"/>
+          <batter id="433587" name="Hernandez, F" name_display_first_last="Felix Hernandez" pos="P" ab="0" po="2" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg="1.000" sb="0" s_hr="0" s_rbi="0" avg=".143"/>
+          <batter id="124604" name="Wright, J" name_display_first_last="Jamey Wright" pos="P" ab="0" po="0" r="0" a="1" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg="1.000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+          <batter id="434181" name="League" name_display_first_last="Brandon League" pos="P" ab="0" po="0" r="0" a="1" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg="1.000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+        <text_data><![CDATA[<b>BATTING</b><br/><b>2B</b>: Ackley (11, Beckett), Wilson, Ja (8, Beckett).<br/><b>HR</b>: Suzuki, I (2, 1st inning off Beckett, 0 on, 0 out), Wells, C (6, 1st inning off Beckett, 1 on, 1 out).<br/><b>TB</b>: Suzuki, I 4; Gutierrez, F 2; Ackley 2; Carp; Wells, C 5; Wilson, Ja 3.<br/><b>RBI</b>: Suzuki, I (28), Carp 2 (23), Wells, C 2 (20).<br/><b>Runners left in scoring position, 2 out</b>: Pena 2.<br/><b>GIDP</b>: Suzuki, I.<br/><b>Team RISP</b>: 2-for-5.<br/><b>Team LOB</b>: 4.<br/> <br/><b>BASERUNNING</b><br/><b>SB</b>: Gutierrez, F (11, 2nd base off Beckett/Varitek).<br/> <br/><b>FIELDING</b><br/><b>E</b>: Carp (4, pickoff).<br/><b>Outfield assists</b>: Suzuki, I (Ellsbury at home).<br/><b>DP</b>: 4 (Ackley-Wilson, Ja-Carp, Suzuki, I-Bard, Ackley-Carp, Wright, J-Wilson, Ja-Carp).<br/> <br/>]]></text_data>
+      </batting>
+      <pitching team_flag="home" out="27" h="10" r="4" er="4" bb="3" so="4" hr="2" bf="35" era="3.62">
+          <pitcher id="433587" name="Hernandez, F" name_display_first_last="Felix Hernandez" pos="P" out="21" bf="29" er="4" r="4" h="9" so="2" hr="2" bb="2" w="11" l="10" sv="0" bs="0" hld="0" era="3.38" note="(W, 11-10)"/>
+          <pitcher id="124604" name="Wright, J" name_display_first_last="Jamey Wright" pos="P" out="3" bf="3" er="0" r="0" h="1" so="0" hr="0" bb="1" w="2" l="3" sv="1" bs="4" hld="14" era="3.44" note="(H, 14)"/>
+          <pitcher id="434181" name="League" name_display_first_last="Brandon League" pos="P" out="3" bf="3" er="0" r="0" h="0" so="2" hr="0" bb="0" w="1" l="4" sv="28" bs="4" hld="0" era="2.91" note="(S, 28)"/>
+      </pitching>
+      <batting team_flag="away" ab="32" r="4" h="10" d="0" t="1" hr="2" rbi="4" bb="3" po="24" da="6" so="4" lob="14" avg=".281">
+          <batter id="453056" name="Ellsbury" name_display_first_last="Jacoby Ellsbury" pos="CF" bo="100" ab="3" po="3" r="1" a="0" bb="1" sac="0" t="0" sf="0" h="2" e="0" d="0" hbp="0" so="0" hr="1" rbi="2" lob="0" fldg="1.000" sb="0" s_hr="20" s_rbi="74" avg=".315"/>
+          <batter id="408307" name="Crawford" name_display_first_last="Carl Crawford" pos="LF" bo="200" ab="4" po="1" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="1" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="1" fldg="1.000" sb="0" s_hr="7" s_rbi="38" avg=".257"/>
+          <batter id="408236" name="Gonzalez, Ad" name_display_first_last="Adrian Gonzalez" pos="1B" bo="300" ab="4" po="5" r="1" a="2" bb="0" sac="0" t="0" sf="0" h="2" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="2" fldg="1.000" sb="0" s_hr="18" s_rbi="92" avg=".351"/>
+          <batter id="456030" name="Pedroia" name_display_first_last="Dustin Pedroia" pos="2B" bo="400" ab="4" po="0" r="1" a="0" bb="0" sac="0" t="0" sf="0" h="1" e="0" d="0" hbp="0" so="0" hr="1" rbi="2" lob="3" fldg=".000" sb="0" s_hr="16" s_rbi="62" avg=".310"/>
+          <batter id="120074" name="Ortiz" name_display_first_last="David Ortiz" pos="DH" bo="500" ab="2" po="0" r="0" a="0" bb="2" sac="0" t="0" sf="0" h="1" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="24" s_rbi="79" avg=".300"/>
+          <batter id="150021" name="McDonald, D" name_display_first_last="Darnell McDonald" pos="PR-DH" bo="501" ab="0" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="4" s_rbi="15" avg=".182" note="1-"/>
+          <batter id="502210" name="Reddick" name_display_first_last="Josh Reddick" pos="RF" bo="600" ab="4" po="1" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="2" hr="0" rbi="0" lob="2" fldg="1.000" sb="0" s_hr="6" s_rbi="25" avg=".314"/>
+          <batter id="449107" name="Aviles" name_display_first_last="Mike Aviles" pos="3B" bo="700" ab="3" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="2" e="0" d="0" hbp="0" so="1" hr="0" rbi="0" lob="1" fldg=".000" sb="0" s_hr="5" s_rbi="32" avg=".238"/>
+          <batter id="476704" name="Lowrie" name_display_first_last="Jed Lowrie" pos="PH" bo="701" ab="1" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="1" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="4" s_rbi="26" avg=".263" note="a-"/>
+          <batter id="123660" name="Varitek" name_display_first_last="Jason Varitek" pos="C" bo="800" ab="4" po="12" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="4" fldg="1.000" sb="0" s_hr="7" s_rbi="23" avg=".224"/>
+          <batter id="340192" name="Scutaro" name_display_first_last="Marco Scutaro" pos="SS" bo="900" ab="3" po="1" r="1" a="3" bb="0" sac="0" t="1" sf="0" h="1" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="1" fldg="1.000" sb="0" s_hr="5" s_rbi="26" avg=".279"/>
+          <batter id="277417" name="Beckett" name_display_first_last="Josh Beckett" pos="P" ab="0" po="1" r="0" a="1" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg="1.000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+          <batter id="458006" name="Albers" name_display_first_last="Matt Albers" pos="P" ab="0" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+          <batter id="462985" name="Morales, F" name_display_first_last="Franklin Morales" pos="P" ab="0" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+          <batter id="469686" name="Aceves" name_display_first_last="Alfredo Aceves" pos="P" ab="0" po="0" r="0" a="0" bb="0" sac="0" t="0" sf="0" h="0" e="0" d="0" hbp="0" so="0" hr="0" rbi="0" lob="0" fldg=".000" sb="0" s_hr="0" s_rbi="0" avg=".000"/>
+        <note><![CDATA[a-Struck out for Aviles in the 9th. <br/>1-Ran for Ortiz in the 8th. ]]></note>
+        <text_data><![CDATA[<b>BATTING</b><br/><b>3B</b>: Scutaro (1, Hernandez, F).<br/><b>HR</b>: Ellsbury (20, 6th inning off Hernandez, F, 1 on, 0 out), Pedroia (16, 6th inning off Hernandez, F, 1 on, 1 out).<br/><b>TB</b>: Ellsbury 5; Crawford; Gonzalez, Ad 2; Pedroia 4; Ortiz; Aviles 2; Scutaro 3.<br/><b>RBI</b>: Ellsbury 2 (74), Pedroia 2 (62).<br/><b>Runners left in scoring position, 2 out</b>: Varitek.<br/><b>GIDP</b>: Scutaro; Crawford; Pedroia.<br/><b>Team RISP</b>: 2-for-5.<br/><b>Team LOB</b>: 4.<br/> <br/><b>BASERUNNING</b><br/><b>CS</b>: McDonald, D (3, 2nd base by Wright, J/Bard).<br/> <br/><b>FIELDING</b><br/><b>DP</b>: (Gonzalez, Ad-Scutaro-Gonzalez, Ad).<br/> <br/>]]></text_data>
+      </batting>
+      <game_info><![CDATA[<b>Pitches-strikes</b>: Beckett 99-63, Albers 26-18, Morales, F 6-5, Aceves 10-7, Hernandez, F 107-73, Wright, J 18-8, League 14-9.<br/><b>Groundouts-flyouts</b>: Beckett 6-2, Albers 0-2, Morales, F 0-1, Aceves 0-0, Hernandez, F 7-4, Wright, J 1-0, League 1-0.<br/><b>Batters faced</b>: Beckett 23, Albers 6, Morales, F 2, Aceves 2, Hernandez, F 29, Wright, J 3, League 3.<br/><b>Ejections</b>: Boston Red Sox Manager Terry Francona ejected by HP umpire Mark Ripperger (4th).<br/><b>Umpires</b>: HP: Mark Ripperger. 1B: Brian O'Nora. 2B: Alfonso Marquez. 3B: Ed Hickox.<br/><b>Weather</b>: 68 degrees, partly cloudy.<br/><b>Wind</b>: 4 mph, Out to CF.<br/><b>T</b>: 3:03.<br/><b>Att</b>: 41,326.<br/>]]></game_info>
+    </boxscore>
   }
 
 }

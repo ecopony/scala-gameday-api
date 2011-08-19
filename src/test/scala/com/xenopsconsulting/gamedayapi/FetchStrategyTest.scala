@@ -17,13 +17,18 @@ class FetchStrategyTest extends AssertionsForJUnit {
   }
 
   @Test def testEpgUrlGeneration() {
-    val epg_url = TestFetchStrategy.epg_url(date)
-    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/epg.xml", epg_url)
+    val epgUrl = TestFetchStrategy.epgUrl(date)
+    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/epg.xml", epgUrl)
   }
 
   @Test def testGameUrlGeneration() {
-    val game_url = TestFetchStrategy.game_url(date, team)
-    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/gid_2011_08_13_bosmlb_seamlb_1/game.xml", game_url)
+    val gameUrl = TestFetchStrategy.gameUrl(date, team)
+    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/gid_2011_08_13_bosmlb_seamlb_1/game.xml", gameUrl)
+  }
+
+  @Test def testBoxScoreUrlGeneration() {
+    val boxScoreUrl = TestFetchStrategy.boxScoreUrl(date, team)
+    assertEquals("http://gd2.mlb.com/components/game/mlb/year_2011/month_08/day_13/gid_2011_08_13_bosmlb_seamlb_1/boxscore.xml", boxScoreUrl)
   }
 }
 

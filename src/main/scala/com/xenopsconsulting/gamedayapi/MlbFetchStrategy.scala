@@ -6,14 +6,20 @@ import java.util.Date
 
 object MlbFetchStrategy extends FetchStrategy {
 
-  def fetch_epg(date: Date): Elem = {
+  def fetchEpg(date: Date): Elem = {
     val http = new Http
-    XML.loadString(http(url(epg_url(date)) as_str))
+    XML.loadString(http(url(epgUrl(date)) as_str))
   }
 
-  def fetch_game(date: Date, team: String): Elem = {
+  def fetchGame(date: Date, team: String): Elem = {
     val http = new Http
-    XML.loadString(http(url(game_url(date, team)) as_str))
+    XML.loadString(http(url(gameUrl(date, team)) as_str))
   }
+
+  def fetchBoxScore(date: Date, team: String): Elem = {
+    val http = new Http
+    XML.loadString(http(url(boxScoreUrl(date, team)) as_str))
+  }
+
 
 }

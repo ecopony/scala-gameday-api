@@ -7,34 +7,49 @@ import xml.Elem
 trait FetchStrategy {
   private val base_mlb_url: String = "http://gd2.mlb.com/components/game/mlb"
 
-  def fetch_epg(date: Date): Elem
-  def fetch_game(date: Date, team: String): Elem
+  def fetchEpg(date: Date): Elem
+  def fetchGame(date: Date, team: String): Elem
+  def fetchBoxScore(date: Date, team: String): Elem
 
-  def epg_url(date: Date): String = {
-    val url_buffer: StringBuffer = new StringBuffer(base_mlb_url)
-    url_buffer.append(date_path(date))
-    url_buffer.append("/epg.xml")
-    url_buffer.toString
+  def epgUrl(date: Date): String = {
+    val urlBuffer: StringBuffer = new StringBuffer(base_mlb_url)
+    urlBuffer.append(datePath(date))
+    urlBuffer.append("/epg.xml")
+    urlBuffer.toString
   }
   
-  def game_url(date: Date, team: String): String = {
-    val url_buffer: StringBuffer = new StringBuffer(base_mlb_url)
-    url_buffer.append(date_path(date))
-    val epg_xml: Elem = fetch_epg(date)
-    val gameday = (epg_xml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }
-    val gid:String = "/gid_" + gameday.getOrElse("")
-    url_buffer.append(gid)
-    url_buffer.append("/game.xml")
-    url_buffer.toString
+  def gameUrl(date: Date, team: String): String = {
+    buildUrl(date, team, "game.xml")
+  }
+  
+  def boxScoreUrl(date: Date, team: String): String = {
+    buildUrl(date, team, "boxscore.xml")
   }
 
-  private def date_path(date: Date): String = {
-    val url_buffer: StringBuffer = new StringBuffer("/year_")
-    url_buffer.append(new SimpleDateFormat("yyyy").format(date))
-    url_buffer.append("/month_")
-    url_buffer.append(new SimpleDateFormat("MM").format(date))
-    url_buffer.append("/day_")
-    url_buffer.append(new SimpleDateFormat("dd").format(date))
-    url_buffer.toString
+  private def buildUrl(date: Date, team: String, fileName: String): String = {
+    val urlBuffer: StringBuffer = new StringBuffer(base_mlb_url)
+    urlBuffer.append(datePath(date))
+    val epgXml: Elem = fetchEpg(date)
+    val gid: String = extractGidFromEpg(epgXml, team)
+    urlBuffer.append(gid)
+    urlBuffer.append("/")
+    urlBuffer.append(fileName)
+    urlBuffer.toString
+  }
+
+  private def datePath(date: Date): String = {
+    val urlBuffer: StringBuffer = new StringBuffer("/year_")
+    urlBuffer.append(new SimpleDateFormat("yyyy").format(date))
+    urlBuffer.append("/month_")
+    urlBuffer.append(new SimpleDateFormat("MM").format(date))
+    urlBuffer.append("/day_")
+    urlBuffer.append(new SimpleDateFormat("dd").format(date))
+    urlBuffer.toString
+  }
+
+  private def extractGidFromEpg(epgXml: Elem, team: String): String = {
+    val gameday = (epgXml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }
+    val gid: String = "/gid_" + gameday.getOrElse("")
+    gid
   }
 }

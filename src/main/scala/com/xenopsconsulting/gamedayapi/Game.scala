@@ -5,6 +5,8 @@ import java.util.Date
 
 class Game(date: Date, team: String) {
   private var _xml:Elem = null
+  var boxScore: BoxScore = new BoxScore(date, team)
+
   var fetch_strategy: FetchStrategy = MlbFetchStrategy
 
   def tm = team
@@ -46,7 +48,7 @@ class Game(date: Date, team: String) {
   def location():String = (stadiumNode \ "@location").text
 
   private def fetch() = {
-    _xml = fetch_strategy.fetch_game(date, team)
+    _xml = fetch_strategy.fetchGame(date, team)
   }
 
   private def gameNode():NodeSeq = (xml \\ "game")
