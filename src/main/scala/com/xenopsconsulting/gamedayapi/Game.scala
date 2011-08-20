@@ -3,18 +3,14 @@ package com.xenopsconsulting.gamedayapi
 import scala.xml._
 import java.util.Date
 
-class Game(date: Date, team: String) {
-  private var _xml:Elem = null
+class Game(date: Date, team: String) extends XmlRepresentation {
   var boxScore: BoxScore = new BoxScore(date, team)
-
-  var fetch_strategy: FetchStrategy = MlbFetchStrategy
 
   def tm = team
   def dt = date
 
-  def xml():Elem = {
-    if (_xml == null) fetch
-    _xml
+  def fetch() = {
+    _xml = fetch_strategy.fetchGame(date, team)
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text
@@ -46,10 +42,6 @@ class Game(date: Date, team: String) {
   def stadiumId():String = (stadiumNode \ "@id").text
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
-
-  private def fetch() = {
-    _xml = fetch_strategy.fetchGame(date, team)
-  }
 
   private def gameNode():NodeSeq = (xml \\ "game")
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
