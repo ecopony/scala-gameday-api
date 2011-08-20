@@ -16,19 +16,19 @@ Prerequisites: sbt (https://github.com/harrah/xsbt/wiki)
 To build:
 ---------
 
-git clone git@github.com:ecopony/scala-gameday-api.git
-cd scala-gameday-api
-sbt console
+    git clone git@github.com:ecopony/scala-gameday-api.git
+    cd scala-gameday-api
+    sbt console
 
 Example console session:
 ------------------------
 
-> import com.xenopsconsulting.gamedayapi._
-> import java.text.SimpleDateFormat
-> var date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-15")
-> var team = "sea"
-> var game = new Game(date, team)
-> game.homeTeamNameFull # res1: String = Seattle Mariners
+    > import com.xenopsconsulting.gamedayapi._
+    > import java.text.SimpleDateFormat
+    > var date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-15")
+    > var team = "sea"
+    > var game = new Game(date, team)
+    > game.homeTeamNameFull # res1: String = Seattle Mariners
 
 Typing 'game.' and then tabbing for tab-completion will show all methods available on a game instance.
 
