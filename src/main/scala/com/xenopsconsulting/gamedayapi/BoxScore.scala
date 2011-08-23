@@ -4,6 +4,8 @@ import scala.xml._
 import java.util.Date
 
 class BoxScore(date: Date, team: String) extends XmlRepresentation {
+  var lineScore: LineScore = new LineScore(date, team)
+
   def tm = team
   def dt = date
 

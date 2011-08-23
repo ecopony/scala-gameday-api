@@ -5,6 +5,13 @@ import java.util.Date
 
 object TestFetchStrategy extends FetchStrategy {
 
+  /*
+    All test XML file is bound to the following:
+
+     <!--Copyright 2011 MLB Advanced Media, L.P.  Use of any content on this page acknowledges agreement to the terms
+      posted here http://gdx.mlb.com/components/copyright.txt-->
+   */
+
   def fetchEpg(date: Date): Elem = {
     <epg date="20110813" last_modified="2011-08-14T17:52:23Z" display_time_zone="ET">
       <game calendar_event_id="14-288681-2011-08-13" start="2011-08-13T13:07:00-0400"
@@ -1218,6 +1225,124 @@ object TestFetchStrategy extends FetchStrategy {
       </batting>
       <game_info><![CDATA[<b>Pitches-strikes</b>: Beckett 99-63, Albers 26-18, Morales, F 6-5, Aceves 10-7, Hernandez, F 107-73, Wright, J 18-8, League 14-9.<br/><b>Groundouts-flyouts</b>: Beckett 6-2, Albers 0-2, Morales, F 0-1, Aceves 0-0, Hernandez, F 7-4, Wright, J 1-0, League 1-0.<br/><b>Batters faced</b>: Beckett 23, Albers 6, Morales, F 2, Aceves 2, Hernandez, F 29, Wright, J 3, League 3.<br/><b>Ejections</b>: Boston Red Sox Manager Terry Francona ejected by HP umpire Mark Ripperger (4th).<br/><b>Umpires</b>: HP: Mark Ripperger. 1B: Brian O'Nora. 2B: Alfonso Marquez. 3B: Ed Hickox.<br/><b>Weather</b>: 68 degrees, partly cloudy.<br/><b>Wind</b>: 4 mph, Out to CF.<br/><b>T</b>: 3:03.<br/><b>Att</b>: 41,326.<br/>]]></game_info>
     </boxscore>
+  }
+
+  def fetchLineScore(date: Date, team: String): Elem = {
+    <game id="2011/08/13/bosmlb-seamlb-1" venue="Safeco Field" game_pk="288682"
+          time="10:10"
+          time_zone="ET"
+          ampm="PM"
+          away_time="10:10"
+          away_time_zone="ET"
+          away_ampm="PM"
+          home_time="7:10"
+          home_time_zone="PT"
+          home_ampm="PM"
+          game_type="R"
+          time_aw_lg="10:10"
+          aw_lg_ampm="PM"
+          tz_aw_lg_gen="ET"
+          time_hm_lg="10:10"
+          hm_lg_ampm="PM"
+          tz_hm_lg_gen="ET"
+          venue_id="680"
+          scheduled_innings="9"
+          away_name_abbrev="BOS"
+          home_name_abbrev="SEA"
+          away_code="bos"
+          away_file_code="bos"
+          away_team_id="111"
+          away_team_city="Boston"
+          away_team_name="Red Sox"
+          away_division="E"
+          away_league_id="103"
+          away_sport_code="mlb"
+          home_code="sea"
+          home_file_code="sea"
+          home_team_id="136"
+          home_team_city="Seattle"
+          home_team_name="Mariners"
+          home_division="W"
+          home_league_id="103"
+          home_sport_code="mlb"
+          day="SAT"
+          gameday_sw="P"
+          away_games_back="-"
+          home_games_back="16.0"
+          home_games_back_wildcard="21.0"
+          venue_w_chan_loc="USWA0395"
+          gameday_link="2011_08_13_bosmlb_seamlb_1"
+          away_win="73"
+          away_loss="45"
+          home_win="51"
+          home_loss="67"
+          league="AA"
+          top_inning="Y"
+          inning_state=""
+          status="Final"
+          ind="F"
+          inning="9"
+          outs="3"
+          away_team_runs="4"
+          home_team_runs="5"
+          away_team_hits="10"
+          home_team_hits="9"
+          away_team_errors="0"
+          home_team_errors="1"
+          wrapup_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=wrap&amp;c_id=mlb"
+    home_preview_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
+    away_preview_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
+    preview="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
+    tv_station="ROOT SPORTS"
+    home_recap_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=recap&amp;c_id=sea"
+    away_recap_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=recap&amp;c_id=bos"
+    photos_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=photos">
+      <linescore inning="1" home_inning_runs="5" away_inning_runs="0"/>
+        <linescore inning="2" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="3" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="4" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="5" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="6" home_inning_runs="0" away_inning_runs="4"/>
+        <linescore inning="7" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="8" home_inning_runs="0" away_inning_runs="0"/>
+        <linescore inning="9" home_inning_runs="" away_inning_runs="0"/>
+        <winning_pitcher first_name="Felix" first="Felix" id="433587" last_name="Hernandez"
+                         last="Hernandez"
+                         name_display_roster="Hernandez, F"
+                         wins="11"
+                         losses="10"
+                         era="3.38"
+                         s_wins=""
+                         s_losses=""
+                         s_era=""/>
+        <losing_pitcher first_name="Josh" first="Josh" id="277417" last_name="Beckett" last="Beckett"
+                        name_display_roster="Beckett"
+                        wins="9"
+                        losses="5"
+                        era="2.40"
+                        s_wins=""
+                        s_losses=""
+                        s_era=""/>
+        <save_pitcher first_name="Brandon" first="Brandon" id="434181" last_name="League"
+                      last="League"
+                      name_display_roster="League"
+                      wins="1"
+                      losses="4"
+                      era="2.91"
+                      s_wins=""
+                      s_losses=""
+                      s_era=""
+                      saves="28"/>
+      <game_media>
+          <media type="game" calendar_event_id="14-288682-2011-08-13"
+                 start="2011-08-13T22:10:00-0400"
+                 title="BOS @ SEA"
+                 has_mlbtv="true"
+                 free="NO"
+                 media_state="media_archive"
+                 thumbnail="http://mediadownloads.mlb.com/mlbam/preview/bossea_288682_preview.jpg"/>
+      </game_media>
+    </game>
   }
 
 }

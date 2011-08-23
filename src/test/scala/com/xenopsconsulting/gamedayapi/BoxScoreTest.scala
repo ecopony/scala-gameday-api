@@ -92,4 +92,8 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals("F", boxScore.statusInd)
   }
 
+  @Test def testLineScoreExists {
+    assertNotNull(boxScore.lineScore)
+  }
+
 }

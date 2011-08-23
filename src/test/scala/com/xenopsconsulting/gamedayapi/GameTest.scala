@@ -139,5 +139,9 @@ class GameTest extends AssertionsForJUnit {
   @Test def testLocation {
     assertEquals("Seattle, WA", game.location)
   }
+
+  @Test def testBoxScoreExists {
+    assertNotNull(game.boxScore)
+  }
   
 }
