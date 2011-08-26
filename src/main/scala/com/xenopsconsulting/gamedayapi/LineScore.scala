@@ -12,6 +12,10 @@ class LineScore(date: Date, team: String) extends XmlRepresentation {
     _xml = fetch_strategy.fetchLineScore(date, team)
   }
 
+  def innings() = {
+    (gameNode \ "linescore").foldLeft(List[LineScoreInning]())((list, inningNode) => list :+ new LineScoreInning(inningNode))
+  }
+
   def gameId():String = (gameNode \ "@id").text
 
   private def gameNode():NodeSeq = (xml \\ "game")

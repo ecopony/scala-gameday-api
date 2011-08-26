@@ -28,4 +28,16 @@ class LineScoreTest extends AssertionsForJUnit {
     assertEquals("2011/08/13/bosmlb-seamlb-1", lineScore.gameId)
   }
 
+  @Test def testLineScoreInningsExist {
+    assertNotNull(lineScore.innings)
+  }
+
+  @Test def testLineScoreInningLength {
+    assertEquals(9, lineScore.innings.length)
+  }
+
+  @Test def testLineScoreInningInitialization {
+    assertEquals("1", lineScore.innings.head.inning)
+  }
+
 }
