@@ -40,4 +40,16 @@ class LineScoreTest extends AssertionsForJUnit {
     assertEquals("1", lineScore.innings.head.inning)
   }
 
+  @Test def testWinningPitcherInitialization {
+    assertEquals("Felix", lineScore.winningPitcher.firstName)
+  }
+
+  @Test def testLosingPitcherInitialization {
+    assertEquals("Josh", lineScore.losingPitcher.firstName)
+  }
+
+  @Test def testSavePitcherInitialization {
+    assertEquals("Brandon", lineScore.savePitcher.firstName)
+  }
+
 }
