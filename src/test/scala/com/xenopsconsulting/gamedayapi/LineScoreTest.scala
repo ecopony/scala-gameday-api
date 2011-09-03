@@ -200,33 +200,113 @@ class LineScoreTest extends AssertionsForJUnit {
     assertEquals("21.0", lineScore.homeGamesBackWildcard)
   }
 
-//          venue_w_chan_loc="USWA0395"
-//          gameday_link="2011_08_13_bosmlb_seamlb_1"
-//          away_win="73"
-//          away_loss="45"
-//          home_win="51"
-//          home_loss="67"
-//          league="AA"
-//          top_inning="Y"
-//          inning_state=""
-//          status="Final"
-//          ind="F"
-//          inning="9"
-//          outs="3"
-//          away_team_runs="4"
-//          home_team_runs="5"
-//          away_team_hits="10"
-//          home_team_hits="9"
-//          away_team_errors="0"
-//          home_team_errors="1"
-//          wrapup_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=wrap&amp;c_id=mlb"
-//    home_preview_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
-//    away_preview_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
-//    preview="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=preview&amp;c_id=mlb"
-//    tv_station="ROOT SPORTS"
-//    home_recap_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=recap&amp;c_id=sea"
-//    away_recap_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=recap&amp;c_id=bos"
-//    photos_link="/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&amp;mode=photos"
+  @Test def testVenueWithChanLoc {
+    assertEquals("USWA0395", lineScore.venueWithChanLoc)
+  }
+
+  @Test def testGamedayLink {
+    assertEquals("2011_08_13_bosmlb_seamlb_1", lineScore.gamedayLink)
+  }
+
+  @Test def testAwayWin {
+    assertEquals("73", lineScore.awayWin)
+  }
+
+  @Test def testAwayLoss {
+    assertEquals("45", lineScore.awayLoss)
+  }
+
+  @Test def testHomeWin {
+    assertEquals("51", lineScore.homeWin)
+  }
+
+  @Test def testHomeLoss {
+    assertEquals("67", lineScore.homeLoss)
+  }
+
+  @Test def testLeague {
+    assertEquals("AA", lineScore.league)
+  }
+
+  @Test def testTopInning {
+    assertEquals("Y", lineScore.topInning)
+  }
+
+  @Test def testInningState {
+    assertEquals("", lineScore.inningState)
+  }
+
+  @Test def testStatus {
+    assertEquals("Final", lineScore.status)
+  }
+
+  @Test def testInd {
+    assertEquals("F", lineScore.ind)
+  }
+
+  @Test def testInning {
+    assertEquals("9", lineScore.inning)
+  }
+
+  @Test def testOuts {
+    assertEquals("3", lineScore.outs)
+  }
+
+  @Test def testAwayTeamRuns {
+    assertEquals("4", lineScore.awayTeamRuns)
+  }
+
+  @Test def testHomeTeamRuns {
+    assertEquals("5", lineScore.homeTeamRuns)
+  }
+
+  @Test def testAwayTeamHits {
+    assertEquals("10", lineScore.awayTeamHits)
+  }
+
+  @Test def testHomeTeamHits {
+    assertEquals("9", lineScore.homeTeamHits)
+  }
+
+  @Test def testAwayTeamErrors {
+    assertEquals("0", lineScore.awayTeamErrors)
+  }
+
+  @Test def testHomeTeamErrors {
+    assertEquals("1", lineScore.homeTeamErrors)
+  }
+
+  @Test def testWrapupLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=wrap&c_id=mlb", lineScore.wrapupLink)
+  }
+
+  @Test def testHomePreviewLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=preview&c_id=mlb", lineScore.homePreviewLink)
+  }
+
+  @Test def testAwayPreviewLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=preview&c_id=mlb", lineScore.awayPreviewLink)
+  }
+
+  @Test def testPreview {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=preview&c_id=mlb", lineScore.preview)
+  }
+
+  @Test def testTvStation {
+    assertEquals("ROOT SPORTS", lineScore.tvStation)
+  }
+
+  @Test def testAwayRecapLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=recap&c_id=bos", lineScore.awayRecapLink)
+  }
+
+  @Test def testHomeRecapLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=recap&c_id=sea", lineScore.homeRecapLink)
+  }
+
+  @Test def testPhotosLink {
+    assertEquals("/mlb/gameday/index.jsp?gid=2011_08_13_bosmlb_seamlb_1&mode=photos", lineScore.photosLink)
+  }
 
   @Test def testLineScoreInningsExist {
     assertNotNull(lineScore.innings)

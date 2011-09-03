@@ -64,6 +64,33 @@ class LineScore(date: Date, team: String) extends XmlRepresentation {
   def awayGamesBack():String = (gameNode \ "@away_games_back").text
   def homeGamesBack():String = (gameNode \ "@home_games_back").text
   def homeGamesBackWildcard():String = (gameNode \ "@home_games_back_wildcard").text
+  def venueWithChanLoc():String = (gameNode \ "@venue_w_chan_loc").text
+  def gamedayLink():String = (gameNode \ "@gameday_link").text
+  def awayWin():String = (gameNode \ "@away_win").text
+  def awayLoss():String = (gameNode \ "@away_loss").text
+  def homeWin():String = (gameNode \ "@home_win").text
+  def homeLoss():String = (gameNode \ "@home_loss").text
+  def league():String = (gameNode \ "@league").text
+  def topInning():String = (gameNode \ "@top_inning").text
+  def inningState():String = (gameNode \ "@inning_state").text
+  def status():String = (gameNode \ "@status").text
+  def ind():String = (gameNode \ "@ind").text
+  def inning():String = (gameNode \ "@inning").text
+  def outs():String = (gameNode \ "@outs").text
+  def awayTeamRuns():String = (gameNode \ "@away_team_runs").text
+  def homeTeamRuns():String = (gameNode \ "@home_team_runs").text
+  def awayTeamHits():String = (gameNode \ "@away_team_hits").text
+  def homeTeamHits():String = (gameNode \ "@home_team_hits").text
+  def awayTeamErrors():String = (gameNode \ "@away_team_errors").text
+  def homeTeamErrors():String = (gameNode \ "@home_team_errors").text
+  def wrapupLink():String = (gameNode \ "@wrapup_link").text
+  def homePreviewLink():String = (gameNode \ "@home_preview_link").text
+  def awayPreviewLink():String = (gameNode \ "@away_preview_link").text
+  def preview():String = (gameNode \ "@preview").text
+  def tvStation():String = (gameNode \ "@tv_station").text
+  def awayRecapLink():String = (gameNode \ "@away_recap_link").text
+  def homeRecapLink():String = (gameNode \ "@home_recap_link").text
+  def photosLink():String = (gameNode \ "@photos_link").text
 
   private def gameNode():NodeSeq = (xml \\ "game")
 
