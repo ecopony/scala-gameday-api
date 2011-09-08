@@ -24,6 +24,18 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals(date, boxScore.dt)
   }
 
+  @Test def testLineScoreExists {
+    assertNotNull(boxScore.lineScore)
+  }
+//
+//  @Test def testHomePitchersExists {
+//    assertNotNull(boxScore.homePitchers)
+//  }
+//
+//  @Test def testAwayPitchersExists {
+//    assertNotNull(boxScore.awayPitchers)
+//  }
+
   @Test def testGameId {
     assertEquals("2011/08/13/bosmlb-seamlb-1", boxScore.gameId)
   }
@@ -90,10 +102,6 @@ class BoxScoreTest extends AssertionsForJUnit {
 
   @Test def testStatusInd {
     assertEquals("F", boxScore.statusInd)
-  }
-
-  @Test def testLineScoreExists {
-    assertNotNull(boxScore.lineScore)
   }
 
 }
