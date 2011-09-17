@@ -18,6 +18,9 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
     _lineScore
   }
 
+  def homePitchers() = pitcherList("home")
+  def awayPitchers() = pitcherList("away")
+
   def gameId():String = (boxScoreNode \ "@game_id").text
   def gamePk():String = (boxScoreNode \ "@game_pk").text
   def venueId():String = (boxScoreNode \ "@venue_id").text
@@ -37,4 +40,9 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def statusInd():String = (boxScoreNode \ "@status_ind").text
 
   private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
+
+  private def pitcherList(home_or_away: String): List[Pitcher] = {
+    val pitchingNode = boxScoreNode \ "pitching" \\ "_" filter attributeValueEquals(home_or_away)
+    (pitchingNode \ "pitcher").foldLeft(List[Pitcher]())((list, pitcherNode) => list :+ new Pitcher(pitcherNode))
+  }
 }

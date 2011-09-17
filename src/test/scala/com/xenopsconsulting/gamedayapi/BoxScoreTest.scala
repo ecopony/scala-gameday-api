@@ -27,14 +27,22 @@ class BoxScoreTest extends AssertionsForJUnit {
   @Test def testLineScoreExists {
     assertNotNull(boxScore.lineScore)
   }
-//
-//  @Test def testHomePitchersExists {
-//    assertNotNull(boxScore.homePitchers)
-//  }
-//
-//  @Test def testAwayPitchersExists {
-//    assertNotNull(boxScore.awayPitchers)
-//  }
+
+  @Test def testHomePitchersExists {
+    assertNotNull(boxScore.homePitchers)
+    assertEquals(3, boxScore.homePitchers.size)
+  }
+
+  @Test def testAwayPitchersExists {
+    assertNotNull(boxScore.awayPitchers)
+    assertEquals(4, boxScore.awayPitchers.size)
+  }
+
+  @Test def testPitchersInOrder {
+    val pitchers = boxScore.homePitchers
+    assertEquals("Hernandez, F", pitchers.head.name)
+    assertEquals("League", pitchers.last.name)
+  }
 
   @Test def testGameId {
     assertEquals("2011/08/13/bosmlb-seamlb-1", boxScore.gameId)

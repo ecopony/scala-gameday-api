@@ -1,6 +1,6 @@
 package com.xenopsconsulting.gamedayapi
 
-import xml.Elem
+import xml.{Node, Elem}
 
 trait XmlRepresentation {
   protected var _xml:Elem = null
@@ -12,4 +12,6 @@ trait XmlRepresentation {
   }
 
   def fetch
+
+  protected def attributeValueEquals(value: String)(node: Node) = node.attributes.exists(_.value.text == value)
 }
