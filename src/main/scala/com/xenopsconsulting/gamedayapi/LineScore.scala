@@ -4,6 +4,9 @@ import scala.xml._
 import java.util.Date
 
 class LineScore(date: Date, team: String) extends XmlRepresentation {
+  private var _winningPitcher:LineScorePitcher = _
+  private var _losingPitcher:LineScorePitcher = _
+  private var _savePitcher:LineScorePitcher = _
 
   def tm = team
   def dt = date
@@ -16,9 +19,26 @@ class LineScore(date: Date, team: String) extends XmlRepresentation {
     (gameNode \ "linescore").foldLeft(List[LineScoreInning]())((list, inningNode) => list :+ new LineScoreInning(inningNode))
   }
 
-  def winningPitcher() = new LineScorePitcher((gameNode \ "winning_pitcher").head)
-  def losingPitcher() = new LineScorePitcher((gameNode \ "losing_pitcher").head)
-  def savePitcher() = new LineScorePitcher((gameNode \ "save_pitcher").head)
+  def winningPitcher() = {
+    if (_winningPitcher == null) {
+      _winningPitcher = new LineScorePitcher((gameNode \ "winning_pitcher").head)
+    }
+    _winningPitcher
+  }
+
+  def losingPitcher() = {
+    if (_losingPitcher == null) {
+      _losingPitcher = new LineScorePitcher((gameNode \ "losing_pitcher").head)
+    }
+    _losingPitcher
+  }
+
+  def savePitcher() = {
+    if (_savePitcher == null) {
+      _savePitcher = new LineScorePitcher((gameNode \ "save_pitcher").head)
+    }
+    _savePitcher
+  }
 
   def gameId():String = gna("@id")
   def venue():String = gna("@venue")
