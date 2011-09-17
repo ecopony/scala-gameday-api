@@ -4,13 +4,18 @@ import scala.xml._
 import java.util.Date
 
 class Game(date: Date, team: String) extends XmlRepresentation {
-  var boxScore: BoxScore = new BoxScore(date, team)
+  private var _boxScore:BoxScore = _
 
   def tm = team
   def dt = date
 
   def fetch() = {
     _xml = fetchStrategy.fetchGame(date, team)
+  }
+
+  def boxScore() = {
+    if (_boxScore == null) _boxScore = new BoxScore(date, team)
+    _boxScore
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text
