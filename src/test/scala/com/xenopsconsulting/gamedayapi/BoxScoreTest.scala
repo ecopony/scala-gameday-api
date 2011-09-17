@@ -16,7 +16,7 @@ class BoxScoreTest extends AssertionsForJUnit {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
     boxScore = new BoxScore(date, team)
-    boxScore.fetch_strategy = TestFetchStrategy
+    boxScore.fetchStrategy = TestFetchStrategy
   }
 
   @Test def testInitialization {

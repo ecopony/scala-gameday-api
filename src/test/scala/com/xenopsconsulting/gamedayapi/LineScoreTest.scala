@@ -16,7 +16,7 @@ class LineScoreTest extends AssertionsForJUnit {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
     lineScore = new LineScore(date, team)
-    lineScore.fetch_strategy = TestFetchStrategy
+    lineScore.fetchStrategy = TestFetchStrategy
   }
 
   @Test def testInitialization {

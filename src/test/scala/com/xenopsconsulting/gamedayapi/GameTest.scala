@@ -16,7 +16,7 @@ class GameTest extends AssertionsForJUnit {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sfn"
     game = new Game(date, team)
-    game.fetch_strategy = TestFetchStrategy
+    game.fetchStrategy = TestFetchStrategy
   }
 
   @Test def testInitialization {

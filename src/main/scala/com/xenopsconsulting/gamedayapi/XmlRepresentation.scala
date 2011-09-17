@@ -4,7 +4,7 @@ import xml.Elem
 
 trait XmlRepresentation {
   protected var _xml:Elem = null
-  var fetch_strategy: FetchStrategy = MlbFetchStrategy
+  var fetchStrategy: FetchStrategy = MlbFetchStrategy
 
   def xml():Elem = {
     if (_xml == null) fetch

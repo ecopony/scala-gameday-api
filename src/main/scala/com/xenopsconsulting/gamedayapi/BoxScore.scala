@@ -10,7 +10,7 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def dt = date
 
   def fetch() = {
-    _xml = fetch_strategy.fetchBoxScore(date, team)
+    _xml = fetchStrategy.fetchBoxScore(date, team)
   }
 
   def gameId():String = (boxScoreNode \ "@game_id").text

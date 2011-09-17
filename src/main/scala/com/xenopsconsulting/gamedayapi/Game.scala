@@ -10,7 +10,7 @@ class Game(date: Date, team: String) extends XmlRepresentation {
   def dt = date
 
   def fetch() = {
-    _xml = fetch_strategy.fetchGame(date, team)
+    _xml = fetchStrategy.fetchGame(date, team)
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text

@@ -9,7 +9,7 @@ class LineScore(date: Date, team: String) extends XmlRepresentation {
   def dt = date
 
   def fetch() = {
-    _xml = fetch_strategy.fetchLineScore(date, team)
+    _xml = fetchStrategy.fetchLineScore(date, team)
   }
 
   def innings() = {
