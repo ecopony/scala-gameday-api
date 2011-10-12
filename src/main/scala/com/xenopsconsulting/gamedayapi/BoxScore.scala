@@ -23,33 +23,41 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def homeBatters() = batterList("home")
   def awayBatters() = batterList("away")
 
-  def gameId():String = (boxScoreNode \ "@game_id").text
-  def gamePk():String = (boxScoreNode \ "@game_pk").text
-  def venueId():String = (boxScoreNode \ "@venue_id").text
-  def venueName():String = (boxScoreNode \ "@venue_name").text
-  def homeSportCode():String = (boxScoreNode \ "@home_sport_code").text
-  def homeTeamCode():String = (boxScoreNode \ "@home_team_code").text
-  def awayTeamCode():String = (boxScoreNode \ "@away_team_code").text
-  def homeId():String = (boxScoreNode \ "@home_id").text
-  def awayId():String = (boxScoreNode \ "@away_id").text
-  def homeFname():String = (boxScoreNode \ "@home_fname").text
-  def awayFname():String = (boxScoreNode \ "@away_fname").text
-  def homeSname():String = (boxScoreNode \ "@home_sname").text
-  def homeWins():String = (boxScoreNode \ "@home_wins").text
-  def homeLoss():String = (boxScoreNode \ "@home_loss").text
-  def awayWins():String = (boxScoreNode \ "@away_wins").text
-  def awayLoss():String = (boxScoreNode \ "@away_loss").text
-  def statusInd():String = (boxScoreNode \ "@status_ind").text
+  def gameId():String = bsna("@game_id")
+  def gamePk():String = bsna("@game_pk")
+  def venueId():String = bsna("@venue_id")
+  def venueName():String = bsna("@venue_name")
+  def homeSportCode():String = bsna("@home_sport_code")
+  def homeTeamCode():String = bsna("@home_team_code")
+  def awayTeamCode():String = bsna("@away_team_code")
+  def homeId():String = bsna("@home_id")
+  def awayId():String = bsna("@away_id")
+  def homeFname():String = bsna("@home_fname")
+  def awayFname():String = bsna("@away_fname")
+  def homeSname():String = bsna("@home_sname")
+  def homeWins():String = bsna("@home_wins")
+  def homeLoss():String = bsna("@home_loss")
+  def awayWins():String = bsna("@away_wins")
+  def awayLoss():String = bsna("@away_loss")
+  def statusInd():String = bsna("@status_ind")
 
   private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
 
+  private def pitchingNode(home_or_away: String):NodeSeq = {
+    boxScoreNode \ "pitching" \\ "_" filter attributeValueEquals(home_or_away)
+  }
+
+  private def battingNode(home_or_away: String):NodeSeq = {
+    boxScoreNode \ "batting" \\ "_" filter attributeValueEquals(home_or_away)
+  }
+
   private def pitcherList(home_or_away: String): List[Pitcher] = {
-    val pitchingNode = boxScoreNode \ "pitching" \\ "_" filter attributeValueEquals(home_or_away)
-    (pitchingNode \ "pitcher").foldLeft(List[Pitcher]())((list, pitcherNode) => list :+ new Pitcher(pitcherNode))
+    (pitchingNode(home_or_away) \ "pitcher").foldLeft(List[Pitcher]())((list, pitcherNode) => list :+ new Pitcher(pitcherNode))
   }
 
   private def batterList(home_or_away: String): List[Batter] = {
-    val batterNode = boxScoreNode \ "batting" \\ "_" filter attributeValueEquals(home_or_away)
-    (batterNode \ "batter").foldLeft(List[Batter]())((list, batterNode) => list :+ new Batter(batterNode))
+    (battingNode(home_or_away) \ "batter").foldLeft(List[Batter]())((list, batterNode) => list :+ new Batter(batterNode))
   }
+
+  private def bsna(attribute: String):String = (boxScoreNode \ attribute).text
 }
