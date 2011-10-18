@@ -56,8 +56,10 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   }
 
   private def batterList(home_or_away: String): List[Batter] = {
-    (battingNode(home_or_away) \ "batter").foldLeft(List[Batter]())((list, batterNode) => list :+ new Batter(batterNode))
+    (battingNode(home_or_away) \ "batter" \\ "_" filter boExists() ).foldLeft(List[Batter]())((list, batterNode) => list :+ new Batter(batterNode))
   }
+
+  private def boExists()(node: Node) = node.attributes.exists(_.key == "bo")
 
   private def bsna(attribute: String):String = (boxScoreNode \ attribute).text
 }

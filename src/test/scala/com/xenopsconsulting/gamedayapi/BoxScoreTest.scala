@@ -46,18 +46,18 @@ class BoxScoreTest extends AssertionsForJUnit {
 
   @Test def testHomeBattersExists {
     assertNotNull(boxScore.homeBatters)
-    assertEquals(12, boxScore.homeBatters.size)
+    assertEquals(9, boxScore.homeBatters.size)
   }
 
   @Test def testAwayBattersExists {
     assertNotNull(boxScore.awayBatters)
-    assertEquals(15, boxScore.awayBatters.size)
+    assertEquals(11, boxScore.awayBatters.size)
   }
 
   @Test def tesBattersInOrder {
     val batters = boxScore.homeBatters
     assertEquals("Suzuki, I", batters.head.name)
-    assertEquals("League", batters.last.name)
+    assertEquals("Wilson, Ja", batters.last.name)
   }
 
   @Test def testGameId {
