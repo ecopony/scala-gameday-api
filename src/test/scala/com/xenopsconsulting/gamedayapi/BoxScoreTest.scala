@@ -44,6 +44,78 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals("League", pitchers.last.name)
   }
 
+  @Test def testHomePitchingOut {
+    assertEquals("27", boxScore.homePitchingOut)
+  }
+
+  @Test def testAwayPitchingOut {
+    assertEquals("24", boxScore.awayPitchingOut)
+  }
+
+  @Test def testHomePitchingH {
+    assertEquals("10", boxScore.homePitchingH)
+  }
+
+  @Test def testAwayPitchingH {
+    assertEquals("9", boxScore.awayPitchingH)
+  }
+
+  @Test def testHomePitchingR {
+    assertEquals("4", boxScore.homePitchingR)
+  }
+
+  @Test def testAwayPitchingR {
+    assertEquals("5", boxScore.awayPitchingR)
+  }
+
+  @Test def testHomePitchingEr {
+    assertEquals("4", boxScore.homePitchingEr)
+  }
+
+  @Test def testAwayPitchingEr {
+    assertEquals("5", boxScore.awayPitchingEr)
+  }
+
+  @Test def testHomePitchingBb {
+    assertEquals("3", boxScore.homePitchingBb)
+  }
+
+  @Test def testAwayPitchingBb {
+    assertEquals("1", boxScore.awayPitchingBb)
+  }
+
+  @Test def testHomePitchingSo {
+    assertEquals("4", boxScore.homePitchingSo)
+  }
+
+  @Test def testAwayPitchingSo {
+    assertEquals("12", boxScore.awayPitchingSo)
+  }
+
+  @Test def testHomePitchingHr {
+    assertEquals("2", boxScore.homePitchingHr)
+  }
+
+  @Test def testAwayPitchingHr {
+    assertEquals("2", boxScore.awayPitchingHr)
+  }
+
+  @Test def testHomePitchingBf {
+    assertEquals("35", boxScore.homePitchingBf)
+  }
+
+  @Test def testAwayPitchingBf {
+    assertEquals("33", boxScore.awayPitchingBf)
+  }
+
+  @Test def testHomePitchingEra {
+    assertEquals("3.62", boxScore.homePitchingEra)
+  }
+
+  @Test def testAwayPitchingEra {
+    assertEquals("3.93", boxScore.awayPitchingEra)
+  }
+
   @Test def testHomeBattersExists {
     assertNotNull(boxScore.homeBatters)
     assertEquals(9, boxScore.homeBatters.size)
@@ -54,7 +126,7 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals(11, boxScore.awayBatters.size)
   }
 
-  @Test def tesBattersInOrder {
+  @Test def testBattersInOrder {
     val batters = boxScore.homeBatters
     assertEquals("Suzuki, I", batters.head.name)
     assertEquals("Wilson, Ja", batters.last.name)

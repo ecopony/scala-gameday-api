@@ -3,6 +3,11 @@ package com.xenopsconsulting.gamedayapi
 import scala.xml._
 import java.util.Date
 
+object BoxScore {
+  private val Home:String = "home"
+  private val Away:String = "away"
+}
+
 class BoxScore(date: Date, team: String) extends XmlRepresentation {
   private var _lineScore:LineScore = _
 
@@ -18,10 +23,10 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
     _lineScore
   }
 
-  def homePitchers() = pitcherList("home")
-  def awayPitchers() = pitcherList("away")
-  def homeBatters() = batterList("home")
-  def awayBatters() = batterList("away")
+  def homePitchers() = pitcherList(BoxScore.Home)
+  def awayPitchers() = pitcherList(BoxScore.Away)
+  def homeBatters() = batterList(BoxScore.Home)
+  def awayBatters() = batterList(BoxScore.Away)
 
   def gameId():String = bsna("@game_id")
   def gamePk():String = bsna("@game_pk")
@@ -41,6 +46,25 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def awayLoss():String = bsna("@away_loss")
   def statusInd():String = bsna("@status_ind")
 
+  def homePitchingOut():String = hpna("@out")
+  def awayPitchingOut():String = apna("@out")
+  def homePitchingH():String = hpna("@h")
+  def awayPitchingH():String = apna("@h")
+  def homePitchingR():String = hpna("@r")
+  def awayPitchingR():String = apna("@r")
+  def homePitchingEr():String = hpna("@er")
+  def awayPitchingEr():String = apna("@er")
+  def homePitchingBb():String = hpna("@bb")
+  def awayPitchingBb():String = apna("@bb")
+  def homePitchingSo():String = hpna("@so")
+  def awayPitchingSo():String = apna("@so")
+  def homePitchingHr():String = hpna("@hr")
+  def awayPitchingHr():String = apna("@hr")
+  def homePitchingBf():String = hpna("@bf")
+  def awayPitchingBf():String = apna("@bf")
+  def homePitchingEra():String = hpna("@era")
+  def awayPitchingEra():String = apna("@era")
+
   private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
 
   private def pitchingNode(home_or_away: String):NodeSeq = {
@@ -59,7 +83,25 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
     (battingNode(home_or_away) \ "batter" \\ "_" filter boExists() ).foldLeft(List[Batter]())((list, batterNode) => list :+ new Batter(batterNode))
   }
 
+  /**
+   * A filter for including only batters with a 'bo' attribute, which will exclude
+   * pitchers in games played under American League rules.
+   */
   private def boExists()(node: Node) = node.attributes.exists(_.key == "bo")
 
+  /**
+   * Returns attribute values from the box score node
+   */
   private def bsna(attribute: String):String = (boxScoreNode \ attribute).text
+
+  /**
+   * Returns attribute values from the home pitching node
+   */
+  private def hpna(attribute: String):String = (pitchingNode(BoxScore.Home) \ attribute).text
+
+  /**
+   * Returns attribute values from the away pitching node
+   */
+  private def apna(attribute: String):String = (pitchingNode(BoxScore.Away) \ attribute).text
+
 }
