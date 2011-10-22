@@ -20,6 +20,7 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
 
   def lineScore() = {
     if (_lineScore == null) _lineScore = new LineScore(date, team)
+    _lineScore.fetchStrategy = fetchStrategy
     _lineScore
   }
 

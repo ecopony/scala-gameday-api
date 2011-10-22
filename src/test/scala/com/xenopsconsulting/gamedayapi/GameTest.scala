@@ -24,6 +24,10 @@ class GameTest extends AssertionsForJUnit {
     assertEquals(date, game.dt)
   }
 
+  @Test def testFetchStrategyPropagation {
+    assertEquals(TestFetchStrategy.getClass, game.boxScore.fetchStrategy.getClass)
+  }
+
   @Test def testGameTime {
     assertEquals("10:10 PM", game.gameTimeEt)
   }

@@ -15,6 +15,7 @@ class Game(date: Date, team: String) extends XmlRepresentation {
 
   def boxScore() = {
     if (_boxScore == null) _boxScore = new BoxScore(date, team)
+    _boxScore.fetchStrategy = fetchStrategy
     _boxScore
   }
 

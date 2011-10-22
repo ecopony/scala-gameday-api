@@ -23,6 +23,10 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals(team, boxScore.tm)
     assertEquals(date, boxScore.dt)
   }
+  
+  @Test def testFetchStrategyPropagation {
+    assertEquals(TestFetchStrategy.getClass, boxScore.lineScore.fetchStrategy.getClass)
+  }
 
   @Test def testLineScoreExists {
     assertNotNull(boxScore.lineScore)
