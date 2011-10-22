@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.xenopsconsulting</groupId>
+  <artifactId>scala-gameday-api</artifactId>
+  <versioning>
+    <versions>
+      <version>0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20111022050603</lastUpdated>
+  </versioning>
+</metadata>
