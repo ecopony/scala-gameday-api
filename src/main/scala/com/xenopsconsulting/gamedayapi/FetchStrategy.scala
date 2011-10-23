@@ -31,7 +31,7 @@ trait FetchStrategy {
     buildUrl(date, team, "linescore.xml")
   }
 
-  private def buildUrl(date: Date, team: String, fileName: String): String = {
+  protected def buildUrl(date: Date, team: String, fileName: String): String = {
     val urlBuffer: StringBuffer = new StringBuffer(base_mlb_url)
     urlBuffer.append(datePath(date))
     val epgXml: Elem = fetchEpg(date)
@@ -42,7 +42,7 @@ trait FetchStrategy {
     urlBuffer.toString
   }
 
-  private def datePath(date: Date): String = {
+  protected def datePath(date: Date): String = {
     val urlBuffer: StringBuffer = new StringBuffer("/year_")
     urlBuffer.append(new SimpleDateFormat("yyyy").format(date))
     urlBuffer.append("/month_")
@@ -52,7 +52,7 @@ trait FetchStrategy {
     urlBuffer.toString
   }
 
-  private def extractGidFromEpg(epgXml: Elem, team: String): String = {
+  protected def extractGidFromEpg(epgXml: Elem, team: String): String = {
     val gameday = (epgXml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }
     val gid: String = "/gid_" + gameday.getOrElse("")
     gid
