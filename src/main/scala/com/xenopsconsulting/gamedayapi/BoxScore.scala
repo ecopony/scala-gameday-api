@@ -66,6 +66,31 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def homePitchingEra():String = hpna("@era")
   def awayPitchingEra():String = apna("@era")
 
+  def homeBattingAb():String = hbna("@ab")
+  def awayBattingAb():String = abna("@ab")
+  def homeBattingR():String = hbna("@r")
+  def awayBattingR():String = abna("@r")
+  def homeBattingD():String = hbna("@d")
+  def awayBattingD():String = abna("@d")
+  def homeBattingT():String = hbna("@t")
+  def awayBattingT():String = abna("@t")
+  def homeBattingHr():String = hbna("@hr")
+  def awayBattingHr():String = abna("@hr")
+  def homeBattingRbi():String = hbna("@rbi")
+  def awayBattingRbi():String = abna("@rbi")
+  def homeBattingBb():String = hbna("@bb")
+  def awayBattingBb():String = abna("@bb")
+  def homeBattingPo():String = hbna("@po")
+  def awayBattingPo():String = abna("@po")
+  def homeBattingDa():String = hbna("@da")
+  def awayBattingDa():String = abna("@da")
+  def homeBattingSo():String = hbna("@so")
+  def awayBattingSo():String = abna("@so")
+  def homeBattingLob():String = hbna("@lob")
+  def awayBattingLob():String = abna("@lob")
+  def homeBattingAvg():String = hbna("@avg")
+  def awayBattingAvg():String = abna("@avg")
+
   private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
 
   private def pitchingNode(home_or_away: String):NodeSeq = {
@@ -104,5 +129,15 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
    * Returns attribute values from the away pitching node
    */
   private def apna(attribute: String):String = (pitchingNode(BoxScore.Away) \ attribute).text
+
+  /**
+   * Returns attribute values from the home batting node
+   */
+  private def hbna(attribute: String):String = (battingNode(BoxScore.Home) \ attribute).text
+
+  /**
+   * Returns attribute values from the away batting node
+   */
+  private def abna(attribute: String):String = (battingNode(BoxScore.Away) \ attribute).text
 
 }

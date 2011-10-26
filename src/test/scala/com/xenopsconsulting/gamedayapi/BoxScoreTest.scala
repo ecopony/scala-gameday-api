@@ -120,6 +120,102 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals("3.93", boxScore.awayPitchingEra)
   }
 
+  @Test def testHomeBattingAb {
+    assertEquals("32", boxScore.homeBattingAb)
+  }
+
+  @Test def testAwayBattingAb {
+    assertEquals("32", boxScore.awayBattingAb)
+  }
+
+  @Test def testHomeBattingR {
+    assertEquals("5", boxScore.homeBattingR)
+  }
+
+  @Test def testAwayBattingR {
+    assertEquals("4", boxScore.awayBattingR)
+  }
+
+  @Test def testHomeBattingD {
+    assertEquals("2", boxScore.homeBattingD)
+  }
+
+  @Test def testAwayBattingD {
+    assertEquals("0", boxScore.awayBattingD)
+  }
+
+  @Test def testHomeBattingT {
+    assertEquals("0", boxScore.homeBattingT)
+  }
+
+  @Test def testAwayBattingT {
+    assertEquals("1", boxScore.awayBattingT)
+  }
+
+  @Test def testHomeBattingHr {
+    assertEquals("2", boxScore.homeBattingHr)
+  }
+
+  @Test def testAwayBattingHr {
+    assertEquals("2", boxScore.awayBattingHr)
+  }
+
+  @Test def testHomeBattingRbi {
+    assertEquals("5", boxScore.homeBattingRbi)
+  }
+
+  @Test def testAwayBattingRbi {
+    assertEquals("4", boxScore.awayBattingRbi)
+  }
+
+  @Test def testHomeBattingBb {
+    assertEquals("1", boxScore.homeBattingBb)
+  }
+
+  @Test def testAwayBattingBb {
+    assertEquals("3", boxScore.awayBattingBb)
+  }
+
+  @Test def testHomeBattingPo {
+    assertEquals("27", boxScore.homeBattingPo)
+  }
+
+  @Test def testAwayBattingPo {
+    assertEquals("24", boxScore.awayBattingPo)
+  }
+
+  @Test def testHomeBattingDa {
+    assertEquals("13", boxScore.homeBattingDa)
+  }
+
+  @Test def testAwayBattingDa {
+    assertEquals("6", boxScore.awayBattingDa)
+  }
+
+  @Test def testHomeBattingSo {
+    assertEquals("12", boxScore.homeBattingSo)
+  }
+
+  @Test def testAwayBattingSo {
+    assertEquals("4", boxScore.awayBattingSo)
+  }
+
+  @Test def testHomeBattingLob {
+    assertEquals("11", boxScore.homeBattingLob)
+  }
+
+  @Test def testAwayBattingLob {
+    assertEquals("14", boxScore.awayBattingLob)
+  }
+
+  @Test def testHomeBattingAvg {
+    assertEquals(".230", boxScore.homeBattingAvg)
+  }
+
+  @Test def testAwayBattingAvg {
+    assertEquals(".281", boxScore.awayBattingAvg)
+  }
+
   @Test def testHomeBattersExists {
     assertNotNull(boxScore.homeBatters)
     assertEquals(9, boxScore.homeBatters.size)
