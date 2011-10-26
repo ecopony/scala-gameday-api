@@ -216,6 +216,22 @@ class BoxScoreTest extends AssertionsForJUnit {
     assertEquals(".281", boxScore.awayBattingAvg)
   }
 
+  @Test def testHomeBattingNote {
+    assertEquals("", boxScore.homeBattingNote)
+  }
+
+  @Test def testAwayBattingNote {
+    assertEquals("a-Struck out for Aviles in the 9th. <br/>1-Ran for Ortiz in the 8th.", boxScore.awayBattingNote)
+  }
+
+  @Test def testHomeBattingTextData {
+    assertEquals("<b>BATTING</b><br/><b>2B</b>: Ackley (11, Beckett), Wilson, Ja (8, Beckett).<br/><b>HR</b>: Suzuki, I (2, 1st inning off Beckett, 0 on, 0 out), Wells, C (6, 1st inning off Beckett, 1 on, 1 out).<br/><b>TB</b>: Suzuki, I 4; Gutierrez, F 2; Ackley 2; Carp; Wells, C 5; Wilson, Ja 3.<br/><b>RBI</b>: Suzuki, I (28), Carp 2 (23), Wells, C 2 (20).<br/><b>Runners left in scoring position, 2 out</b>: Pena 2.<br/><b>GIDP</b>: Suzuki, I.<br/><b>Team RISP</b>: 2-for-5.<br/><b>Team LOB</b>: 4.<br/> <br/><b>BASERUNNING</b><br/><b>SB</b>: Gutierrez, F (11, 2nd base off Beckett/Varitek).<br/> <br/><b>FIELDING</b><br/><b>E</b>: Carp (4, pickoff).<br/><b>Outfield assists</b>: Suzuki, I (Ellsbury at home).<br/><b>DP</b>: 4 (Ackley-Wilson, Ja-Carp, Suzuki, I-Bard, Ackley-Carp, Wright, J-Wilson, Ja-Carp).<br/> <br/>", boxScore.homeBattingTextData)
+  }
+
+  @Test def testAwayBattingTextData {
+    assertEquals("<b>BATTING</b><br/><b>3B</b>: Scutaro (1, Hernandez, F).<br/><b>HR</b>: Ellsbury (20, 6th inning off Hernandez, F, 1 on, 0 out), Pedroia (16, 6th inning off Hernandez, F, 1 on, 1 out).<br/><b>TB</b>: Ellsbury 5; Crawford; Gonzalez, Ad 2; Pedroia 4; Ortiz; Aviles 2; Scutaro 3.<br/><b>RBI</b>: Ellsbury 2 (74), Pedroia 2 (62).<br/><b>Runners left in scoring position, 2 out</b>: Varitek.<br/><b>GIDP</b>: Scutaro; Crawford; Pedroia.<br/><b>Team RISP</b>: 2-for-5.<br/><b>Team LOB</b>: 4.<br/> <br/><b>BASERUNNING</b><br/><b>CS</b>: McDonald, D (3, 2nd base by Wright, J/Bard).<br/> <br/><b>FIELDING</b><br/><b>DP</b>: (Gonzalez, Ad-Scutaro-Gonzalez, Ad).<br/> <br/>", boxScore.awayBattingTextData)
+  }
+
   @Test def testHomeBattersExists {
     assertNotNull(boxScore.homeBatters)
     assertEquals(9, boxScore.homeBatters.size)
@@ -298,6 +314,10 @@ class BoxScoreTest extends AssertionsForJUnit {
 
   @Test def testStatusInd {
     assertEquals("F", boxScore.statusInd)
+  }
+
+  @Test def testGameInfo {
+    assertEquals("<b>Pitches-strikes</b>: Beckett 99-63, Albers 26-18, Morales, F 6-5, Aceves 10-7, Hernandez, F 107-73, Wright, J 18-8, League 14-9.<br/><b>Groundouts-flyouts</b>: Beckett 6-2, Albers 0-2, Morales, F 0-1, Aceves 0-0, Hernandez, F 7-4, Wright, J 1-0, League 1-0.<br/><b>Batters faced</b>: Beckett 23, Albers 6, Morales, F 2, Aceves 2, Hernandez, F 29, Wright, J 3, League 3.<br/><b>Ejections</b>: Boston Red Sox Manager Terry Francona ejected by HP umpire Mark Ripperger (4th).<br/><b>Umpires</b>: HP: Mark Ripperger. 1B: Brian O'Nora. 2B: Alfonso Marquez. 3B: Ed Hickox.<br/><b>Weather</b>: 68 degrees, partly cloudy.<br/><b>Wind</b>: 4 mph, Out to CF.<br/><b>T</b>: 3:03.<br/><b>Att</b>: 41,326.<br/>", boxScore.gameInfo)
   }
 
 }

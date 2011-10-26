@@ -91,6 +91,13 @@ class BoxScore(date: Date, team: String) extends XmlRepresentation {
   def homeBattingAvg():String = hbna("@avg")
   def awayBattingAvg():String = abna("@avg")
 
+  def homeBattingNote():String = (battingNode(BoxScore.Home) \\ "note").text
+  def awayBattingNote():String = (battingNode(BoxScore.Away) \\ "note").text
+  def homeBattingTextData():String = (battingNode(BoxScore.Home) \\ "text_data").text
+  def awayBattingTextData():String = (battingNode(BoxScore.Away) \\ "text_data").text
+
+  def gameInfo():String = (boxScoreNode \\ "game_info").text
+
   private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
 
   private def pitchingNode(home_or_away: String):NodeSeq = {
