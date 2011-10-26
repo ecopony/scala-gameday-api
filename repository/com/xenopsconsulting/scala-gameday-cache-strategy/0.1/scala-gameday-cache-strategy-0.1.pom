@@ -4,7 +4,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.xenopsconsulting</groupId>
-  <artifactId>scala-gameday-api</artifactId>
+  <artifactId>scala-gameday-cache-strategy</artifactId>
   <version>0.1</version>
   <inceptionYear>2011</inceptionYear>
   <properties>
@@ -16,6 +16,11 @@
       <id>scala-tools.org</id>
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+    <repository>
+      <id>ecopony.github.com</id>
+      <name>Scala Gameday API Repository</name>
+      <url>http://ecopony.github.com/scala-gameday-api/repository</url>
     </repository>
   </repositories>
 
@@ -29,19 +34,19 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.xenopsconsulting</groupId>
+      <artifactId>scala-gameday-api</artifactId>
+      <version>0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>9.0-801.jdbc4</version>
+    </dependency>
+    <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
       <version>2.8.1</version>
-    </dependency>
-    <dependency>
-      <groupId>net.databinder</groupId>
-      <artifactId>dispatch-core_2.8.1</artifactId>
-      <version>0.8.5</version>
-    </dependency>
-    <dependency>
-      <groupId>net.databinder</groupId>
-      <artifactId>dispatch-http_2.8.1</artifactId>
-      <version>0.8.5</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
