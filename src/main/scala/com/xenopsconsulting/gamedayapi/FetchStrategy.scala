@@ -36,7 +36,7 @@ trait FetchStrategy {
   }
 
   protected def gameDirectoryPath(date: Date, team: String) = {
-    datePath(date) + "/" + extractGidFromEpg(fetchEpg(date), team)
+    datePath(date) + "/" + gid(date, team)
   }
 
   protected def datePath(date: Date): String = {
@@ -49,7 +49,7 @@ trait FetchStrategy {
     urlBuffer.toString
   }
 
-  protected def extractGidFromEpg(epgXml: Elem, team: String): String = {
-    "gid_" + ((epgXml \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }).getOrElse("")
+  protected def gid(date: Date, team: String): String = {
+    "gid_" + ((fetchEpg(date) \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }).getOrElse("")
   }
 }
