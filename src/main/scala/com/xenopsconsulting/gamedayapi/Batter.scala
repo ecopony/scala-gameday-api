@@ -3,8 +3,6 @@ package com.xenopsconsulting.gamedayapi
 import xml.Node
 
 class Batter(batterNode: Node) {
-  def bn = batterNode
-
   def id():String = bna("@id")
   def name():String = bna("@name")
   def nameDisplayFirstLast():String = bna("@name_display_first_last")

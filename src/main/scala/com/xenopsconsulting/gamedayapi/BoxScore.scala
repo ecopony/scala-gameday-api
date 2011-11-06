@@ -11,9 +11,6 @@ object BoxScore {
 class BoxScore(date: Date, team: String) extends XmlRepresentation {
   private var _lineScore:LineScore = _
 
-  def tm = team
-  def dt = date
-
   def fetch() = {
     _xml = fetchStrategy.fetchBoxScore(date, team)
   }

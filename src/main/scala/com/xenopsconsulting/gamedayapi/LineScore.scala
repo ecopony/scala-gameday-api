@@ -8,9 +8,6 @@ class LineScore(date: Date, team: String) extends XmlRepresentation {
   private var _losingPitcher:LineScorePitcher = _
   private var _savePitcher:LineScorePitcher = _
 
-  def tm = team
-  def dt = date
-
   def fetch() = {
     _xml = fetchStrategy.fetchLineScore(date, team)
   }

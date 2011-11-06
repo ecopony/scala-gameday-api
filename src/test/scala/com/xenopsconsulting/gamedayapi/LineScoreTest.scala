@@ -19,11 +19,6 @@ class LineScoreTest extends AssertionsForJUnit {
     lineScore.fetchStrategy = TestFetchStrategy
   }
 
-  @Test def testInitialization {
-    assertEquals(team, lineScore.tm)
-    assertEquals(date, lineScore.dt)
-  }
-
   @Test def testGameId {
     assertEquals("2011/08/13/bosmlb-seamlb-1", lineScore.gameId)
   }

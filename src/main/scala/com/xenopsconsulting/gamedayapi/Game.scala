@@ -6,9 +6,6 @@ import java.util.Date
 class Game(date: Date, team: String) extends XmlRepresentation {
   private var _boxScore:BoxScore = _
 
-  def tm = team
-  def dt = date
-
   def fetch() = {
     _xml = fetchStrategy.fetchGame(date, team)
   }

@@ -3,8 +3,6 @@ package com.xenopsconsulting.gamedayapi
 import xml.Node
 
 class LineScorePitcher(lineScoreNode: Node) {
-  def lsn = lineScoreNode
-
   def id():String = (lineScoreNode \ "@id").text
   def firstName():String = (lineScoreNode \ "@first_name").text
   def first():String = (lineScoreNode \ "@first").text
@@ -18,5 +16,4 @@ class LineScorePitcher(lineScoreNode: Node) {
   def sLosses():String = (lineScoreNode \ "@s_losses").text
   def sEra():String = (lineScoreNode \ "@s_era").text
   def saves():String = (lineScoreNode \ "@saves").text
-
 }

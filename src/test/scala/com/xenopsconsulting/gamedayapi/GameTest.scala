@@ -19,11 +19,6 @@ class GameTest extends AssertionsForJUnit {
     game.fetchStrategy = TestFetchStrategy
   }
 
-  @Test def testInitialization {
-    assertEquals(team, game.tm)
-    assertEquals(date, game.dt)
-  }
-
   @Test def testFetchStrategyPropagation {
     assertEquals(TestFetchStrategy.getClass, game.boxScore.fetchStrategy.getClass)
   }

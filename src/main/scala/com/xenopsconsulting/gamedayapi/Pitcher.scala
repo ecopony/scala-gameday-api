@@ -3,8 +3,6 @@ package com.xenopsconsulting.gamedayapi
 import xml.Node
 
 class Pitcher(pitcherNode: Node) {
-  def pn = pitcherNode
-
   def id():String = pna("@id")
   def name():String = pna("@name")
   def nameDisplayFirstLast():String = pna("@name_display_first_last")
@@ -26,5 +24,4 @@ class Pitcher(pitcherNode: Node) {
   def note():String = pna("@note")
 
   private def pna(attribute: String):String = (pitcherNode \ attribute).text
-
 }
