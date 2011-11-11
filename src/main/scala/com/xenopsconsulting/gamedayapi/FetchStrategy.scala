@@ -11,7 +11,8 @@ trait FetchStrategy {
   def fetchGame(date: Date, team: String): Elem
   def fetchBoxScore(date: Date, team: String): Elem
   def fetchLineScore(date: Date, team: String): Elem
-
+  def fetchHitChart(date: Date, team: String): Elem
+  
   def epgUrl(date: Date): String = {
     val urlBuffer: StringBuffer = new StringBuffer(base_mlb_url)
     urlBuffer.append(datePath(date))
@@ -29,6 +30,10 @@ trait FetchStrategy {
 
   def lineScoreUrl(date: Date, team: String): String = {
     buildUrl(date, team, "linescore.xml")
+  }
+
+  def hitChartUrl(date: Date, team: String): String = {
+    buildUrl(date, team, "inning/inning_hit.xml")
   }
 
   protected def buildUrl(date: Date, team: String, fileName: String): String = {

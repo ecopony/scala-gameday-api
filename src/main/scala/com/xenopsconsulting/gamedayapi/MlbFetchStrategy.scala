@@ -23,4 +23,8 @@ object MlbFetchStrategy extends FetchStrategy {
     XML.loadString(http(url(lineScoreUrl(date, team)) as_str))
   }
 
+  def fetchHitChart(date: Date, team: String) = {
+    XML.loadString(http(url(hitChartUrl(date, team)) as_str))
+  }
+
 }

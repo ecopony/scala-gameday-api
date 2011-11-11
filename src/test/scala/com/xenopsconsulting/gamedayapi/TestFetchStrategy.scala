@@ -1345,4 +1345,57 @@ object TestFetchStrategy extends FetchStrategy {
     </game>
   }
 
+  def fetchHitChart(date: Date, team: String): Elem = {
+    <hitchart>
+        <hip des="Pop Out" x="108.43" y="146.59" batter="453056" pitcher="433587" type="O" team="A" inning="1"/>
+        <hip des="Groundout" x="135.54" y="161.65" batter="408307" pitcher="433587" type="O" team="A" inning="1"/>
+        <hip des="Lineout" x="112.45" y="85.34" batter="408236" pitcher="433587" type="O" team="A" inning="1"/>
+        <hip des="Home Run" x="224.90" y="90.36" batter="400085" pitcher="277417" type="H" team="H" inning="1"/>
+        <hip des="Single" x="109.44" y="95.38" batter="429711" pitcher="277417" type="H" team="H" inning="1"/>
+        <hip des="Double" x="199.80" y="80.32" batter="554429" pitcher="277417" type="H" team="H" inning="1"/>
+        <hip des="Single" x="140.56" y="99.40" batter="455077" pitcher="277417" type="H" team="H" inning="1"/>
+        <hip des="Flyout" x="114.46" y="91.37" batter="276377" pitcher="277417" type="O" team="H" inning="1"/>
+        <hip des="Home Run" x="74.30" y="32.13" batter="489413" pitcher="277417" type="H" team="H" inning="1"/>
+        <hip des="Groundout" x="130.52" y="187.75" batter="425904" pitcher="277417" type="O" team="H" inning="1"/>
+        <hip des="Pop Out" x="156.63" y="186.75" batter="456030" pitcher="433587" type="O" team="A" inning="2"/>
+        <hip des="Flyout" x="70.28" y="137.55" batter="120074" pitcher="433587" type="O" team="A" inning="2"/>
+        <hip des="Groundout" x="121.49" y="151.61" batter="502210" pitcher="433587" type="O" team="A" inning="2"/>
+        <hip des="Single" x="157.63" y="116.47" batter="333292" pitcher="277417" type="H" team="H" inning="2"/>
+        <hip des="Groundout" x="143.57" y="174.70" batter="400085" pitcher="277417" type="O" team="H" inning="2"/>
+        <hip des="Groundout" x="111.45" y="164.66" batter="429711" pitcher="277417" type="O" team="H" inning="2"/>
+        <hip des="Single" x="113.45" y="186.75" batter="449107" pitcher="433587" type="H" team="A" inning="3"/>
+        <hip des="Groundout" x="145.58" y="173.69" batter="123660" pitcher="433587" type="O" team="A" inning="3"/>
+        <hip des="Groundout" x="132.53" y="156.63" batter="340192" pitcher="433587" type="O" team="A" inning="3"/>
+        <hip des="Groundout" x="149.60" y="161.65" batter="554429" pitcher="277417" type="O" team="H" inning="3"/>
+        <hip des="Groundout" x="101.41" y="154.62" batter="276377" pitcher="277417" type="O" team="H" inning="3"/>
+        <hip des="Single" x="121.49" y="170.68" batter="408307" pitcher="433587" type="H" team="A" inning="4"/>
+        <hip des="Groundout" x="138.55" y="185.74" batter="408236" pitcher="433587" type="O" team="A" inning="4"/>
+        <hip des="Flyout" x="167.67" y="113.45" batter="456030" pitcher="433587" type="O" team="A" inning="4"/>
+        <hip des="Flyout" x="161.65" y="90.36" batter="408036" pitcher="277417" type="O" team="H" inning="4"/>
+        <hip des="Groundout" x="147.59" y="165.66" batter="425904" pitcher="277417" type="O" team="H" inning="4"/>
+        <hip des="Flyout" x="81.33" y="103.41" batter="502210" pitcher="433587" type="O" team="A" inning="5"/>
+        <hip des="Groundout" x="138.55" y="172.69" batter="123660" pitcher="433587" type="O" team="A" inning="5"/>
+        <hip des="Double" x="59.24" y="136.55" batter="333292" pitcher="277417" type="H" team="H" inning="5"/>
+        <hip des="Single" x="104.42" y="171.69" batter="429711" pitcher="277417" type="H" team="H" inning="5"/>
+        <hip des="Triple" x="79.32" y="45.18" batter="340192" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Home Run" x="203.82" y="56.22" batter="453056" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Flyout" x="99.40" y="61.24" batter="408307" pitcher="433587" type="O" team="A" inning="6"/>
+        <hip des="Single" x="103.41" y="170.68" batter="408236" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Home Run" x="171.69" y="35.14" batter="456030" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Single" x="170.68" y="99.40" batter="120074" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Single" x="91.37" y="105.42" batter="449107" pitcher="433587" type="H" team="A" inning="6"/>
+        <hip des="Lineout" x="139.56" y="155.62" batter="123660" pitcher="433587" type="O" team="A" inning="6"/>
+        <hip des="Single" x="107.43" y="167.67" batter="489413" pitcher="458006" type="H" team="H" inning="6"/>
+        <hip des="Flyout" x="82.33" y="104.42" batter="408036" pitcher="458006" type="O" team="H" inning="6"/>
+        <hip des="Flyout" x="128.51" y="109.44" batter="425904" pitcher="458006" type="O" team="H" inning="6"/>
+        <hip des="Pop Out" x="136.55" y="152.61" batter="340192" pitcher="433587" type="O" team="A" inning="7"/>
+        <hip des="Single" x="97.39" y="88.35" batter="453056" pitcher="433587" type="H" team="A" inning="7"/>
+        <hip des="Groundout" x="127.51" y="155.62" batter="408307" pitcher="433587" type="O" team="A" inning="7"/>
+        <hip des="Single" x="142.57" y="85.34" batter="408236" pitcher="124604" type="H" team="A" inning="8"/>
+        <hip des="Groundout" x="126.51" y="180.72" batter="456030" pitcher="124604" type="O" team="A" inning="8"/>
+        <hip des="Flyout" x="101.41" y="96.39" batter="455077" pitcher="462985" type="O" team="H" inning="8"/>
+        <hip des="Groundout" x="129.52" y="182.73" batter="123660" pitcher="434181" type="O" team="A" inning="9"/>
+    </hitchart>
+  }
+
 }
