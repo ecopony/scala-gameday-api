@@ -6,6 +6,7 @@ import java.util.Date
 class Game(date: Date, team: String) extends XmlRepresentation {
   private var _boxScore:BoxScore = _
   private var _hitChart:HitChart = _
+  private var _innings:Innings = _
 
   def fetch() = {
     _xml = fetchStrategy.fetchGame(date, team)
@@ -21,6 +22,12 @@ class Game(date: Date, team: String) extends XmlRepresentation {
     if (_hitChart == null) _hitChart = new HitChart(date, team)
     _hitChart.fetchStrategy = fetchStrategy
     _hitChart
+  }
+
+  def innings() = {
+    if (_innings == null) _innings = new Innings(date, team)
+    _innings.fetchStrategy = fetchStrategy
+    _innings
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text

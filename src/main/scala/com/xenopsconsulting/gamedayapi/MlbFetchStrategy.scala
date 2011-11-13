@@ -7,24 +7,13 @@ import java.util.Date
 object MlbFetchStrategy extends FetchStrategy {
   val http = new Http
 
-  def fetchEpg(date: Date) = {
-    XML.loadString(http(url(epgUrl(date)) as_str))
-  }
+  def fetchEpg(date: Date) = fetchXmlAsString(epgUrl(date))
+  def fetchGame(date: Date, team: String) = fetchXmlAsString(gameUrl(date, team))
+  def fetchBoxScore(date: Date, team: String) = fetchXmlAsString(boxScoreUrl(date, team))
+  def fetchLineScore(date: Date, team: String) = fetchXmlAsString(lineScoreUrl(date, team))
+  def fetchHitChart(date: Date, team: String) = fetchXmlAsString(hitChartUrl(date, team))
+  def fetchInnings(date: Date, team: String) = fetchXmlAsString(inningsUrl(date, team))
 
-  def fetchGame(date: Date, team: String) = {
-    XML.loadString(http(url(gameUrl(date, team)) as_str))
-  }
-
-  def fetchBoxScore(date: Date, team: String) = {
-    XML.loadString(http(url(boxScoreUrl(date, team)) as_str))
-  }
-
-  def fetchLineScore(date: Date, team: String) = {
-    XML.loadString(http(url(lineScoreUrl(date, team)) as_str))
-  }
-
-  def fetchHitChart(date: Date, team: String) = {
-    XML.loadString(http(url(hitChartUrl(date, team)) as_str))
-  }
+  private def fetchXmlAsString(urlToFetch: String) = XML.loadString(http(url(urlToFetch) as_str))
 
 }
