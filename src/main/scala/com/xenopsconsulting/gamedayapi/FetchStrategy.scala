@@ -50,7 +50,7 @@ trait FetchStrategy {
   }
 
   protected def datePath(date: Date) = {
-    val urlBuffer: StringBuffer = new StringBuffer("/year_")
+    val urlBuffer: StringBuilder = new StringBuilder("/year_")
     urlBuffer.append(new SimpleDateFormat("yyyy").format(date))
     urlBuffer.append("/month_")
     urlBuffer.append(new SimpleDateFormat("MM").format(date))

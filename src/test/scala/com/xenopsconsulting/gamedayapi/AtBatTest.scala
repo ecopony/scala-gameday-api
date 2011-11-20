@@ -21,12 +21,57 @@ class AtBatTest extends AssertionsForJUnit {
     innings.fetchStrategy = TestFetchStrategy
     top_first_at_bats = innings.inning(1).get.top.atBats
   }
-
-  //           <atbat num="1" b="1" s="2" o="1" start_tfs="220954" start_tfs_zulu="2011-08-14T02:09:54Z" batter="453056" stand="L" b_height="6-1" pitcher="433587" p_throws="R" des="Jacoby Ellsbury pops out to shortstop Jack Wilson. " event="Pop Out">
-
-
+  
   @Test def testNum {
     assertEquals("1", top_first_at_bats.head.num)
+  }
+
+  @Test def testB {
+    assertEquals("1", top_first_at_bats.head.b)
+  }
+
+  @Test def testS {
+    assertEquals("2", top_first_at_bats.head.s)
+  }
+
+  @Test def testO {
+    assertEquals("1", top_first_at_bats.head.o)
+  }
+
+  @Test def testStartTfs {
+    assertEquals("220954", top_first_at_bats.head.startTfs)
+  }
+
+  @Test def testStartTfsZulu {
+    assertEquals("2011-08-14T02:09:54Z", top_first_at_bats.head.startTfsZulu)
+  }
+
+  @Test def testBatter {
+    assertEquals("453056", top_first_at_bats.head.batter)
+  }
+
+  @Test def testStand {
+    assertEquals("L", top_first_at_bats.head.stand)
+  }
+  
+  @Test def testBHeight {
+    assertEquals("6-1", top_first_at_bats.head.bHeight)
+  }
+
+  @Test def testPitcher {
+    assertEquals("433587", top_first_at_bats.head.pitcher)
+  }
+
+  @Test def testPThrows {
+    assertEquals("R", top_first_at_bats.head.pThrows)
+  }
+
+  @Test def testDes {
+    assertEquals("Jacoby Ellsbury pops out to shortstop Jack Wilson. ", top_first_at_bats.head.des)
+  }
+
+  @Test def testEvent {
+    assertEquals("Pop Out", top_first_at_bats.head.event)
   }
 
 }
