@@ -8,4 +8,9 @@ case class Inning(inningNode: Node) {
     HalfInning((inningNode \ "top").head)
   }
 
+  def num = (inningNode \ "@num").text
+  def homeTeam = (inningNode \ "@home_team").text
+  def awayTeam = (inningNode \ "@away_team").text
+  def next = (inningNode \ "@next").text
+
 }

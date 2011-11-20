@@ -9,6 +9,7 @@ import java.util.Date
 
 class InningTest extends AssertionsForJUnit {
   var innings: Innings = _
+  var inning: Inning = _
   var date: Date = _
   var team: String = _
 
@@ -17,11 +18,27 @@ class InningTest extends AssertionsForJUnit {
     team = "sea"
     innings = new Innings(date, team)
     innings.fetchStrategy = TestFetchStrategy
+    inning = innings.inning(1).get
+  }
+
+  @Test def testNum {
+    assertEquals("1", inning.num)
+  }
+
+  @Test def testAwayTeam {
+    assertEquals("bos", inning.awayTeam)
+  }
+
+  @Test def testHomeTeam {
+    assertEquals("sea", inning.homeTeam)
+  }
+
+  @Test def testNext {
+    assertEquals("Y", inning.next)
   }
 
   @Test def testAtBatsExist {
-    assertNotNull(innings.inning(1).get.top.atBats)
+    assertNotNull(inning.top.atBats)
   }
 
-  
 }
