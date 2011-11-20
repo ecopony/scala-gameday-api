@@ -31,4 +31,12 @@ class InningsTest extends AssertionsForJUnit {
     assertEquals("453056", innings.hole)
   }
 
+  @Test def testInningInBoundsReturnsInning {
+    assertNotNull(innings.inning(1).get)
+  }
+
+  @Test def testInningOutOfBoundsReturnsNone {
+    assertEquals(None.getClass, innings.inning(14).getClass)
+  }
+
 }
