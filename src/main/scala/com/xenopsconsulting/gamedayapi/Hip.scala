@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import xml.Node
 
-class Hip(hipNode: Node) {
+case class Hip(hipNode: Node) {
 
   def des():String = hna("@des")
   def x():String = hna("@x")

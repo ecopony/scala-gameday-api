@@ -3,7 +3,7 @@ package com.xenopsconsulting.gamedayapi
 import scala.xml._
 import java.util.Date
 
-class Game(date: Date, team: String) extends XmlRepresentation {
+case class Game(date: Date, team: String) extends XmlRepresentation {
   private var _boxScore:BoxScore = _
   private var _hitChart:HitChart = _
   private var _innings:Innings = _

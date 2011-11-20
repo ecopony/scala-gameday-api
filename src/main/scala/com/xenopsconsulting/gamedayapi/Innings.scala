@@ -3,7 +3,7 @@ package com.xenopsconsulting.gamedayapi
 import scala.xml._
 import java.util.Date
 
-class Innings(date: Date, team: String) extends XmlRepresentation {
+case class Innings(date: Date, team: String) extends XmlRepresentation {
 
   def fetch() = {
     _xml = fetchStrategy.fetchInnings(date, team)
@@ -18,10 +18,10 @@ class Innings(date: Date, team: String) extends XmlRepresentation {
     }
   }
 
-  def atBat():String = (gameNode \ "@atBat").text
-  def deck():String = (gameNode \ "@deck").text
-  def hole():String = (gameNode \ "@hole").text
+  def atBat() = (gameNode \ "@atBat").text
+  def deck() = (gameNode \ "@deck").text
+  def hole() = (gameNode \ "@hole").text
 
-  private def gameNode():NodeSeq = (xml \\ "game")
+  private def gameNode() = (xml \\ "game")
 
 }

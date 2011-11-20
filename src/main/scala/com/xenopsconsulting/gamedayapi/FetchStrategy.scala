@@ -14,34 +14,34 @@ trait FetchStrategy {
   def fetchHitChart(date: Date, team: String): Elem
   def fetchInnings(date: Date, team: String): Elem
 
-  def epgUrl(date: Date): String = {
+  def epgUrl(date: Date) = {
     val urlBuffer: StringBuffer = new StringBuffer(base_mlb_url)
     urlBuffer.append(datePath(date))
     urlBuffer.append("/epg.xml")
     urlBuffer.toString
   }
   
-  def gameUrl(date: Date, team: String): String = {
+  def gameUrl(date: Date, team: String) = {
     buildUrl(date, team, "game.xml")
   }
   
-  def boxScoreUrl(date: Date, team: String): String = {
+  def boxScoreUrl(date: Date, team: String) = {
     buildUrl(date, team, "boxscore.xml")
   }
 
-  def lineScoreUrl(date: Date, team: String): String = {
+  def lineScoreUrl(date: Date, team: String) = {
     buildUrl(date, team, "linescore.xml")
   }
 
-  def hitChartUrl(date: Date, team: String): String = {
+  def hitChartUrl(date: Date, team: String) = {
     buildUrl(date, team, "inning/inning_hit.xml")
   }
 
-  def inningsUrl(date: Date, team: String): String = {
+  def inningsUrl(date: Date, team: String) = {
     buildUrl(date, team, "inning/inning_all.xml")
   }
 
-  protected def buildUrl(date: Date, team: String, fileName: String): String = {
+  protected def buildUrl(date: Date, team: String, fileName: String) = {
     base_mlb_url + gameDirectoryPath(date, team) + "/" + fileName
   }
 
@@ -49,7 +49,7 @@ trait FetchStrategy {
     datePath(date) + "/" + gid(date, team)
   }
 
-  protected def datePath(date: Date): String = {
+  protected def datePath(date: Date) = {
     val urlBuffer: StringBuffer = new StringBuffer("/year_")
     urlBuffer.append(new SimpleDateFormat("yyyy").format(date))
     urlBuffer.append("/month_")
@@ -59,7 +59,7 @@ trait FetchStrategy {
     urlBuffer.toString
   }
 
-  protected def gid(date: Date, team: String): String = {
+  protected def gid(date: Date, team: String) = {
     "gid_" + ((fetchEpg(date) \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }).getOrElse("")
   }
 }

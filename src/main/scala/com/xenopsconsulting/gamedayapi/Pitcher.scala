@@ -2,26 +2,26 @@ package com.xenopsconsulting.gamedayapi
 
 import xml.Node
 
-class Pitcher(pitcherNode: Node) {
-  def id():String = pna("@id")
-  def name():String = pna("@name")
-  def nameDisplayFirstLast():String = pna("@name_display_first_last")
-  def pos():String = pna("@pos")
-  def out():String = pna("@out")
-  def bf():String = pna("@bf")
-  def er():String = pna("@er")
-  def r():String = pna("@r")
-  def h():String = pna("@h")
-  def so():String = pna("@so")
-  def hr():String = pna("@hr")
-  def bb():String = pna("@bb")
-  def w():String = pna("@w")
-  def l():String = pna("@l")
-  def sv():String = pna("@sv")
-  def bs():String = pna("@bs")
-  def hld():String = pna("@hld")
-  def era():String = pna("@era")
-  def note():String = pna("@note")
+case class Pitcher(pitcherNode: Node) {
+  def id() = pna("@id")
+  def name() = pna("@name")
+  def nameDisplayFirstLast() = pna("@name_display_first_last")
+  def pos() = pna("@pos")
+  def out() = pna("@out")
+  def bf() = pna("@bf")
+  def er() = pna("@er")
+  def r() = pna("@r")
+  def h() = pna("@h")
+  def so() = pna("@so")
+  def hr() = pna("@hr")
+  def bb() = pna("@bb")
+  def w() = pna("@w")
+  def l() = pna("@l")
+  def sv() = pna("@sv")
+  def bs() = pna("@bs")
+  def hld() = pna("@hld")
+  def era() = pna("@era")
+  def note() = pna("@note")
 
-  private def pna(attribute: String):String = (pitcherNode \ attribute).text
+  private def pna(attribute: String) = (pitcherNode \ attribute).text
 }
