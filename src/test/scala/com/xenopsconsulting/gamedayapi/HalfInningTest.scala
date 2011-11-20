@@ -7,7 +7,7 @@ import org.junit.Before
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class InningTest extends AssertionsForJUnit {
+class HalfInningTest extends AssertionsForJUnit {
   var innings: Innings = _
   var inning: Inning = _
   var date: Date = _
@@ -21,28 +21,12 @@ class InningTest extends AssertionsForJUnit {
     inning = innings.inning(1).get
   }
 
-  @Test def testNum {
-    assertEquals("1", inning.num)
+  @Test def testTopHasAtBats {
+    assertNotNull(inning.top.atBats)
   }
 
-  @Test def testAwayTeam {
-    assertEquals("bos", inning.awayTeam)
-  }
-
-  @Test def testHomeTeam {
-    assertEquals("sea", inning.homeTeam)
-  }
-
-  @Test def testNext {
-    assertEquals("Y", inning.next)
-  }
-
-  @Test def testTopExists {
-    assertNotNull(inning.top)
-  }
-
-  @Test def testBottomExists {
-    assertNotNull(inning.bottom)
+  @Test def testBottomHasAtBats {
+    assertNotNull(inning.bottom.atBats)
   }
 
 }
