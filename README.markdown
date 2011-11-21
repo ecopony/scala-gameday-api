@@ -11,14 +11,14 @@ Example Usage
 
 NOTE: This library is in active development and the API may change at any time without warning.
 
-Prerequisites: sbt (https://github.com/harrah/xsbt/wiki)
+Prerequisites: git, Scala, Maven
 
 To build:
 ---------
 
     git clone git@github.com:ecopony/scala-gameday-api.git
     cd scala-gameday-api
-    sbt console
+    mvn scala:console
 
 Example console session:
 ------------------------
