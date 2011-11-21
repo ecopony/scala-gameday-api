@@ -7,27 +7,34 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   private var _boxScore:BoxScore = _
   private var _hitChart:HitChart = _
   private var _innings:Innings = _
+  private var _inningScores:InningScores = _
 
   def fetch() = {
     _xml = fetchStrategy.fetchGame(date, team)
   }
 
   def boxScore() = {
-    if (_boxScore == null) _boxScore = new BoxScore(date, team)
+    if (_boxScore == null) _boxScore = BoxScore(date, team)
     _boxScore.fetchStrategy = fetchStrategy
     _boxScore
   }
   
   def hitChart() = {
-    if (_hitChart == null) _hitChart = new HitChart(date, team)
+    if (_hitChart == null) _hitChart = HitChart(date, team)
     _hitChart.fetchStrategy = fetchStrategy
     _hitChart
   }
 
   def innings() = {
-    if (_innings == null) _innings = new Innings(date, team)
+    if (_innings == null) _innings = Innings(date, team)
     _innings.fetchStrategy = fetchStrategy
     _innings
+  }
+
+  def inningScores() = {
+    if (_inningScores == null) _inningScores = InningScores(date, team)
+    _inningScores.fetchStrategy = fetchStrategy
+    _inningScores
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text
