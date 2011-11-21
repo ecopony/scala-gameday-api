@@ -74,4 +74,8 @@ class AtBatTest extends AssertionsForJUnit {
     assertEquals("Pop Out", top_first_at_bats.head.event)
   }
 
+  @Test def testPitchesExist {
+    assertFalse(top_first_at_bats.head.pitches.isEmpty)
+  }
+
 }

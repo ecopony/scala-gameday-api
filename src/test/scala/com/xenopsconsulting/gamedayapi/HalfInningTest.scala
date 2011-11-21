@@ -22,11 +22,11 @@ class HalfInningTest extends AssertionsForJUnit {
   }
 
   @Test def testTopHasAtBats {
-    assertNotNull(inning.top.atBats)
+    assertFalse(inning.top.atBats.isEmpty)
   }
 
   @Test def testBottomHasAtBats {
-    assertNotNull(inning.bottom.atBats)
+    assertFalse(inning.bottom.atBats.isEmpty)
   }
 
 }

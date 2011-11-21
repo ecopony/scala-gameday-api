@@ -4,6 +4,8 @@ import scala.xml._
 
 case class AtBat(atBatNode: Node) {
 
+  def pitches() = (atBatNode \ "pitch").map (Pitch(_))
+
   def num() = ( atBatNode \ "@num" ).text
   def b() = ( atBatNode \ "@b" ).text
   def s() = ( atBatNode \ "@s" ).text
