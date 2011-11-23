@@ -19,5 +19,8 @@ case class AtBat(atBatNode: Node) {
   def pThrows() = ( atBatNode \ "@p_throws" ).text
   def des() = ( atBatNode \ "@des" ).text
   def event() = ( atBatNode \ "@event" ).text
+  def score() = ( atBatNode \ "@score" ).text
+  def homeTeamRuns() = ( atBatNode \ "@home_team_runs" ).text
+  def awayTeamRuns() = ( atBatNode \ "@away_team_runs" ).text
 
 }

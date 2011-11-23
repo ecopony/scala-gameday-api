@@ -78,4 +78,16 @@ class AtBatTest extends AssertionsForJUnit {
     assertFalse(top_first_at_bats.head.pitches.isEmpty)
   }
 
+  @Test def testScore {
+    assertEquals("", top_first_at_bats.head.score)
+  }
+
+  @Test def testHomeTeamRuns {
+    assertEquals("", top_first_at_bats.head.homeTeamRuns)
+  }
+
+  @Test def testAwayTeamRuns {
+    assertEquals("", top_first_at_bats.head.awayTeamRuns)
+  }
+
 }

@@ -4,6 +4,15 @@ import xml.Node
 
 case class Score(scoreNode: Node) {
 
-  //       <score inn="1" atbat_num="4" top_inning="N" home="1" away="0" pbp="Ichiro Suzuki homers (2) on a line drive to right field. ">
+  def atBat() = AtBat((scoreNode \ "atbat").head)
+
+  def inn() = sna("@inn")
+  def atBatNum() = sna("@atbat_num")
+  def topInning() = sna("@top_inning")
+  def home() = sna("@home")
+  def away() = sna("@away")
+  def pbp() = sna("@pbp")
+
+  private def sna(attribute: String) = (scoreNode \ attribute).text
 
 }
