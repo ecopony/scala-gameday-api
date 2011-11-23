@@ -55,4 +55,12 @@ class ScoreTest extends AssertionsForJUnit {
     assertEquals("0", score.atBat.awayTeamRuns)
   }
 
+  @Test def testScoreAtBatHasPitches {
+    assertEquals(1, score.atBat.pitches.size)
+  }
+
+  @Test def testScoreAtBatHasRunners {
+    assertEquals(1, score.atBat.runners.size)
+  }
+
 }

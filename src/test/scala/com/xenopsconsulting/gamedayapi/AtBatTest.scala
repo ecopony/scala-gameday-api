@@ -13,6 +13,7 @@ class AtBatTest extends AssertionsForJUnit {
   var date: Date = _
   var team: String = _
   var top_first_at_bats: Seq[AtBat] = _
+  var bottom_first_at_bats: Seq[AtBat] = _
 
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
@@ -20,6 +21,7 @@ class AtBatTest extends AssertionsForJUnit {
     innings = new Innings(date, team)
     innings.fetchStrategy = TestFetchStrategy
     top_first_at_bats = innings.inning(1).get.top.atBats
+    bottom_first_at_bats = innings.inning(1).get.bottom.atBats
   }
   
   @Test def testNum {
@@ -74,10 +76,6 @@ class AtBatTest extends AssertionsForJUnit {
     assertEquals("Pop Out", top_first_at_bats.head.event)
   }
 
-  @Test def testPitchesExist {
-    assertFalse(top_first_at_bats.head.pitches.isEmpty)
-  }
-
   @Test def testScore {
     assertEquals("", top_first_at_bats.head.score)
   }
@@ -89,5 +87,18 @@ class AtBatTest extends AssertionsForJUnit {
   @Test def testAwayTeamRuns {
     assertEquals("", top_first_at_bats.head.awayTeamRuns)
   }
+
+  @Test def testPitchesExist {
+    assertEquals(4, top_first_at_bats.head.pitches.size)
+    assertEquals(1, bottom_first_at_bats.head.pitches.size)
+  }
+
+  @Test def testRunnersExist {
+    assertEquals(0, top_first_at_bats.head.runners.size)
+    assertEquals(1, bottom_first_at_bats.head.runners.size)
+  }
+
+  // Add po
+  //               <po des="Pickoff Attempt 1B"/>
 
 }
