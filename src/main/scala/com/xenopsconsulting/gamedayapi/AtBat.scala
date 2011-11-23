@@ -6,6 +6,7 @@ case class AtBat(atBatNode: Node) {
 
   def pitches() = (atBatNode \ "pitch").map (Pitch(_))
   def runners() = (atBatNode \ "runner").map (Runner(_))
+  def pickoffs() = (atBatNode \ "po").map (Pickoff(_))
 
   def num() = ( atBatNode \ "@num" ).text
   def b() = ( atBatNode \ "@b" ).text

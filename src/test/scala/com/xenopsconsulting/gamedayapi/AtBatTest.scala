@@ -98,7 +98,8 @@ class AtBatTest extends AssertionsForJUnit {
     assertEquals(1, bottom_first_at_bats.head.runners.size)
   }
 
-  // Add po
-  //               <po des="Pickoff Attempt 1B"/>
+  @Test def testPickoffsExist {
+    assertEquals(1, bottom_first_at_bats.takeRight(6).head.pickoffs.size)
+  }
 
 }
