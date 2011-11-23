@@ -19,6 +19,14 @@ class InningScoresTest extends AssertionsForJUnit {
     inningScores.fetchStrategy = TestFetchStrategy
   }
 
+  @Test def testHomeTeam {
+    assertEquals("sea", inningScores.homeTeam)
+  }
+
+  @Test def testHomeAway {
+    assertEquals("bos", inningScores.awayTeam)
+  }
+
   @Test def testScoresExist {
     assertFalse(inningScores.scores.isEmpty)
   }

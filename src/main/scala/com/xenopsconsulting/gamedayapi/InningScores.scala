@@ -8,9 +8,10 @@ case class InningScores(date: Date, team: String) extends XmlRepresentation {
     _xml = fetchStrategy.fetchInningScores(date, team)
   }
 
-  def scores() = ( scoresNode \ "score" ).map(Score(_))
+  def scores() = (scoresNode \ "score").map(Score(_))
 
-  //     <scores away_team="bos" home_team="sea">
+  def homeTeam() = (scoresNode \ "@home_team").text
+  def awayTeam() = (scoresNode \ "@away_team").text
 
   private def scoresNode() = (xml \\ "scores")
 
