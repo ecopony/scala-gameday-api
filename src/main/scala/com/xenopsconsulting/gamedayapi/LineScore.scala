@@ -1,6 +1,5 @@
 package com.xenopsconsulting.gamedayapi
 
-import scala.xml._
 import java.util.Date
 
 case class LineScore(date: Date, team: String) extends XmlRepresentation {
@@ -109,7 +108,6 @@ case class LineScore(date: Date, team: String) extends XmlRepresentation {
   def homeRecapLink() = gna("@home_recap_link")
   def photosLink() = gna("@photos_link")
 
-  private def gameNode():NodeSeq = (xml \\ "game")
   private def gna(attribute: String) = (gameNode \ attribute).text
   
 }

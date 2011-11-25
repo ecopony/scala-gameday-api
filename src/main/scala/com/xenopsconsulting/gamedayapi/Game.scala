@@ -1,6 +1,5 @@
 package com.xenopsconsulting.gamedayapi
 
-import scala.xml._
 import java.util.Date
 
 case class Game(date: Date, team: String) extends XmlRepresentation {
@@ -74,7 +73,6 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
 
-  private def gameNode():NodeSeq = (xml \\ "game")
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
