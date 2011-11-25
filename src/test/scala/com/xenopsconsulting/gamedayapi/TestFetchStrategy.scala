@@ -1534,4 +1534,150 @@ object TestFetchStrategy extends FetchStrategy {
       </score>
     </scores>
   }
+
+  def fetchGameEvents(date: Date, team: String) = {
+    <game>
+      <inning num="1">
+        <top>
+            <atbat num="1" o="1" start_tfs="220954" start_tfs_zulu="2011-08-14T02:09:54Z" batter="453056" pitcher="433587" des="Jacoby Ellsbury pops out to shortstop Jack Wilson. " event="Pop Out" b1="" b2="" b3=""/>
+            <atbat num="2" o="2" start_tfs="221134" start_tfs_zulu="2011-08-14T02:11:34Z" batter="408307" pitcher="433587" des="Carl Crawford grounds out, second baseman Dustin Ackley to first baseman Mike Carp. " event="Groundout" b1="" b2="" b3=""/>
+            <atbat num="3" o="3" start_tfs="221227" start_tfs_zulu="2011-08-14T02:12:27Z" batter="408236" pitcher="433587" des="Adrian Gonzalez lines out to center fielder Franklin Gutierrez. " event="Lineout" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <atbat num="4" o="0" start_tfs="221601" start_tfs_zulu="2011-08-14T02:16:01Z" batter="400085" pitcher="277417" des="Ichiro Suzuki homers (2) on a line drive to right field. " event="Home Run" score="T" home_team_runs="1" away_team_runs="0" b1="" b2="" b3="" rbi="1"/>
+            <atbat num="5" o="0" start_tfs="221712" start_tfs_zulu="2011-08-14T02:17:12Z" batter="429711" pitcher="277417" des="Franklin Gutierrez singles on a ground ball to center fielder Jacoby Ellsbury. " event="Single" b1="429711" b2="" b3=""/>
+            <atbat num="6" o="0" start_tfs="221925" start_tfs_zulu="2011-08-14T02:19:25Z" batter="554429" pitcher="277417" des="Dustin Ackley doubles (11) on a line drive to right fielder Josh Reddick. Franklin Gutierrez to 3rd. " event="Double" b1="" b2="554429" b3="429711"/>
+            <atbat num="7" o="0" start_tfs="222321" start_tfs_zulu="2011-08-14T02:23:21Z" batter="455077" pitcher="277417" des="Mike Carp singles on a ground ball to center fielder Jacoby Ellsbury. Franklin Gutierrez scores. Dustin Ackley scores. " event="Single" score="T" home_team_runs="3" away_team_runs="0" b1="455077" b2="" b3="" rbi="2"/>
+            <atbat num="8" o="1" start_tfs="222432" start_tfs_zulu="2011-08-14T02:24:32Z" batter="276377" pitcher="277417" des="Wily Mo Pena flies out to center fielder Jacoby Ellsbury. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="9" o="1" start_tfs="222947" start_tfs_zulu="2011-08-14T02:29:47Z" batter="489413" pitcher="277417" des="Casper Wells homers (6) on a fly ball to left center field. Mike Carp scores. " event="Home Run" score="T" home_team_runs="5" away_team_runs="0" b1="" b2="" b3="" rbi="2"/>
+            <action o="1" des="Coaching visit to mound. " event="Game Advisory" tfs="223144" tfs_zulu="2011-08-14T02:31:44Z" player="408036" pitch="3"/>
+            <atbat num="10" o="2" start_tfs="223223" start_tfs_zulu="2011-08-14T02:32:23Z" batter="408036" pitcher="277417" des="Josh Bard called out on strikes. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="11" o="3" start_tfs="223349" start_tfs_zulu="2011-08-14T02:33:49Z" batter="425904" pitcher="277417" des="Luis Rodriguez grounds out softly, pitcher Josh Beckett to first baseman Adrian Gonzalez. " event="Groundout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="2">
+        <top>
+            <atbat num="12" o="1" start_tfs="223701" start_tfs_zulu="2011-08-14T02:37:01Z" batter="456030" pitcher="433587" des="Dustin Pedroia pops out to first baseman Mike Carp in foul territory. " event="Pop Out" b1="" b2="" b3=""/>
+            <atbat num="13" o="2" start_tfs="223823" start_tfs_zulu="2011-08-14T02:38:23Z" batter="120074" pitcher="433587" des="David Ortiz flies out to left fielder Casper Wells. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="14" o="3" start_tfs="223936" start_tfs_zulu="2011-08-14T02:39:36Z" batter="502210" pitcher="433587" des="Josh Reddick grounds out, shortstop Jack Wilson to first baseman Mike Carp. " event="Groundout" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <atbat num="15" o="0" start_tfs="224258" start_tfs_zulu="2011-08-14T02:42:58Z" batter="333292" pitcher="277417" des="Jack Wilson singles on a soft line drive to right fielder Josh Reddick. " event="Single" b1="333292" b2="" b3=""/>
+            <atbat num="16" o="2" start_tfs="224605" start_tfs_zulu="2011-08-14T02:46:05Z" batter="400085" pitcher="277417" des="Ichiro Suzuki grounds into double play, first baseman Adrian Gonzalez to shortstop Marco Scutaro to first baseman Adrian Gonzalez. Jack Wilson out at 2nd. " event="Grounded Into DP" b1="" b2="" b3=""/>
+            <atbat num="17" o="3" start_tfs="224744" start_tfs_zulu="2011-08-14T02:47:44Z" batter="429711" pitcher="277417" des="Franklin Gutierrez grounds out, shortstop Marco Scutaro to first baseman Adrian Gonzalez. " event="Groundout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="3">
+        <top>
+            <atbat num="18" o="0" start_tfs="225207" start_tfs_zulu="2011-08-14T02:52:07Z" batter="449107" pitcher="433587" des="Mike Aviles singles on a soft ground ball to third baseman Luis Rodriguez. " event="Single" b1="449107" b2="" b3=""/>
+            <atbat num="19" o="1" start_tfs="225415" start_tfs_zulu="2011-08-14T02:54:15Z" batter="123660" pitcher="433587" des="Jason Varitek grounds into a force out, first baseman Mike Carp to shortstop Jack Wilson. Mike Aviles out at 2nd. Jason Varitek to 1st. " event="Forceout" b1="123660" b2="" b3=""/>
+            <atbat num="20" o="3" start_tfs="225552" start_tfs_zulu="2011-08-14T02:55:52Z" batter="340192" pitcher="433587" des="Marco Scutaro grounds into double play, second baseman Dustin Ackley to shortstop Jack Wilson to first baseman Mike Carp. Jason Varitek out at 2nd. " event="Grounded Into DP" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <atbat num="21" o="1" start_tfs="225847" start_tfs_zulu="2011-08-14T02:58:47Z" batter="554429" pitcher="277417" des="Dustin Ackley grounds out, first baseman Adrian Gonzalez to pitcher Josh Beckett. " event="Groundout" b1="" b2="" b3=""/>
+            <atbat num="22" o="2" start_tfs="230018" start_tfs_zulu="2011-08-14T03:00:18Z" batter="455077" pitcher="277417" des="Mike Carp strikes out on foul tip. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="23" o="3" start_tfs="230201" start_tfs_zulu="2011-08-14T03:02:01Z" batter="276377" pitcher="277417" des="Wily Mo Pena grounds out, shortstop Marco Scutaro to first baseman Adrian Gonzalez. " event="Groundout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="4">
+        <top>
+            <atbat num="24" o="0" start_tfs="230451" start_tfs_zulu="2011-08-14T03:04:51Z" batter="453056" pitcher="433587" des="Jacoby Ellsbury walks. " event="Walk" b1="453056" b2="" b3=""/>
+            <action o="0" des="With Carl Crawford batting, missed catch error by Mike Carp on the pickoff attempt, Jacoby Ellsbury to 2nd. " event="Pickoff Error 1B" tfs="230824" tfs_zulu="2011-08-14T03:08:24Z" player="453056" pitch="0"/>
+            <atbat num="25" o="0" start_tfs="230731" start_tfs_zulu="2011-08-14T03:07:31Z" batter="408307" pitcher="433587" des="Carl Crawford singles on a ground ball to pitcher Felix Hernandez. Jacoby Ellsbury to 3rd. " event="Single" b1="408307" b2="453056" b3="453056"/>
+            <atbat num="26" o="1" start_tfs="230916" start_tfs_zulu="2011-08-14T03:09:16Z" batter="408236" pitcher="433587" des="Adrian Gonzalez grounds out softly, first baseman Mike Carp to pitcher Felix Hernandez. Carl Crawford to 2nd. " event="Groundout" b1="" b2="408307" b3=""/>
+            <atbat num="27" o="3" start_tfs="231041" start_tfs_zulu="2011-08-14T03:10:41Z" batter="456030" pitcher="433587" des="Dustin Pedroia flies into double play, right fielder Ichiro Suzuki to catcher Josh Bard. Jacoby Ellsbury out at home on the throw. " event="Double Play" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <action o="0" des="Injury Delay. " event="Game Advisory" tfs="231421" tfs_zulu="2011-08-14T03:14:21Z" player="489413" pitch="5"/>
+            <action o="0" des="Boston Red Sox Manager Terry Francona ejected by HP umpire Mark Ripperger. " event="Ejection" tfs="231741" tfs_zulu="2011-08-14T03:17:41Z" player="114378" pitch="5"/>
+            <atbat num="28" o="1" start_tfs="231803" start_tfs_zulu="2011-08-14T03:18:03Z" batter="489413" pitcher="277417" des="Casper Wells called out on strikes. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="29" o="2" start_tfs="231901" start_tfs_zulu="2011-08-14T03:19:01Z" batter="408036" pitcher="277417" des="Josh Bard flies out to right fielder Josh Reddick. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="30" o="3" start_tfs="232036" start_tfs_zulu="2011-08-14T03:20:36Z" batter="425904" pitcher="277417" des="Luis Rodriguez grounds out to first baseman Adrian Gonzalez. " event="Groundout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="5">
+        <top>
+            <atbat num="31" o="0" start_tfs="232319" start_tfs_zulu="2011-08-14T03:23:19Z" batter="120074" pitcher="433587" des="David Ortiz walks. " event="Walk" b1="120074" b2="" b3=""/>
+            <atbat num="32" o="1" start_tfs="232506" start_tfs_zulu="2011-08-14T03:25:06Z" batter="502210" pitcher="433587" des="Josh Reddick flies out to left fielder Casper Wells. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="33" o="2" start_tfs="232716" start_tfs_zulu="2011-08-14T03:27:16Z" batter="449107" pitcher="433587" des="Mike Aviles strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="34" o="3" start_tfs="232844" start_tfs_zulu="2011-08-14T03:28:44Z" batter="123660" pitcher="433587" des="Jason Varitek grounds out softly, first baseman Mike Carp to pitcher Felix Hernandez. " event="Groundout" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <atbat num="35" o="0" start_tfs="233146" start_tfs_zulu="2011-08-14T03:31:46Z" batter="333292" pitcher="277417" des="Jack Wilson doubles (8) on a ground ball to left fielder Carl Crawford, deflected by third baseman Mike Aviles. " event="Double" b1="" b2="333292" b3=""/>
+            <atbat num="36" o="1" start_tfs="233452" start_tfs_zulu="2011-08-14T03:34:52Z" batter="400085" pitcher="277417" des="Ichiro Suzuki strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="37" o="1" start_tfs="233729" start_tfs_zulu="2011-08-14T03:37:29Z" batter="429711" pitcher="277417" des="Franklin Gutierrez singles on a ground ball to third baseman Mike Aviles. Jack Wilson to 3rd. " event="Single" b1="429711" b2="" b3="333292"/>
+            <atbat num="38" o="2" start_tfs="233927" start_tfs_zulu="2011-08-14T03:39:27Z" batter="554429" pitcher="277417" des="Dustin Ackley strikes out on foul tip. Franklin Gutierrez steals (11) 2nd base. " event="Strikeout" event2="Stolen Base 2B" b1="" b2="429711" b3=""/>
+            <atbat num="39" o="2" start_tfs="234457" start_tfs_zulu="2011-08-14T03:44:57Z" batter="455077" pitcher="277417" des="Mike Carp walks. " event="Walk" b1="455077" b2="" b3=""/>
+            <atbat num="40" o="3" start_tfs="234846" start_tfs_zulu="2011-08-14T03:48:46Z" batter="276377" pitcher="277417" des="Wily Mo Pena strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="6">
+        <top>
+            <atbat num="41" o="0" start_tfs="235326" start_tfs_zulu="2011-08-14T03:53:26Z" batter="340192" pitcher="433587" des="Marco Scutaro triples (1) on a fly ball to center fielder Franklin Gutierrez. " event="Triple" b1="" b2="" b3="340192"/>
+            <atbat num="42" o="0" start_tfs="235647" start_tfs_zulu="2011-08-14T03:56:47Z" batter="453056" pitcher="433587" des="Jacoby Ellsbury homers (20) on a fly ball to right field. Marco Scutaro scores. " event="Home Run" score="T" home_team_runs="5" away_team_runs="2" b1="" b2="" b3="" rbi="2"/>
+            <atbat num="43" o="1" start_tfs="235738" start_tfs_zulu="2011-08-14T03:57:38Z" batter="408307" pitcher="433587" des="Carl Crawford flies out to center fielder Franklin Gutierrez. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="44" o="1" start_tfs="235829" start_tfs_zulu="2011-08-14T03:58:29Z" batter="408236" pitcher="433587" des="Adrian Gonzalez singles on a bunt ground ball to third baseman Luis Rodriguez. " event="Single" b1="408236" b2="" b3=""/>
+            <atbat num="45" o="1" start_tfs="235908" start_tfs_zulu="2011-08-14T03:59:08Z" batter="456030" pitcher="433587" des="Dustin Pedroia homers (16) on a fly ball to right center field. Adrian Gonzalez scores. " event="Home Run" score="T" home_team_runs="5" away_team_runs="4" b1="" b2="" b3="" rbi="2"/>
+            <action o="1" des="Coaching visit to mound. " event="Game Advisory" tfs="000137" tfs_zulu="2011-08-14T04:01:37Z" player="120074" pitch="5"/>
+            <atbat num="46" o="1" start_tfs="000156" start_tfs_zulu="2011-08-14T04:01:56Z" batter="120074" pitcher="433587" des="David Ortiz singles on a line drive to right fielder Ichiro Suzuki, deflected by first baseman Mike Carp. " event="Single" b1="120074" b2="" b3=""/>
+            <atbat num="47" o="2" start_tfs="000227" start_tfs_zulu="2011-08-14T04:02:27Z" batter="502210" pitcher="433587" des="Josh Reddick strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="48" o="2" start_tfs="000402" start_tfs_zulu="2011-08-14T04:04:02Z" batter="449107" pitcher="433587" des="Mike Aviles singles on a line drive to left fielder Casper Wells. David Ortiz to 2nd. " event="Single" b1="449107" b2="120074" b3=""/>
+            <atbat num="49" o="3" start_tfs="000458" start_tfs_zulu="2011-08-14T04:04:58Z" batter="123660" pitcher="433587" des="Jason Varitek lines out to second baseman Dustin Ackley. " event="Lineout" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <action o="0" des="Pitcher Change: Matt Albers replaces Josh Beckett. " event="Pitching Substitution" tfs="000802" tfs_zulu="2011-08-14T04:08:02Z" player="458006" pitch="1"/>
+            <atbat num="50" o="0" start_tfs="000830" start_tfs_zulu="2011-08-14T04:08:30Z" batter="489413" pitcher="458006" des="Casper Wells singles on a ground ball to third baseman Mike Aviles. " event="Single" b1="489413" b2="" b3=""/>
+            <atbat num="51" o="1" start_tfs="001101" start_tfs_zulu="2011-08-14T04:11:01Z" batter="408036" pitcher="458006" des="Josh Bard flies out to left fielder Carl Crawford. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="52" o="2" start_tfs="001310" start_tfs_zulu="2011-08-14T04:13:10Z" batter="425904" pitcher="458006" des="Luis Rodriguez flies out to center fielder Jacoby Ellsbury. " event="Flyout" b1="" b2="" b3=""/>
+            <atbat num="53" o="3" start_tfs="001459" start_tfs_zulu="2011-08-14T04:14:59Z" batter="333292" pitcher="458006" des="Jack Wilson strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="7">
+        <top>
+            <atbat num="54" o="1" start_tfs="002122" start_tfs_zulu="2011-08-14T04:21:22Z" batter="340192" pitcher="433587" des="Marco Scutaro pops out to second baseman Dustin Ackley. " event="Pop Out" b1="" b2="" b3=""/>
+            <atbat num="55" o="1" start_tfs="002351" start_tfs_zulu="2011-08-14T04:23:51Z" batter="453056" pitcher="433587" des="Jacoby Ellsbury singles on a line drive to left fielder Casper Wells. " event="Single" b1="453056" b2="" b3=""/>
+            <atbat num="56" o="3" start_tfs="002533" start_tfs_zulu="2011-08-14T04:25:33Z" batter="408307" pitcher="433587" des="Carl Crawford grounds into double play, second baseman Dustin Ackley to first baseman Mike Carp. Jacoby Ellsbury out at 2nd. " event="Grounded Into DP" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <atbat num="57" o="1" start_tfs="003120" start_tfs_zulu="2011-08-14T04:31:20Z" batter="400085" pitcher="458006" des="Ichiro Suzuki strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="58" o="2" start_tfs="003329" start_tfs_zulu="2011-08-14T04:33:29Z" batter="429711" pitcher="458006" des="Franklin Gutierrez strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <action o="2" des="Pitcher Change: Franklin Morales replaces Matt Albers. " event="Pitching Substitution" tfs="003651" tfs_zulu="2011-08-14T04:36:51Z" player="462985" pitch="4"/>
+            <action o="2" des="Coaching visit to mound. " event="Game Advisory" tfs="003535" tfs_zulu="2011-08-14T04:35:35Z" player="554429" pitch="4"/>
+            <atbat num="59" o="3" start_tfs="003812" start_tfs_zulu="2011-08-14T04:38:12Z" batter="554429" pitcher="462985" des="Dustin Ackley called out on strikes. " event="Strikeout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="8">
+        <top>
+            <action o="0" des="Pitcher Change: Jamey Wright replaces Felix Hernandez. " event="Pitching Substitution" tfs="004151" tfs_zulu="2011-08-14T04:41:51Z" player="124604" pitch="4"/>
+            <atbat num="60" o="0" start_tfs="004228" start_tfs_zulu="2011-08-14T04:42:28Z" batter="408236" pitcher="124604" des="Adrian Gonzalez singles on a line drive to center fielder Franklin Gutierrez. " event="Single" b1="408236" b2="" b3=""/>
+            <atbat num="61" o="2" start_tfs="004432" start_tfs_zulu="2011-08-14T04:44:32Z" batter="456030" pitcher="124604" des="Dustin Pedroia grounds into double play, pitcher Jamey Wright to shortstop Jack Wilson to first baseman Mike Carp. Adrian Gonzalez out at 2nd. " event="Grounded Into DP" b1="" b2="" b3=""/>
+            <atbat num="62" o="2" start_tfs="004733" start_tfs_zulu="2011-08-14T04:47:33Z" batter="120074" pitcher="124604" des="David Ortiz walks. " event="Walk" b1="120074" b2="" b3=""/>
+            <action o="2" des="Offensive Substitution: Pinch runner Darnell McDonald replaces David Ortiz. " event="Offensive sub" tfs="005121" tfs_zulu="2011-08-14T04:51:21Z" player="150021" pitch="7"/>
+            <action o="3" des="With Josh Reddick batting, Darnell McDonald caught stealing 2nd base, catcher Josh Bard to shortstop Jack Wilson. " event="Caught Stealing 2B" tfs="005425" tfs_zulu="2011-08-14T04:54:25Z" player="150021" pitch="3"/>
+            <atbat num="63" o="3" start_tfs="005129" start_tfs_zulu="2011-08-14T04:51:29Z" batter="502210" pitcher="124604" des="With Josh Reddick batting, Darnell McDonald caught stealing 2nd base, catcher Josh Bard to shortstop Jack Wilson. " event="Runner Out" b1="" b2="" b3=""/>
+        </top>
+        <bottom>
+            <action o="0" des="Darnell McDonald remains in the game as the designated hitter. " event="Defensive Switch" tfs="005626" tfs_zulu="2011-08-14T04:56:26Z" player="150021" pitch="3"/>
+            <atbat num="64" o="1" start_tfs="005642" start_tfs_zulu="2011-08-14T04:56:42Z" batter="455077" pitcher="462985" des="Mike Carp flies out to center fielder Jacoby Ellsbury. " event="Flyout" b1="" b2="" b3=""/>
+            <action o="1" des="Pitcher Change: Alfredo Aceves replaces Franklin Morales. " event="Pitching Substitution" tfs="005846" tfs_zulu="2011-08-14T04:58:46Z" player="469686" pitch="2"/>
+            <action o="1" des="Coaching visit to mound. " event="Game Advisory" tfs="005801" tfs_zulu="2011-08-14T04:58:01Z" player="276377" pitch="2"/>
+            <atbat num="65" o="2" start_tfs="010015" start_tfs_zulu="2011-08-14T05:00:15Z" batter="276377" pitcher="469686" des="Wily Mo Pena strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="66" o="3" start_tfs="010229" start_tfs_zulu="2011-08-14T05:02:29Z" batter="489413" pitcher="469686" des="Casper Wells strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+        </bottom>
+      </inning>
+      <inning num="9">
+        <top>
+            <action o="0" des="Pitcher Change: Brandon League replaces Jamey Wright. " event="Pitching Substitution" tfs="010647" tfs_zulu="2011-08-14T05:06:47Z" player="434181" pitch="6"/>
+            <atbat num="67" o="1" start_tfs="010743" start_tfs_zulu="2011-08-14T05:07:43Z" batter="502210" pitcher="434181" des="Josh Reddick strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <action o="1" des="Offensive Substitution: Pinch hitter Jed Lowrie replaces Mike Aviles. " event="Offensive sub" tfs="010959" tfs_zulu="2011-08-14T05:09:59Z" player="476704" pitch="5"/>
+            <atbat num="68" o="2" start_tfs="011003" start_tfs_zulu="2011-08-14T05:10:03Z" batter="476704" pitcher="434181" des="Jed Lowrie strikes out swinging. " event="Strikeout" b1="" b2="" b3=""/>
+            <atbat num="69" o="3" start_tfs="011143" start_tfs_zulu="2011-08-14T05:11:43Z" batter="123660" pitcher="434181" des="Jason Varitek grounds out, pitcher Brandon League to first baseman Mike Carp. " event="Groundout" b1="" b2="" b3=""/>
+        </top>
+          <bottom/>
+      </inning>
+        <atBat pid="123660"/>
+        <deck pid="340192"/>
+        <hole pid="453056"/>
+    </game>
+  }
 }

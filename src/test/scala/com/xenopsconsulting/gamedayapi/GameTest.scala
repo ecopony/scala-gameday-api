@@ -155,4 +155,8 @@ class GameTest extends AssertionsForJUnit {
     assertNotNull(game.inningScores)
   }
 
+  @Test def testGameEventsExist {
+    assertNotNull(game.gameEvents)
+  }
+
 }

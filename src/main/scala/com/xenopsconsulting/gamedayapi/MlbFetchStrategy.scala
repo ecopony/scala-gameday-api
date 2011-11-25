@@ -14,6 +14,7 @@ object MlbFetchStrategy extends FetchStrategy {
   def fetchHitChart(date: Date, team: String) = fetchXmlAsString(hitChartUrl(date, team))
   def fetchInnings(date: Date, team: String) = fetchXmlAsString(inningsUrl(date, team))
   def fetchInningScores(date: Date, team: String) = fetchXmlAsString(inningScoresUrl(date, team))
+  def fetchGameEvents(date: Date, team: String) = fetchXmlAsString(gameEventsUrl(date, team))
 
   private def fetchXmlAsString(urlToFetch: String) = XML.loadString(http(url(urlToFetch) as_str))
 
