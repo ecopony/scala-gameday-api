@@ -22,5 +22,4 @@ class ScheduleYearTest extends AssertionsForJUnit {
     assertEquals(new SimpleDateFormat("yyy-MM-dd").parse("2011-03-31"), schedule.openingDay)
   }
 
-
 }
