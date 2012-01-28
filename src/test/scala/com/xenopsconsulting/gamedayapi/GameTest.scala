@@ -23,6 +23,10 @@ class GameTest extends AssertionsForJUnit {
     assertEquals(TestFetchStrategy.getClass, game.boxScore.fetchStrategy.getClass)
   }
 
+  @Test def testGameExists {
+    assertEquals(true, game.exists)
+  }
+
   @Test def testGameTime {
     assertEquals("10:10 PM", game.gameTimeEt)
   }

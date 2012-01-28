@@ -13,6 +13,17 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
     _xml = fetchStrategy.fetchGame(date, team)
   }
 
+  def exists() = {
+    try {
+      fetch
+      true
+    } catch {
+      case e => {
+        false
+      }
+    }
+  }
+
   def boxScore() = {
     if (_boxScore == null) _boxScore = BoxScore(date, team)
     _boxScore.fetchStrategy = fetchStrategy
