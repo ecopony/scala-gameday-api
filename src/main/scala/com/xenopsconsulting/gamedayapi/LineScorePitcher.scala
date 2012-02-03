@@ -8,7 +8,6 @@ case class LineScorePitcher(lineScoreNode: Node) {
   def first() = (lineScoreNode \ "@first").text
   def lastName() = (lineScoreNode \ "@last_name").text
   def last() = (lineScoreNode \ "@last").text
-  def nameDisplayRoster() = (lineScoreNode \ "@name_display_roster").text
   def wins() = (lineScoreNode \ "@wins").text
   def losses() = (lineScoreNode \ "@losses").text
   def era() = (lineScoreNode \ "@era").text
@@ -16,4 +15,14 @@ case class LineScorePitcher(lineScoreNode: Node) {
   def sLosses() = (lineScoreNode \ "@s_losses").text
   def sEra() = (lineScoreNode \ "@s_era").text
   def saves() = (lineScoreNode \ "@saves").text
+
+  def nameDisplayRoster() = {
+    val name = (lineScoreNode \ "@name_display_roster").text
+    if (name == "") {
+      lastName
+    } else {
+      name
+    }
+  }
+
 }

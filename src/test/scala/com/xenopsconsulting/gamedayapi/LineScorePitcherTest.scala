@@ -78,4 +78,17 @@ class LineScorePitcherTest extends AssertionsForJUnit {
     assertEquals("28", lineScorePitcher.saves)
   }
 
+  @Test def testNameDisplayRosterFallsThroughToFirstLastName {
+    lineScorePitcher = LineScorePitcher(
+        <winning_pitcher first_name="Felix" first="Felix" id="433587" last_name="Hernandez"
+                         last="Hernandez"
+                         wins="11"
+                         losses="10"
+                         era="3.38"
+                         s_wins=""
+                         s_losses=""
+                         s_era=""/>
+    )
+    assertEquals("Hernandez", lineScorePitcher.nameDisplayRoster)
+  }
 }
