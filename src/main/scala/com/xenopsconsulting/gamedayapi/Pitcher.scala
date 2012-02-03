@@ -5,7 +5,6 @@ import xml.Node
 case class Pitcher(pitcherNode: Node) {
   def id() = pna("@id")
   def name() = pna("@name")
-  def nameDisplayFirstLast() = pna("@name_display_first_last")
   def pos() = pna("@pos")
   def out() = pna("@out")
   def bf() = pna("@bf")
@@ -22,6 +21,15 @@ case class Pitcher(pitcherNode: Node) {
   def hld() = pna("@hld")
   def era() = pna("@era")
   def note() = pna("@note")
+
+  def nameDisplayFirstLast() = {
+    val nameDisplay = pna("@name_display_first_last")
+    if (nameDisplay == "") {
+      name
+    } else {
+      nameDisplay
+    }
+  }
 
   def inningsPitched() = {
     val actual_innings = (out.toDouble / 3)

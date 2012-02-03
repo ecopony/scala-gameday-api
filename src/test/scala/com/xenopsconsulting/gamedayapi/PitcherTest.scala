@@ -88,6 +88,11 @@ class PitcherTest extends AssertionsForJUnit {
     assertEquals("(L, 9-5)", pitcher.note)
   }
 
+  @Test def testNameDisplayFirstLastFallsThroughToName {
+    pitcher = new Pitcher(<pitcher id="277417" name="Beckett" pos="P" out="15" bf="23" er="5" r="5" h="8" so="6" hr="2" bb="1" w="9" l="5" sv="0" bs="0" hld="0" era="2.40" note="(L, 9-5)"/>)
+    assertEquals("Beckett", pitcher.nameDisplayFirstLast)
+  }
+
   @Test def testInningsPitchedWithNoFraction {
     pitcher = new Pitcher(<pitcher id="277417" name="Beckett" name_display_first_last="Josh Beckett" pos="P" out="15" bf="23" er="5" r="5" h="8" so="6" hr="2" bb="1" w="9" l="5" sv="0" bs="0" hld="0" era="2.40" note="(L, 9-5)"/>)
     assertEquals("5", pitcher.inningsPitched)
