@@ -31,7 +31,12 @@ case class LineScore(date: Date, team: String) extends XmlRepresentation {
 
   def savePitcher() = {
     if (_savePitcher == null) {
-      _savePitcher = LineScorePitcher((gameNode \ "save_pitcher").head)
+      val savePitcherSeq = (gameNode \ "save_pitcher")
+      if (savePitcherSeq.length != 0) {
+        _savePitcher = LineScorePitcher(savePitcherSeq.head)
+      } else {
+        _savePitcher = LineScorePitcher(<save_pitcher/>)
+      }
     }
     _savePitcher
   }

@@ -327,4 +327,9 @@ class LineScoreTest extends AssertionsForJUnit {
     assertEquals("Brandon", lineScore.savePitcher.firstName)
   }
 
+  @Test def testSavePitcherReturnsPlaceholderWhenMissing {
+    lineScore.fetchStrategy = TestEmptyXmlFetchStrategy
+    assertNotNull(lineScore.savePitcher)
+  }
+
 }
