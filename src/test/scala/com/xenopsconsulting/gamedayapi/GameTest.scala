@@ -163,4 +163,9 @@ class GameTest extends AssertionsForJUnit {
     assertNotNull(game.gameEvents)
   }
 
+  @Test def testNameFullFallsThroughToName {
+    game.fetchStrategy = TestEmptyXmlFetchStrategy
+    assertEquals("Kansas City", game.homeTeamNameFull)
+  }
+
 }

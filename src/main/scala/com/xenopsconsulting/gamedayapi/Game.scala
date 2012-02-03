@@ -66,8 +66,25 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   def awayTeamId():String = (awayTeamNode \ "@id").text
   def homeTeamName():String = (homeTeamNode \ "@name").text
   def awayTeamName():String = (awayTeamNode \ "@name").text
-  def homeTeamNameFull():String = (homeTeamNode \ "@name_full").text
-  def awayTeamNameFull():String = (awayTeamNode \ "@name_full").text
+
+  def homeTeamNameFull():String = {
+    val nameFull = (homeTeamNode \ "@name_full").text
+    if (nameFull == "") {
+      homeTeamName
+    } else {
+      nameFull
+    }
+  }
+
+  def awayTeamNameFull():String = {
+    val nameFull = (awayTeamNode \ "@name_full").text
+    if (nameFull == "") {
+      awayTeamName
+    } else {
+      nameFull
+    }
+  }
+
   def homeTeamNameBrief():String = (homeTeamNode \ "@name_brief").text
   def awayTeamNameBrief():String = (awayTeamNode \ "@name_brief").text
   def homeTeamWins():String = (homeTeamNode \ "@w").text
@@ -83,6 +100,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   def stadiumId():String = (stadiumNode \ "@id").text
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
+
 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get

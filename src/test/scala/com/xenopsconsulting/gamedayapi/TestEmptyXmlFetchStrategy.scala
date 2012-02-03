@@ -17,7 +17,9 @@ object TestEmptyXmlFetchStrategy extends FetchStrategy {
   }
 
   def fetchGame(date: Date, team: String): Elem = {
-    <game></game>
+    <game>
+        <team type="home" name="Kansas City" />
+    </game>
   }
 
   def fetchBoxScore(date: Date, team: String): Elem = {
