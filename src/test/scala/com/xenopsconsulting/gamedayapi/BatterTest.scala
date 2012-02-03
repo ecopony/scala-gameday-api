@@ -116,4 +116,9 @@ class BatterTest extends AssertionsForJUnit {
     assertEquals(".267", batter.avg)
   }
 
+  @Test def testNameDisplayFirstLastShouldFallBackToName {
+    batter = new Batter(<batter id="400085" name="Suzuki, I" pos="RF" bo="100" ab="4" po="1" r="1" a="1" bb="0" sac="0" t="0" sf="0" h="1" e="0" d="0" hbp="0" so="2" hr="1" rbi="1" lob="2" fldg="1.000" sb="0" s_hr="2" s_rbi="28" avg=".267"/>)
+    assertEquals("Suzuki, I", batter.nameDisplayFirstLast)
+  }
+
 }

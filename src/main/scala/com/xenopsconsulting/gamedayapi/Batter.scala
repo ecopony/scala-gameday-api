@@ -5,7 +5,6 @@ import xml.Node
 case class Batter(batterNode: Node) {
   def id() = bna("@id")
   def name() = bna("@name")
-  def nameDisplayFirstLast() = bna("@name_display_first_last")
   def pos() = bna("@pos")
   def bo() = bna("@bo")
   def ab() = bna("@ab")
@@ -29,6 +28,15 @@ case class Batter(batterNode: Node) {
   def sHr() = bna("@s_hr")
   def sRbi() = bna("@s_rbi")
   def avg() = bna("@avg")
+
+  def nameDisplayFirstLast() = {
+    val nameDisplay = bna("@name_display_first_last")
+    if (nameDisplay == "") {
+      name
+    } else {
+      nameDisplay
+    }
+  }
 
   private def bna(attribute: String) = (batterNode \ attribute).text
 }
