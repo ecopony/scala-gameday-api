@@ -16,33 +16,33 @@ object TestEmptyXmlFetchStrategy extends FetchStrategy {
     <epg></epg>
   }
 
-  def fetchGame(date: Date, team: String): Elem = {
+  def fetchGame(date: Date, team: String, gid: String = null): Elem = {
     <game>
         <team type="home" name="Kansas City" />
     </game>
   }
 
-  def fetchBoxScore(date: Date, team: String): Elem = {
+  def fetchBoxScore(date: Date, team: String, gid: String = null): Elem = {
     <boxscore></boxscore>
   }
 
-  def fetchLineScore(date: Date, team: String): Elem = {
+  def fetchLineScore(date: Date, team: String, gid: String = null): Elem = {
     <game></game>
   }
 
-  def fetchHitChart(date: Date, team: String): Elem = {
+  def fetchHitChart(date: Date, team: String, gid: String = null): Elem = {
     <hitchart></hitchart>
   }
 
-  def fetchInnings(date: Date, team: String): Elem = {
+  def fetchInnings(date: Date, team: String, gid: String = null): Elem = {
     <game></game>
   }
 
-  def fetchInningScores(date: Date, team: String) = {
+  def fetchInningScores(date: Date, team: String, gid: String = null) = {
     <scores></scores>
   }
 
-  def fetchGameEvents(date: Date, team: String) = {
+  def fetchGameEvents(date: Date, team: String, gid: String = null) = {
     <game></game>
   }
 }

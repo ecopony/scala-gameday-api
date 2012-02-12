@@ -2,10 +2,10 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 
-case class Innings(date: Date, team: String) extends XmlRepresentation {
+case class Innings(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
 
   def fetch() = {
-    _xml = fetchStrategy.fetchInnings(date, team)
+    _xml = fetchStrategy.fetchInnings(date, team, gid)
   }
 
   def atBat() = (gameNode \ "@atBat").text

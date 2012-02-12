@@ -8,16 +8,17 @@ object BoxScore {
   private val Away = "away"
 }
 
-case class BoxScore(date: Date, team: String) extends XmlRepresentation {
+case class BoxScore(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
   private var _lineScore:LineScore = _
 
   def fetch() = {
-    _xml = fetchStrategy.fetchBoxScore(date, team)
+    _xml = fetchStrategy.fetchBoxScore(date, team, gid)
   }
 
   def lineScore() = {
     if (_lineScore == null) _lineScore = new LineScore(date, team)
     _lineScore.fetchStrategy = fetchStrategy
+    _lineScore.setGid(gid)
     _lineScore
   }
 

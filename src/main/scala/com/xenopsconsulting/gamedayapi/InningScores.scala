@@ -2,10 +2,10 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 
-case class InningScores(date: Date, team: String) extends XmlRepresentation {
+case class InningScores(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
 
   def fetch() = {
-    _xml = fetchStrategy.fetchInningScores(date, team)
+    _xml = fetchStrategy.fetchInningScores(date, team, gid)
   }
 
   def scores() = (scoresNode \ "score").map(Score(_))

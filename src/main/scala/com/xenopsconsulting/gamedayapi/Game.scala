@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 
-case class Game(date: Date, team: String) extends XmlRepresentation {
+case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
   private var _boxScore:BoxScore = _
   private var _hitChart:HitChart = _
   private var _innings:Innings = _
@@ -10,47 +10,41 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   private var _gameEvents:GameEvents = _
 
   def fetch() = {
-    _xml = fetchStrategy.fetchGame(date, team)
-  }
-
-  def exists() = {
-    try {
-      fetch
-      true
-    } catch {
-      case e => {
-        false
-      }
-    }
+    _xml = fetchStrategy.fetchGame(date, team, gid)
   }
 
   def boxScore() = {
     if (_boxScore == null) _boxScore = BoxScore(date, team)
     _boxScore.fetchStrategy = fetchStrategy
+    _boxScore.setGid(gid)
     _boxScore
   }
   
   def hitChart() = {
     if (_hitChart == null) _hitChart = HitChart(date, team)
     _hitChart.fetchStrategy = fetchStrategy
+    _hitChart.setGid(gid)
     _hitChart
   }
 
   def innings() = {
     if (_innings == null) _innings = Innings(date, team)
     _innings.fetchStrategy = fetchStrategy
+    _innings.setGid(gid)
     _innings
   }
 
   def inningScores() = {
     if (_inningScores == null) _inningScores = InningScores(date, team)
     _inningScores.fetchStrategy = fetchStrategy
+    _inningScores.setGid(gid)
     _inningScores
   }
   
   def gameEvents() = {
     if (_gameEvents == null) _gameEvents = GameEvents(date, team)
     _gameEvents.fetchStrategy = fetchStrategy
+    _gameEvents.setGid(gid)
     _gameEvents
   }
 
@@ -100,7 +94,6 @@ case class Game(date: Date, team: String) extends XmlRepresentation {
   def stadiumId():String = (stadiumNode \ "@id").text
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
-
 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get

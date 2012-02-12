@@ -2,13 +2,13 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 
-case class LineScore(date: Date, team: String) extends XmlRepresentation {
+case class LineScore(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
   private var _winningPitcher:LineScorePitcher = _
   private var _losingPitcher:LineScorePitcher = _
   private var _savePitcher:LineScorePitcher = _
 
   def fetch() = {
-    _xml = fetchStrategy.fetchLineScore(date, team)
+    _xml = fetchStrategy.fetchLineScore(date, team, gid)
   }
 
   def innings() = {
