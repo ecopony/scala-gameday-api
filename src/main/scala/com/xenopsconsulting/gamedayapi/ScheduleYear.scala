@@ -2,6 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 import java.text.SimpleDateFormat
+import java.io.File
 
 case class ScheduleYear(year: Int) {
 
@@ -18,7 +19,7 @@ case class ScheduleYear(year: Int) {
   }
 
   private def readGamesFromFile() = {
-    scala.io.Source.fromFile(scheduleFileName).getLines.toList
+    scala.io.Source.fromInputStream(getClass.getResourceAsStream(scheduleFileName)).getLines.toList
   }
 
   private def scheduleFileName() = {
