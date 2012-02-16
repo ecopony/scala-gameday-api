@@ -14,37 +14,27 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   }
 
   def boxScore() = {
-    if (_boxScore == null) _boxScore = BoxScore(date, team)
-    _boxScore.fetchStrategy = fetchStrategy
-    _boxScore.setGid(gid)
+    if (_boxScore == null) initializeBoxScore
     _boxScore
   }
   
   def hitChart() = {
-    if (_hitChart == null) _hitChart = HitChart(date, team)
-    _hitChart.fetchStrategy = fetchStrategy
-    _hitChart.setGid(gid)
+    if (_hitChart == null) initializeHitChart
     _hitChart
   }
 
   def innings() = {
-    if (_innings == null) _innings = Innings(date, team)
-    _innings.fetchStrategy = fetchStrategy
-    _innings.setGid(gid)
+    if (_innings == null) initializeInnings
     _innings
   }
 
   def inningScores() = {
-    if (_inningScores == null) _inningScores = InningScores(date, team)
-    _inningScores.fetchStrategy = fetchStrategy
-    _inningScores.setGid(gid)
+    if (_inningScores == null) initializeInningScores
     _inningScores
   }
   
   def gameEvents() = {
-    if (_gameEvents == null) _gameEvents = GameEvents(date, team)
-    _gameEvents.fetchStrategy = fetchStrategy
-    _gameEvents.setGid(gid)
+    if (_gameEvents == null) initializeGameEvents
     _gameEvents
   }
 
@@ -98,4 +88,26 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
+
+  private def initializeBoxScore() = {
+    _boxScore = BoxScore(date, team)
+    _boxScore.initializeWith(gid, fetchStrategy)
+  }
+  private def initializeHitChart() = {
+    _hitChart = HitChart(date, team)
+    _hitChart.initializeWith(gid, fetchStrategy)
+  }
+  private def initializeInnings() = {
+    _innings = Innings(date, team)
+    _innings.initializeWith(gid, fetchStrategy)
+  }
+  private def initializeInningScores() = {
+    _inningScores = InningScores(date, team)
+    _inningScores.initializeWith(gid, fetchStrategy)
+  }
+  private def initializeGameEvents() = {
+    _gameEvents = GameEvents(date, team)
+    _gameEvents.initializeWith(gid, fetchStrategy)
+  }
+
 }

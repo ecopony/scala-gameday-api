@@ -41,8 +41,9 @@ abstract class XmlRepresentation(date:Date, team:String) {
     _gid
   }
 
-  protected[gamedayapi] def setGid(gid:String) = {
+  protected[gamedayapi] def initializeWith(gid:String, fetchStrategy: FetchStrategy) = {
     _gid = gid
+    this.fetchStrategy = fetchStrategy
   }
 
   protected def gameNode() = (xml \\ "game")
