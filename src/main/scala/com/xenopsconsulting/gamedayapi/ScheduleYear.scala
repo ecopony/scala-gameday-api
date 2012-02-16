@@ -2,7 +2,6 @@ package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
 import java.text.SimpleDateFormat
-import java.io.File
 
 case class ScheduleYear(year: Int) {
 
