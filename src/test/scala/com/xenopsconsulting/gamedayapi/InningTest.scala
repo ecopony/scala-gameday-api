@@ -45,4 +45,9 @@ class InningTest extends AssertionsForJUnit {
     assertNotNull(inning.bottom)
   }
 
+  @Test def testPitches {
+    assertEquals(46, inning.pitches.size)
+    assertEquals(Pitch(<pitch_node/>).getClass, inning.pitches.head.getClass)
+  }
+
 }
