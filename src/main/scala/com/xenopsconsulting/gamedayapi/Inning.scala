@@ -13,7 +13,7 @@ case class Inning(inningNode: Node) {
   def next = (inningNode \ "@next").text
 
   /**
-   * A helper method for accessing all at-bats in the inning by both teams, in
+   * A convenience method for accessing all at-bats in the inning by both teams, in
    * the order in which they occurred.
    *
    * @return A list of AtBat objects
@@ -23,7 +23,7 @@ case class Inning(inningNode: Node) {
   }
 
   /**
-   * A helper method for accessing all pitches thrown in the inning by both teams, in
+   * A convenience method for accessing all pitches thrown in the inning by both teams, in
    * the order in which they were thrown.
    *
    * @return A list of Pitch objects

@@ -41,6 +41,12 @@ class InningsTest extends AssertionsForJUnit {
 
   @Test def testAll {
     assertEquals(1, innings.all.size) // Only one inning in the test XML for innings
+    assertEquals(Inning(<inning_node/>).getClass, innings.all.head.getClass)
+  }
+
+  @Test def testPitches {
+    assertEquals(46, innings.pitches.size)
+    assertEquals(Pitch(<pitch_node/>).getClass, innings.pitches.head.getClass)
   }
 
 }
