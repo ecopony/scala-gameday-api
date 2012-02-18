@@ -85,6 +85,16 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
 
+  /**
+   * A convenience method for accessing all pitches thrown in the game by both teams, in
+   * the order in which they were thrown.
+   *
+   * @return A collection of Pitch objects
+   */
+  def pitches() = {
+    innings.pitches
+  }
+
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")

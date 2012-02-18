@@ -168,4 +168,12 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("Kansas City", game.homeTeamNameFull)
   }
 
+  @Test def testPitches {
+    assertEquals(46, game.pitches.size)
+    assertEquals(Pitch(<pitch_node/>).getClass, game.pitches.head.getClass)
+
+  }
+
+
+
 }
