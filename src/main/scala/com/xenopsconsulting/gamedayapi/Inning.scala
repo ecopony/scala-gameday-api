@@ -29,7 +29,7 @@ case class Inning(inningNode: Node) {
    * @return A list of Pitch objects
    */
   def pitches() = {
-    atBats.flatMap(atBat => atBat.pitches)
+    atBats.flatMap(_.pitches)
   }
 
 }

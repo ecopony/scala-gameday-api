@@ -27,7 +27,7 @@ case class Innings(date: Date, team: String) extends XmlRepresentation(date: Dat
    * @return A list of Pitches objects
    */
   def pitches() = {
-    all.flatMap(inning => inning.pitches)
+    all.flatMap(_.pitches)
   }
 
 }
