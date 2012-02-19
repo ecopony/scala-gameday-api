@@ -170,8 +170,7 @@ class GameTest extends AssertionsForJUnit {
 
   @Test def testPitches {
     assertEquals(46, game.pitches.size)
-    assertEquals(Pitch(<pitch_node/>).getClass, game.pitches.head.getClass)
-
+    assertEquals("3", game.pitches.head.id)
   }
 
 

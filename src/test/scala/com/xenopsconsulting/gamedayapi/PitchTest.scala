@@ -171,5 +171,9 @@ class PitchTest extends AssertionsForJUnit {
   @Test def testMt {
     assertEquals("", first_at_bat_pitches.head.mt)
   }
+  
+  @Test def testPitcher {
+    assertEquals("433587", first_at_bat_pitches.head.pitcher)
+  }
 
 }

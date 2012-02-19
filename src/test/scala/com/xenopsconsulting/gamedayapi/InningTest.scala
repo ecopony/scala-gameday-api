@@ -54,7 +54,7 @@ class InningTest extends AssertionsForJUnit {
 
   @Test def testPitches {
     assertEquals(46, inning.pitches.size)
-    assertEquals(Pitch(<pitch_node/>).getClass, inning.pitches.head.getClass)
+    assertEquals("3", inning.pitches.head.id)
   }
 
 }

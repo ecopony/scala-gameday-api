@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
 
-case class Runner(runnerNode: Node) {
+case class Runner(runnerNode: Node, atBat: AtBat) {
 
   def id() = rna("@id")
   def start() = rna("@start")

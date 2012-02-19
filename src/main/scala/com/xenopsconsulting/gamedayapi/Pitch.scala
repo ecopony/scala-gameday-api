@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
 
-case class Pitch(pitchNode: Node) {
+case class Pitch(pitchNode: Node, atBat:AtBat) {
 
   def des() = pna("@des")
   def id() = pna("@id")
@@ -40,6 +40,8 @@ case class Pitch(pitchNode: Node) {
   def spinRate() = pna("@spin_rate")
   def cc() = pna("@cc")
   def mt() = pna("@mt")
+
+  def pitcher() = atBat.pitcher
 
   private def pna(attribute: String) = (pitchNode \ attribute).text
 

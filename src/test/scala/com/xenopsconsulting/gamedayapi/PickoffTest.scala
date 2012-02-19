@@ -26,5 +26,9 @@ class PickoffTest extends AssertionsForJUnit {
   @Test def testDes {
     assertEquals("Pickoff Attempt 1B", bottom_first_at_bats.takeRight(6).head.pickoffs.head.des)
   }
+  
+  @Test def testAtBat {
+    assertEquals(bottom_first_at_bats.takeRight(6).head, bottom_first_at_bats.takeRight(6).head.pickoffs.head.atBat)
+  }
 
 }

@@ -101,5 +101,9 @@ class AtBatTest extends AssertionsForJUnit {
   @Test def testPickoffsExist {
     assertEquals(1, bottom_first_at_bats.takeRight(6).head.pickoffs.size)
   }
+  
+  @Test def testInning {
+    assertEquals("1", top_first_at_bats.head.inning.num)
+  }
 
 }

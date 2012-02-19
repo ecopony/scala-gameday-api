@@ -48,5 +48,9 @@ class RunnerTest extends AssertionsForJUnit {
   @Test def testEarned {
     assertEquals("T", runner.earned)
   }
+  
+  @Test def testAtBat {
+    assertEquals(inningScores.scores.head.atBat, runner.atBat)
+  }
 
 }

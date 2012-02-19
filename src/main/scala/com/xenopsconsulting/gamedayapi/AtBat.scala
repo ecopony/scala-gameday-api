@@ -2,11 +2,11 @@ package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
 
-case class AtBat(atBatNode: Node) {
+case class AtBat(atBatNode: Node, inning: Inning = null) {
 
-  def pitches() = (atBatNode \ "pitch").map (Pitch(_))
-  def runners() = (atBatNode \ "runner").map (Runner(_))
-  def pickoffs() = (atBatNode \ "po").map (Pickoff(_))
+  def pitches() = (atBatNode \ "pitch").map (Pitch(_, this))
+  def runners() = (atBatNode \ "runner").map (Runner(_, this))
+  def pickoffs() = (atBatNode \ "po").map (Pickoff(_, this))
 
   def num() = ( atBatNode \ "@num" ).text
   def b() = ( atBatNode \ "@b" ).text
