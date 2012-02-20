@@ -173,6 +173,9 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("3", game.pitches.head.id)
   }
 
-
+  @Test def testPitchers {
+    assertEquals(7, game.pitchers.size)
+    assertEquals("277417", game.pitchers.head.id)
+  }
 
 }

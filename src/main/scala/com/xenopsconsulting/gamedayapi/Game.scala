@@ -95,6 +95,16 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     innings.pitches
   }
 
+  /**
+   * A convenience method for accessing all of the pitchers that appeared in the game, starting
+   * with the away team.
+   *
+   * @return A collection of Pitcher objects
+   */
+  def pitchers() = {
+    boxScore.awayPitchers ++ boxScore.homePitchers
+  }
+
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
@@ -108,7 +118,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     _hitChart.initializeWith(gid, fetchStrategy)
   }
   private def initializeInnings() = {
-    _innings = Innings(date, team)
+    _innings = Innings(date, team, this)
     _innings.initializeWith(gid, fetchStrategy)
   }
   private def initializeInningScores() = {
@@ -116,7 +126,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     _inningScores.initializeWith(gid, fetchStrategy)
   }
   private def initializeGameEvents() = {
-    _gameEvents = GameEvents(date, team)
+    _gameEvents = GameEvents(date, team, this)
     _gameEvents.initializeWith(gid, fetchStrategy)
   }
 

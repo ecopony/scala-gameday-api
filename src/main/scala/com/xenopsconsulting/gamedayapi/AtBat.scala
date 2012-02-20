@@ -17,7 +17,6 @@ case class AtBat(atBatNode: Node, inning: Inning = null) {
   def batter() = ( atBatNode \ "@batter" ).text
   def stand() = ( atBatNode \ "@stand" ).text
   def bHeight() = ( atBatNode \ "@b_height" ).text
-  def pitcher() = ( atBatNode \ "@pitcher" ).text
   def pThrows() = ( atBatNode \ "@p_throws" ).text
   def des() = ( atBatNode \ "@des" ).text
   def event() = ( atBatNode \ "@event" ).text
@@ -27,5 +26,17 @@ case class AtBat(atBatNode: Node, inning: Inning = null) {
   def b1() = ( atBatNode \ "@b1" ).text
   def b2() = ( atBatNode \ "@b2" ).text
   def b3() = ( atBatNode \ "@b3" ).text
+
+  /**
+   * This pitcher method does not return the id of the pitcher that is in
+   * the Gameday XML, but instead returns a reference to a pitcher object.
+   * To obtain the id in the XML, you may call Pitcher#id
+   *
+   * @return Pitcher
+   */
+  def pitcher() = {
+    val game = inning.game
+    (game.pitchers.find (_.id == ( atBatNode \ "@pitcher" ).text)).get
+  }
 
 }

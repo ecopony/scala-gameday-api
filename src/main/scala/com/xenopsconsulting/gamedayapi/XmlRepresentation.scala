@@ -27,15 +27,6 @@ abstract class XmlRepresentation(date:Date, team:String) {
     }
   }
 
-  def inning(number: Int) = {
-    val inningNode = (gameNode \ "inning").find((node: Node) => node.attribute("num").isDefined && node.attribute("num").get.text == number.toString)
-
-    inningNode match {
-      case Some(node) => Some(new Inning(node))
-      case _ => None
-    }
-  }
-
   protected def gid = {
     if (_gid == null) _gid = fetchStrategy.fetchGid(date, team)
     _gid

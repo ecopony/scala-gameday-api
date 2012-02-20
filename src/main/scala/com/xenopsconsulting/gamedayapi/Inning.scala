@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import xml.Node
 
-case class Inning(inningNode: Node) {
+case class Inning(inningNode: Node, game: Game = null) {
 
   def top() = HalfInning((inningNode \ "top").head, this)
   def bottom() = HalfInning((inningNode \ "bottom").head, this)
