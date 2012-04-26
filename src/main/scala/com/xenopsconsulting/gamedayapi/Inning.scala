@@ -4,8 +4,25 @@ import xml.Node
 
 case class Inning(inningNode: Node, game: Game = null) {
 
-  def top() = HalfInning((inningNode \ "top").head, this)
-  def bottom() = HalfInning((inningNode \ "bottom").head, this)
+  def top() = {
+    try {
+      HalfInning((inningNode \ "top").head, this)
+    } catch {
+      case e => {
+        HalfInning(<top/>, this)
+      }
+    }
+  }
+
+  def bottom() = {
+    try {
+      HalfInning((inningNode \ "bottom").head, this)
+    } catch {
+      case e => {
+        HalfInning(<bottom/>, this)
+      }
+    }
+  }
 
   def num = (inningNode \ "@num").text
   def homeTeam = (inningNode \ "@home_team").text

@@ -16,7 +16,7 @@ class InningTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    innings = new Innings(date, team)
+    innings = Innings(date, team)
     innings.fetchStrategy = TestFetchStrategy
     inning = innings.inning(1).get
   }
@@ -50,6 +50,16 @@ class InningTest extends AssertionsForJUnit {
     assertEquals("1", inning.atBats.head.num)
     assertEquals("11", inning.atBats.last.num)
     assertEquals(AtBat(<atbat_node/>).getClass, inning.atBats.head.getClass)
+  }
+
+
+  @Test def testAtBatsNoBottom {
+    date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
+    team = "sea"
+    innings = Innings(date, team)
+    innings.fetchStrategy = TestNoBottomInningFetchStrategy
+    inning = innings.inning(1).get
+    assertEquals(3, inning.atBats.size)
   }
 
   @Test def testPitches {

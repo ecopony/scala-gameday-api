@@ -6,7 +6,13 @@ import xml.Node
 case class Innings(date: Date, team: String, game: Game = null) extends XmlRepresentation(date: Date, team: String) {
 
   def fetch() = {
-    _xml = fetchStrategy.fetchInnings(date, team, gid)
+    try {
+      _xml = fetchStrategy.fetchInnings(date, team, gid)
+    } catch {
+      case e => {
+        _xml = <game/>
+      }
+    }
   }
 
   def atBat() = (gameNode \ "@atBat").text
@@ -14,7 +20,8 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
   def hole() = (gameNode \ "@hole").text
 
   def inning(number: Int) = {
-    val inningNode = (gameNode \ "inning").find((node: Node) => node.attribute("num").isDefined && node.attribute("num").get.text == number.toString)
+    val inningNode = (gameNode \ "inning").find((node: Node) => node.attribute("num").isDefined &&
+      node.attribute("num").get.text == number.toString)
 
     inningNode match {
       case Some(node) => Some(new Inning(node, game))
