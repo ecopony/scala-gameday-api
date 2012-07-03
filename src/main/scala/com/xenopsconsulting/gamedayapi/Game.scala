@@ -135,11 +135,19 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     innings.awayTeamAtBats
   }
 
-  def homeTeamPitchesPerAtBat() = {
+  /**
+   * A convenience method that returns the number of pitches seen by the home team
+   * batters per at bat.
+   */
+  def homeTeamPitchesSeenPerAtBat() = {
     awayTeamPitches.size.toFloat / homeTeamAtBats.size.toFloat
   }
 
-  def awayTeamPitchesPerAtBat() = {
+  /**
+   * A convenience method that returns the number of pitches seen by the away team
+   * batters per at bat.
+   */
+  def awayTeamPitchesSeenPerAtBat() = {
     homeTeamPitches.size.toFloat / awayTeamAtBats.size.toFloat
   }
 

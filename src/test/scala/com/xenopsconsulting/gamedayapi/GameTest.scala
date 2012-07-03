@@ -198,12 +198,12 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("277417", game.pitchers.head.id)
   }
 
-  @Test def testHomeTeamPitchesPerAtBat {
-    assertEquals(4.25, game.homeTeamPitchesPerAtBat, 2)
+  @Test def testHomeTeamPitchesSeenPerAtBat {
+    assertEquals(4.25, game.homeTeamPitchesSeenPerAtBat, 2)
   }
 
-  @Test def testAwayTeamPitchesPerAtBat {
-    assertEquals(4.0, game.awayTeamPitchesPerAtBat, 1)
+  @Test def testAwayTeamPitchesSeenPerAtBat {
+    assertEquals(4.0, game.awayTeamPitchesSeenPerAtBat, 1)
   }
 
 }
