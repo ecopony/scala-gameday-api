@@ -52,6 +52,15 @@ class InningTest extends AssertionsForJUnit {
     assertEquals(AtBat(<atbat_node/>).getClass, inning.atBats.head.getClass)
   }
 
+  @Test def testHomeTeamAtBats {
+    assertEquals(8, inning.homeTeamAtBats.size)
+    assertEquals("4", inning.homeTeamAtBats.head.num)
+  }
+
+  @Test def testAwayTeamAtBats {
+    assertEquals(3, inning.awayTeamAtBats.size)
+    assertEquals("1", inning.awayTeamAtBats.head.num)
+  }
 
   @Test def testAtBatsNoBottom {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
@@ -65,6 +74,16 @@ class InningTest extends AssertionsForJUnit {
   @Test def testPitches {
     assertEquals(46, inning.pitches.size)
     assertEquals("3", inning.pitches.head.id)
+  }
+
+  @Test def testHomeTeamPitches {
+    assertEquals(12, inning.homeTeamPitches.size)
+    assertEquals("3", inning.homeTeamPitches.head.id)
+  }
+
+  @Test def testAwayTeamPitches {
+    assertEquals(34, inning.awayTeamPitches.size)
+    assertEquals("25", inning.awayTeamPitches.head.id)
   }
 
 }

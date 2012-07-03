@@ -96,6 +96,54 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   }
 
   /**
+   * A convenience method for accessing all pitches thrown in the game by the home team, in
+   * the order in which they were thrown.
+   *
+   * @return A list of Pitch objects
+   */
+  def homeTeamPitches() = {
+    innings.homeTeamPitches
+  }
+
+  /**
+   * A convenience method for accessing all pitches thrown in the game by the away team, in
+   * the order in which they were thrown.
+   *
+   * @return A list of Pitch objects
+   */
+  def awayTeamPitches() = {
+    innings.awayTeamPitches
+  }
+
+  /**
+   * A convenience method for accessing all of the home team's at-bats from all
+   * of the innings, in the order in which they occurred.
+   *
+   * @return A list of AtBat objects
+   */
+  def homeTeamAtBats() = {
+    innings.homeTeamAtBats
+  }
+
+  /**
+   * A convenience method for accessing all of the away team's at-bats from all
+   * of the innings, in the order in which they occurred.
+   *
+   * @return A list of AtBat objects
+   */
+  def awayTeamAtBats() = {
+    innings.awayTeamAtBats
+  }
+
+  def homeTeamPitchesPerAtBat() = {
+    awayTeamPitches.size.toFloat / homeTeamAtBats.size.toFloat
+  }
+
+  def awayTeamPitchesPerAtBat() = {
+    homeTeamPitches.size.toFloat / awayTeamAtBats.size.toFloat
+  }
+
+  /**
    * A convenience method for accessing all of the pitchers that appeared in the game, starting
    * with the away team.
    *

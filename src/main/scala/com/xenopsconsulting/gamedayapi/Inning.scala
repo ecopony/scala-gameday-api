@@ -40,6 +40,26 @@ case class Inning(inningNode: Node, game: Game = null) {
   }
 
   /**
+   * A convenience method for accessing all at-bats in the inning by the home team, in
+   * the order in which they occurred.
+   *
+   * @return A list of AtBat objects
+   */
+  def homeTeamAtBats() = {
+    bottom.atBats
+  }
+
+  /**
+   * A convenience method for accessing all at-bats in the inning by the away team, in
+   * the order in which they occurred.
+   *
+   * @return A list of AtBat objects
+   */
+  def awayTeamAtBats() = {
+    top.atBats
+  }
+
+  /**
    * A convenience method for accessing all pitches thrown in the inning by both teams, in
    * the order in which they were thrown.
    *
@@ -47,6 +67,26 @@ case class Inning(inningNode: Node, game: Game = null) {
    */
   def pitches() = {
     atBats.flatMap(_.pitches)
+  }
+
+  /**
+   * A convenience method for accessing all pitches thrown in the inning by the home team, in
+   * the order in which they were thrown.
+   *
+   * @return A list of Pitch objects
+   */
+  def homeTeamPitches() = {
+    top.atBats.flatMap(_.pitches)
+  }
+
+  /**
+   * A convenience method for accessing all pitches thrown in the inning by the away team, in
+   * the order in which they were thrown.
+   *
+   * @return A list of Pitch objects
+   */
+  def awayTeamPitches() = {
+    bottom.atBats.flatMap(_.pitches)
   }
 
 }

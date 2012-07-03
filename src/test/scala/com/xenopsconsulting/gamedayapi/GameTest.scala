@@ -168,14 +168,42 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("Kansas City", game.homeTeamNameFull)
   }
 
+  @Test def testHomeTeamAtBats {
+    assertEquals(8, game.homeTeamAtBats.size)
+    assertEquals("4", game.homeTeamAtBats.head.num)
+  }
+
+  @Test def testAwayTeamAtBats {
+    assertEquals(3, game.awayTeamAtBats.size)
+    assertEquals("1", game.awayTeamAtBats.head.num)
+  }
+
   @Test def testPitches {
     assertEquals(46, game.pitches.size)
     assertEquals("3", game.pitches.head.id)
   }
 
+  @Test def testHomeTeamPitches {
+    assertEquals(12, game.homeTeamPitches.size)
+    assertEquals("3", game.homeTeamPitches.head.id)
+  }
+
+  @Test def testAwayTeamPitches {
+    assertEquals(34, game.awayTeamPitches.size)
+    assertEquals("25", game.awayTeamPitches.head.id)
+  }
+
   @Test def testPitchers {
     assertEquals(7, game.pitchers.size)
     assertEquals("277417", game.pitchers.head.id)
+  }
+
+  @Test def testHomeTeamPitchesPerAtBat {
+    assertEquals(4.25, game.homeTeamPitchesPerAtBat, 2)
+  }
+
+  @Test def testAwayTeamPitchesPerAtBat {
+    assertEquals(4.0, game.awayTeamPitchesPerAtBat, 1)
   }
 
 }
