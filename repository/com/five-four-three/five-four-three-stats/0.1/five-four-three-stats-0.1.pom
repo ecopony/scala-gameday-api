@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.xenopsconsulting</groupId>
-  <artifactId>scala-gameday-api</artifactId>
+  <groupId>com.five-four-three</groupId>
+  <artifactId>five-four-three-stats</artifactId>
   <version>0.1</version>
-  <inceptionYear>2011</inceptionYear>
+  <inceptionYear>2012</inceptionYear>
   <properties>
     <scala.version>2.9.1</scala.version>
   </properties>
@@ -16,6 +16,11 @@
       <id>scala-tools.org</id>
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+    <repository>
+      <id>ecopony.github.com</id>
+      <name>Scala Gameday API Repository</name>
+      <url>http://ecopony.github.com/scala-gameday-api/repository</url>
     </repository>
   </repositories>
 
@@ -29,19 +34,14 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.xenopsconsulting</groupId>
+      <artifactId>scala-gameday-api</artifactId>
+      <version>0.1</version>
+    </dependency>
+    <dependency>
       <groupId>org.scala-lang</groupId>
       <artifactId>scala-library</artifactId>
       <version>2.9.1</version>
-    </dependency>
-    <dependency>
-      <groupId>net.databinder</groupId>
-      <artifactId>dispatch-core_2.9.1</artifactId>
-      <version>0.8.5</version>
-    </dependency>
-    <dependency>
-      <groupId>net.databinder</groupId>
-      <artifactId>dispatch-http_2.9.1</artifactId>
-      <version>0.8.8</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -49,27 +49,25 @@
       <version>4.8</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.scalatest</groupId>
+          <artifactId>scalatest_2.9.1</artifactId>
+          <version>1.6.1</version>
+      </dependency>
     <dependency>
-      <groupId>org.scalatest</groupId>
-      <artifactId>scalatest_2.9.1</artifactId>
-      <version>1.6.1</version>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.2.15</version>
     </dependency>
   </dependencies>
 
   <build>
     <sourceDirectory>src/main/scala</sourceDirectory>
     <testSourceDirectory>src/test/scala</testSourceDirectory>
-    <resources>
-        <resource>
-            <directory>src/main/resources</directory>
-            <targetPath>com/xenopsconsulting/gamedayapi</targetPath>
-        </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
-        <version>2.15.2</version>
         <executions>
           <execution>
             <goals>
@@ -92,18 +90,18 @@
       <plugin>
         <groupId>org.scala-tools</groupId>
         <artifactId>maven-scala-plugin</artifactId>
-        <version>2.15.2</version>
         <configuration>
-          <scalaVersion>2.9.1</scalaVersion>
+          <scalaVersion>2.9</scalaVersion>
         </configuration>
       </plugin>
     </plugins>
   </reporting>
 
-  <distributionManagement>
-    <repository>
-      <id>gh-pages</id>
-      <url>file:///${basedir}/../scala-gameday-api-pages/repository/</url>
-    </repository>
-  </distributionManagement>
+   <distributionManagement>
+     <repository>
+       <id>gh-pages</id>
+       <url>file:///${basedir}/../scala-gameday-api-pages/repository/</url>
+     </repository>
+    </distributionManagement>
+
 </project>
