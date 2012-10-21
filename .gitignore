@@ -6,3 +6,4 @@ boot/
 .project
 *.ipr
 *.iws
+.DS_Store
