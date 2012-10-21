@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.xenopsconsulting</groupId>
+  <artifactId>scala-gameday-cache-strategy</artifactId>
+  <version>0.1.1</version>
+  <inceptionYear>2011</inceptionYear>
+  <properties>
+    <scala.version>2.9.1</scala.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>scala-tools.org</id>
+      <name>Scala-Tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+    <repository>
+      <id>ecopony.github.com</id>
+      <name>Scala Gameday API Repository</name>
+      <url>http://ecopony.github.com/scala-gameday-api/repository</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>scala-tools.org</id>
+      <name>Scala-Tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.xenopsconsulting</groupId>
+      <artifactId>scala-gameday-api</artifactId>
+      <version>0.1</version>
+    </dependency>
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.18</version>
+      </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.9.1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_2.9.1</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk</artifactId>
+      <version>1.2.15</version>
+    </dependency>
+    <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>2.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.joda</groupId>
+        <artifactId>joda-convert</artifactId>
+        <version>1.2</version>
+    </dependency>
+
+
+  </dependencies>
+
+  <build>
+    <sourceDirectory>src/main/scala</sourceDirectory>
+    <testSourceDirectory>src/test/scala</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>2.9.1</scalaVersion>
+          <args>
+            <arg>-target:jvm-1.5</arg>
+          </args>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <version>2.15.2</version>
+        <configuration>
+          <scalaVersion>2.9.1</scalaVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <distributionManagement>
+    <repository>
+      <id>gh-pages</id>
+      <url>file:///${basedir}/../scala-gameday-api-pages/repository/</url>
+    </repository>
+  </distributionManagement>
+</project>
