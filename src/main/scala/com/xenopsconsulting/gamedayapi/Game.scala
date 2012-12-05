@@ -161,6 +161,16 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     boxScore.awayPitchers ++ boxScore.homePitchers
   }
 
+  /**
+   * A convenience method for accessing all of the batters that appeared in the game, starting
+   * with the away team.
+   *
+   * @return A collection of Batter objects
+   */
+  def batters() = {
+    boxScore.awayBatters ++ boxScore.homeBatters
+  }
+
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
