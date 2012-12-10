@@ -32,7 +32,7 @@ case class Batter(batterNode: Node) {
   def nameDisplayFirstLast() = {
     val nameDisplay = bna("@name_display_first_last")
     if (nameDisplay == "") {
-      name
+      name()
     } else {
       nameDisplay
     }

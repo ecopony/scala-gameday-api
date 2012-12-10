@@ -25,14 +25,14 @@ case class Pitcher(pitcherNode: Node) {
   def nameDisplayFirstLast() = {
     val nameDisplay = pna("@name_display_first_last")
     if (nameDisplay == "") {
-      name
+      name()
     } else {
       nameDisplay
     }
   }
 
   def inningsPitched() = {
-    val actual_innings = (out.toDouble / 3)
+    val actual_innings = (out().toDouble / 3)
     val whole_inning = actual_innings.toInt.toString
     val inning_part = actual_innings.toString.split("""\.""").tail.head.first.toString
     inning_part match {

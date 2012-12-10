@@ -11,12 +11,12 @@ object BoxScore {
 case class BoxScore(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
   private var _lineScore:LineScore = _
 
-  def fetch() = {
+  def fetch {
     _xml = fetchStrategy.fetchBoxScore(date, team, gid)
   }
 
   def lineScore() = {
-    if (_lineScore == null) initializeLineScore
+    if (_lineScore == null) initializeLineScore()
     _lineScore
   }
 
@@ -143,7 +143,7 @@ case class BoxScore(date: Date, team: String) extends XmlRepresentation(date: Da
    */
   private def abna(attribute: String) = (battingNode(BoxScore.Away) \ attribute).text
 
-  private def initializeLineScore() = {
+  private def initializeLineScore() {
     _lineScore = new LineScore(date, team)
     _lineScore.initializeWith(gid, fetchStrategy)
   }

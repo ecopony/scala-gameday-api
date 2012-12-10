@@ -4,7 +4,7 @@ import java.util.Date
 
 case class HitChart(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
 
-  def fetch() = {
+  def fetch {
     _xml = fetchStrategy.fetchHitChart(date, team, gid)
   }
 

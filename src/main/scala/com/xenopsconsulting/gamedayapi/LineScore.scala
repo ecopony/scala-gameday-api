@@ -7,7 +7,7 @@ case class LineScore(date: Date, team: String) extends XmlRepresentation(date: D
   private var _losingPitcher:LineScorePitcher = _
   private var _savePitcher:LineScorePitcher = _
 
-  def fetch() = {
+  def fetch {
     _xml = fetchStrategy.fetchLineScore(date, team, gid)
   }
 

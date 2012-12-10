@@ -8,7 +8,7 @@ case class Inning(inningNode: Node, game: Game = null) {
     try {
       HalfInning((inningNode \ "top").head, this)
     } catch {
-      case e => {
+      case e: Throwable => {
         HalfInning(<top/>, this)
       }
     }
@@ -18,7 +18,7 @@ case class Inning(inningNode: Node, game: Game = null) {
     try {
       HalfInning((inningNode \ "bottom").head, this)
     } catch {
-      case e => {
+      case e: Throwable => {
         HalfInning(<bottom/>, this)
       }
     }
@@ -36,7 +36,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of AtBat objects
    */
   def atBats() = {
-    top.atBats ++ bottom.atBats
+    top().atBats ++ bottom().atBats
   }
 
   /**
@@ -46,7 +46,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of AtBat objects
    */
   def homeTeamAtBats() = {
-    bottom.atBats
+    bottom().atBats()
   }
 
   /**
@@ -56,7 +56,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of AtBat objects
    */
   def awayTeamAtBats() = {
-    top.atBats
+    top().atBats()
   }
 
   /**
@@ -66,7 +66,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def pitches() = {
-    atBats.flatMap(_.pitches)
+    atBats().flatMap(_.pitches)
   }
 
   /**
@@ -76,7 +76,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def homeTeamPitches() = {
-    top.atBats.flatMap(_.pitches)
+    top().atBats().flatMap(_.pitches)
   }
 
   /**
@@ -86,7 +86,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def awayTeamPitches() = {
-    bottom.atBats.flatMap(_.pitches)
+    bottom().atBats().flatMap(_.pitches)
   }
 
 }

@@ -36,7 +36,7 @@ case class AtBat(atBatNode: Node, inning: Inning = null) {
    */
   def pitcher() = {
     val game = inning.game
-    (game.pitchers.find (_.id == ( atBatNode \ "@pitcher" ).text)).get
+    (game.pitchers().find (_.id == ( atBatNode \ "@pitcher" ).text)).get
   }
 
 }

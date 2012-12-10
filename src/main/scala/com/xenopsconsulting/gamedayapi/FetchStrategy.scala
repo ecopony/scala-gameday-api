@@ -67,7 +67,7 @@ trait FetchStrategy {
     } else {
       pathBuffer.append(gid)
     }
-    pathBuffer.toString
+    pathBuffer.toString()
   }
 
   protected def datePath(date: Date) = {
@@ -77,7 +77,7 @@ trait FetchStrategy {
     urlBuffer.append(new SimpleDateFormat("MM").format(date))
     urlBuffer.append("/day_")
     urlBuffer.append(new SimpleDateFormat("dd").format(date))
-    urlBuffer.toString
+    urlBuffer.toString()
   }
 
 }

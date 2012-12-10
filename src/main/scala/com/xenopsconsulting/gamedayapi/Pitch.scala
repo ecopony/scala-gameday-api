@@ -41,7 +41,7 @@ case class Pitch(pitchNode: Node, atBat:AtBat) {
   def cc() = pna("@cc")
   def mt() = pna("@mt")
 
-  def pitcher() = atBat.pitcher
+  def pitcher() = atBat.pitcher()
 
   private def pna(attribute: String) = (pitchNode \ attribute).text
 

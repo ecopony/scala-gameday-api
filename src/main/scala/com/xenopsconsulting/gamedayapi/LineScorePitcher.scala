@@ -19,7 +19,7 @@ case class LineScorePitcher(lineScoreNode: Node) {
   def nameDisplayRoster() = {
     val name = (lineScoreNode \ "@name_display_roster").text
     if (name == "") {
-      lastName
+      lastName()
     } else {
       name
     }

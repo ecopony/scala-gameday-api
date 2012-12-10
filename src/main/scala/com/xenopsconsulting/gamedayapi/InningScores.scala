@@ -4,7 +4,7 @@ import java.util.Date
 
 case class InningScores(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
 
-  def fetch() = {
+  def fetch {
     _xml = fetchStrategy.fetchInningScores(date, team, gid)
   }
 

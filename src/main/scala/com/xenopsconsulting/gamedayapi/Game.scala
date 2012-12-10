@@ -9,32 +9,32 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   private var _inningScores:InningScores = _
   private var _gameEvents:GameEvents = _
 
-  def fetch() = {
+  def fetch() {
     _xml = fetchStrategy.fetchGame(date, team, gid)
   }
 
   def boxScore() = {
-    if (_boxScore == null) initializeBoxScore
+    if (_boxScore == null) initializeBoxScore()
     _boxScore
   }
   
   def hitChart() = {
-    if (_hitChart == null) initializeHitChart
+    if (_hitChart == null) initializeHitChart()
     _hitChart
   }
 
   def innings() = {
-    if (_innings == null) initializeInnings
+    if (_innings == null) initializeInnings()
     _innings
   }
 
   def inningScores() = {
-    if (_inningScores == null) initializeInningScores
+    if (_inningScores == null) initializeInningScores()
     _inningScores
   }
   
   def gameEvents() = {
-    if (_gameEvents == null) initializeGameEvents
+    if (_gameEvents == null) initializeGameEvents()
     _gameEvents
   }
 
@@ -54,7 +54,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   def homeTeamNameFull():String = {
     val nameFull = (homeTeamNode \ "@name_full").text
     if (nameFull == "") {
-      homeTeamName
+      homeTeamName()
     } else {
       nameFull
     }
@@ -63,7 +63,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   def awayTeamNameFull():String = {
     val nameFull = (awayTeamNode \ "@name_full").text
     if (nameFull == "") {
-      awayTeamName
+      awayTeamName()
     } else {
       nameFull
     }
@@ -92,7 +92,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A collection of Pitch objects
    */
   def pitches() = {
-    innings.pitches
+    innings().pitches()
   }
 
   /**
@@ -102,7 +102,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A list of Pitch objects
    */
   def homeTeamPitches() = {
-    innings.homeTeamPitches
+    innings().homeTeamPitches()
   }
 
   /**
@@ -112,7 +112,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A list of Pitch objects
    */
   def awayTeamPitches() = {
-    innings.awayTeamPitches
+    innings().awayTeamPitches()
   }
 
   /**
@@ -122,7 +122,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A list of AtBat objects
    */
   def homeTeamAtBats() = {
-    innings.homeTeamAtBats
+    innings().homeTeamAtBats()
   }
 
   /**
@@ -132,7 +132,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A list of AtBat objects
    */
   def awayTeamAtBats() = {
-    innings.awayTeamAtBats
+    innings().awayTeamAtBats()
   }
 
   /**
@@ -140,7 +140,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * batters per at bat.
    */
   def homeTeamPitchesSeenPerAtBat() = {
-    awayTeamPitches.size.toFloat / homeTeamAtBats.size.toFloat
+    awayTeamPitches().size.toFloat / homeTeamAtBats().size.toFloat
   }
 
   /**
@@ -148,7 +148,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * batters per at bat.
    */
   def awayTeamPitchesSeenPerAtBat() = {
-    homeTeamPitches.size.toFloat / awayTeamAtBats.size.toFloat
+    homeTeamPitches().size.toFloat / awayTeamAtBats().size.toFloat
   }
 
   /**
@@ -158,7 +158,7 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A collection of Pitcher objects
    */
   def pitchers() = {
-    boxScore.awayPitchers ++ boxScore.homePitchers
+    boxScore().awayPitchers ++ boxScore().homePitchers
   }
 
   /**
@@ -168,30 +168,30 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * @return A collection of Batter objects
    */
   def batters() = {
-    boxScore.awayBatters ++ boxScore.homeBatters
+    boxScore().awayBatters ++ boxScore().homeBatters
   }
 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
 
-  private def initializeBoxScore() = {
+  private def initializeBoxScore() {
     _boxScore = BoxScore(date, team)
     _boxScore.initializeWith(gid, fetchStrategy)
   }
-  private def initializeHitChart() = {
+  private def initializeHitChart() {
     _hitChart = HitChart(date, team)
     _hitChart.initializeWith(gid, fetchStrategy)
   }
-  private def initializeInnings() = {
+  private def initializeInnings() {
     _innings = Innings(date, team, this)
     _innings.initializeWith(gid, fetchStrategy)
   }
-  private def initializeInningScores() = {
+  private def initializeInningScores() {
     _inningScores = InningScores(date, team)
     _inningScores.initializeWith(gid, fetchStrategy)
   }
-  private def initializeGameEvents() = {
+  private def initializeGameEvents() {
     _gameEvents = GameEvents(date, team, this)
     _gameEvents.initializeWith(gid, fetchStrategy)
   }

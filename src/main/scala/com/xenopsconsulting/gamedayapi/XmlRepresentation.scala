@@ -10,18 +10,18 @@ abstract class XmlRepresentation(date:Date, team:String) {
   var fetchStrategy: FetchStrategy = MlbFetchStrategy
 
   def xml():Elem = {
-    if (_xml == null) fetch
+    if (_xml == null) fetch()
     _xml
   }
 
-  def fetch
+  def fetch()
 
   def exists() = {
     try {
-      fetch
+      fetch()
       true
     } catch {
-      case e => {
+      case e: Throwable => {
         false
       }
     }
@@ -32,7 +32,7 @@ abstract class XmlRepresentation(date:Date, team:String) {
     _gid
   }
 
-  protected[gamedayapi] def initializeWith(gid:String, fetchStrategy: FetchStrategy) = {
+  protected[gamedayapi] def initializeWith(gid:String, fetchStrategy: FetchStrategy) {
     _gid = gid
     this.fetchStrategy = fetchStrategy
   }

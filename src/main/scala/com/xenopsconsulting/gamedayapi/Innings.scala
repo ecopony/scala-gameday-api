@@ -5,11 +5,11 @@ import xml.Node
 
 case class Innings(date: Date, team: String, game: Game = null) extends XmlRepresentation(date: Date, team: String) {
 
-  def fetch() = {
+  def fetch {
     try {
       _xml = fetchStrategy.fetchInnings(date, team, gid)
     } catch {
-      case e => {
+      case e: Throwable => {
         _xml = <game/>
       }
     }
@@ -44,7 +44,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of AtBat objects
    */
   def atBats() = {
-    all.flatMap(_.atBats)
+    all().flatMap(_.atBats)
   }
 
   /**
@@ -54,7 +54,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of AtBat objects
    */
   def homeTeamAtBats() = {
-    all.flatMap(_.homeTeamAtBats)
+    all().flatMap(_.homeTeamAtBats)
   }
 
   /**
@@ -64,7 +64,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of AtBat objects
    */
   def awayTeamAtBats() = {
-    all.flatMap(_.awayTeamAtBats)
+    all().flatMap(_.awayTeamAtBats)
   }
 
   /**
@@ -74,7 +74,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of Pitches objects
    */
   def pitches() = {
-    all.flatMap(_.pitches)
+    all().flatMap(_.pitches)
   }
 
   /**
@@ -84,7 +84,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of Pitch objects
    */
   def homeTeamPitches() = {
-    all.flatMap(_.homeTeamPitches)
+    all().flatMap(_.homeTeamPitches)
   }
 
   /**
@@ -94,7 +94,7 @@ case class Innings(date: Date, team: String, game: Game = null) extends XmlRepre
    * @return A list of Pitch objects
    */
   def awayTeamPitches() = {
-    all.flatMap(_.awayTeamPitches)
+    all().flatMap(_.awayTeamPitches)
   }
 
 }

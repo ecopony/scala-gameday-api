@@ -6,7 +6,7 @@ import xml.Node
 case class GameEvents(date: Date, team: String, game: Game = null) extends XmlRepresentation(date: Date,
   team: String) {
 
-  def fetch() = {
+  def fetch {
     _xml = fetchStrategy.fetchGameEvents(date, team, gid)
   }
 

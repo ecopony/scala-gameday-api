@@ -10,7 +10,7 @@ case class ScheduleYear(year: Int) {
   }
 
   def openingDay() = {
-    games.head.date
+    games().head.date()
   }
 
   def gamesForDay(date: Date) = {
@@ -18,7 +18,7 @@ case class ScheduleYear(year: Int) {
   }
 
   private def readGamesFromFile() = {
-    scala.io.Source.fromInputStream(getClass.getResourceAsStream(scheduleFileName)).getLines.toList
+    scala.io.Source.fromInputStream(getClass.getResourceAsStream(scheduleFileName())).getLines().toList
   }
 
   private def scheduleFileName() = {
