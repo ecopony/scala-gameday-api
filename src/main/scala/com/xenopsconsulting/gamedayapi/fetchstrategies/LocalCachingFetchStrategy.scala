@@ -1,4 +1,4 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import scala.xml._
 import java.util.Date

@@ -1,5 +1,6 @@
 package com.xenopsconsulting.gamedayapi
 
+import fetchstrategies.FetchStrategy
 import xml.Elem
 import java.util.Date
 

@@ -1,5 +1,6 @@
 package com.xenopsconsulting.gamedayapi
 
+import fetchstrategies.{FetchStrategy, DefaultFetchStrategy}
 import xml.{Node, Elem}
 import java.util.Date
 
@@ -7,7 +8,7 @@ import java.util.Date
 abstract class XmlRepresentation(date:Date, team:String) {
   protected var _gid:String = _
   protected var _xml:Elem = null
-  var fetchStrategy: FetchStrategy = MlbFetchStrategy
+  var fetchStrategy: FetchStrategy = DefaultFetchStrategy
 
   def xml():Elem = {
     if (_xml == null) fetch()

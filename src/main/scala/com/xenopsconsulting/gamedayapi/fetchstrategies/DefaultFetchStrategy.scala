@@ -1,10 +1,10 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import scala.xml._
 import dispatch._
 import java.util.Date
 
-object MlbFetchStrategy extends FetchStrategy {
+object DefaultFetchStrategy extends FetchStrategy {
   val http = new Http
 
   def fetchEpg(date: Date) = fetchXmlAsString(epgUrl(date))

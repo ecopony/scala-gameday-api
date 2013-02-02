@@ -1,4 +1,4 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import java.util.Date
 import java.text.SimpleDateFormat
