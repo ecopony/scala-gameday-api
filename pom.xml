@@ -43,6 +43,21 @@
       <artifactId>dispatch-http_2.9.1</artifactId>
       <version>0.8.8</version>
     </dependency>
+      <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-java-sdk</artifactId>
+          <version>1.2.15</version>
+      </dependency>
+      <dependency>
+          <groupId>joda-time</groupId>
+          <artifactId>joda-time</artifactId>
+          <version>2.1</version>
+      </dependency>
+      <dependency>
+          <groupId>org.joda</groupId>
+          <artifactId>joda-convert</artifactId>
+          <version>1.2</version>
+      </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
