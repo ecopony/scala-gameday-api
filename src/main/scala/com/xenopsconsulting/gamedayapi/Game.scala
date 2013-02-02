@@ -9,8 +9,27 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
   private var _inningScores:InningScores = _
   private var _gameEvents:GameEvents = _
 
+  /**
+   * Fetches the game file from gameday servers. Does not need to be invoked directly, as it will be invoked lazily
+   * by methods in need of game data. Invoking will replace any previously loaded XML for this game.
+   */
   def fetch() {
     _xml = fetchStrategy.fetchGame(date, team, gid)
+  }
+
+  /**
+   * Eagerly load all files associated with this game. Invoking this method is not necessary to interact with all game
+   * files, as they will be lazily loaded as needed by the API. You can call this method if latency during later
+   * interactions with the API is a concern, or if you are crawling and saving data files and want all data to be
+   * retrieved without having to touch all child objects through the API.
+   */
+  def fetchAll() {
+    boxScore().fetch();
+    boxScore().lineScore().fetch();
+    gameEvents().fetch();
+    hitChart().fetch();
+    inningScores().fetch();
+    innings().fetch();
   }
 
   def boxScore() = {

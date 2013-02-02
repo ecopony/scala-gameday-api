@@ -211,4 +211,8 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("453056", game.batters.head.id)
   }
 
+  @Test def testFetchAll {
+    game.fetchAll() // No assertions, just make sure it doesn't fail. Mock verification could be added.
+  }
+
 }
