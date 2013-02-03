@@ -21,6 +21,10 @@ class ScheduleYearTest extends AssertionsForJUnit {
   @Test def testOpeningDay {
     assertEquals(new SimpleDateFormat("yyy-MM-dd").parse("2011-03-31"), schedule.openingDay)
   }
+
+  @Test def finalDay {
+    assertEquals(new SimpleDateFormat("yyy-MM-dd").parse("2011-09-28"), schedule.finalDay())
+  }
   
   @Test def testGames {
     assertEquals(162*15, schedule.games.size)

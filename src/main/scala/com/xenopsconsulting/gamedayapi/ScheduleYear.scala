@@ -13,6 +13,10 @@ case class ScheduleYear(year: Int) {
     games().head.date()
   }
 
+  def finalDay() = {
+    games().last.date()
+  }
+
   def gamesForDay(date: Date) = {
     (readGamesFromFile filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) map(ScheduleGame(_))
   }
