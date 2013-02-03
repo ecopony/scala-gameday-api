@@ -35,4 +35,12 @@ class ScheduleYearTest extends AssertionsForJUnit {
     assertEquals(6, games.size)
   }
 
+  @Test def testGamesForDayAndTeam {
+    var games = schedule.gamesForDayAndTeam(new SimpleDateFormat("yyy-MM-dd").parse("2011-03-31"), "was")
+    assertEquals(1, games.size)
+
+    games = schedule.gamesForDayAndTeam(new SimpleDateFormat("yyy-MM-dd").parse("2011-03-31"), "sea")
+    assertEquals(0, games.size)
+  }
+
 }
