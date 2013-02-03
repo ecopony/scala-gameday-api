@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat
 class GameFactoryTest extends AssertionsForJUnit {
   var date: Date = _
   var team: String = _
+  var factory: GameFactory = _
+  var game: Game = _
 
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
@@ -19,17 +21,17 @@ class GameFactoryTest extends AssertionsForJUnit {
 
   @Test
   def testFactoryReturnsGameWithDefaultStrategy() {
-    val factory = new GameFactory();
-    val game: Game = factory.gameFor(date, "sea");
-    assertNotNull(game);
+    factory = new GameFactory()
+    game = factory.gameFor(date, "sea")
+    assertNotNull(game)
     assertEquals(DefaultFetchStrategy.getClass, game.fetchStrategy.getClass)
   }
 
   @Test
   def testFactoryReturnsGameWithGivenStrategy() {
-    val factory = new GameFactory(LocalCachingFetchStrategy);
-    val game: Game = factory.gameFor(date, "sea");
-    assertNotNull(game);
+    factory = new GameFactory(LocalCachingFetchStrategy)
+    game = factory.gameFor(date, "sea")
+    assertNotNull(game)
     assertEquals(LocalCachingFetchStrategy.getClass, game.fetchStrategy.getClass)
   }
 

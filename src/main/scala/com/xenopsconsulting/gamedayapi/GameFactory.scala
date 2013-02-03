@@ -10,8 +10,8 @@ class GameFactory(fetchStrategy: FetchStrategy) {
   }
 
   def gameFor(date: Date, team: String): Game = {
-    val game = new Game(date, team);
-    game.fetchStrategy = fetchStrategy;
+    val game = new Game(date, team)
+    game.fetchStrategy = fetchStrategy
     game
   }
 
