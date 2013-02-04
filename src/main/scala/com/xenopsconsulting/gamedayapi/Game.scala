@@ -24,12 +24,13 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * retrieved without having to touch all child objects through the API.
    */
   def fetchAll() {
-    boxScore().fetch();
-    boxScore().lineScore().fetch();
-    gameEvents().fetch();
-    hitChart().fetch();
-    inningScores().fetch();
-    innings().fetch();
+    this.fetch()
+    boxScore().fetch()
+    boxScore().lineScore().fetch()
+    gameEvents().fetch()
+    hitChart().fetch()
+    inningScores().fetch()
+    innings().fetch()
   }
 
   def boxScore() = {
