@@ -23,31 +23,31 @@ object LocalCachingFetchStrategy extends FetchStrategy {
 
   def fetchGame(date: Date, team: String, gid: String = null): Elem = {
     val game = XML.loadString(_http(url(gameUrl(date, team, gid)) as_str))
-    cacheContent(date, gameDirectoryPath(date, team), "game.xml", game)
+    cacheContent(date, gameDirectoryPath(date, team, gid), "game.xml", game)
     game
   }
 
   def fetchBoxScore(date: Date, team: String, gid: String = null): Elem = {
     val boxScore = XML.loadString(_http(url(boxScoreUrl(date, team, gid)) as_str))
-    cacheContent(date, gameDirectoryPath(date, team), "boxscore.xml", boxScore)
+    cacheContent(date, gameDirectoryPath(date, team, gid), "boxscore.xml", boxScore)
     boxScore
   }
 
   def fetchLineScore(date: Date, team: String, gid: String = null): Elem = {
     val lineScore = XML.loadString(_http(url(lineScoreUrl(date, team, gid)) as_str))
-    cacheContent(date, gameDirectoryPath(date, team), "linescore.xml", lineScore)
+    cacheContent(date, gameDirectoryPath(date, team, gid), "linescore.xml", lineScore)
     lineScore
   }
 
   def fetchHitChart(date: Date, team: String, gid: String = null) = {
     val hitChart = XML.loadString(_http(url(hitChartUrl(date, team, gid)) as_str))
-    cacheContent(date, gameDirectoryPath(date, team), "inning/inning_hit.xml", hitChart)
+    cacheContent(date, gameDirectoryPath(date, team, gid), "inning/inning_hit.xml", hitChart)
     hitChart
   }
 
   def fetchInnings(date: Date, team: String, gid: String = null) = {
     val innings = XML.loadString(_http(url(inningsUrl(date, team, gid)) as_str))
-    cacheContent(date, gameDirectoryPath(date, team), "inning/inning_all.xml", innings)
+    cacheContent(date, gameDirectoryPath(date, team, gid), "inning/inning_all.xml", innings)
     innings
   }
 
