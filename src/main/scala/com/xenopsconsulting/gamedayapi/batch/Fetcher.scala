@@ -4,8 +4,10 @@ import com.xenopsconsulting.gamedayapi.fetchstrategies.{LocalCachingFetchStrateg
 import com.xenopsconsulting.gamedayapi._
 import org.joda.time.DateTime
 import com.xenopsconsulting.gamedayapi.ScheduleYear
+import org.slf4j.LoggerFactory
 
 class Fetcher(fetchStrategy: FetchStrategy) {
+  private val _log = LoggerFactory.getLogger(getClass)
 
   def this() {
     this(LocalCachingFetchStrategy)
@@ -19,13 +21,21 @@ class Fetcher(fetchStrategy: FetchStrategy) {
     val gameFactory: GameFactory = new GameFactory(LocalCachingFetchStrategy)
 
     while(date.compareTo(finalDay) <= 0) {
+      _log.info("Fetching game(s) for " + date)
       val epg: Epg = epgFactory.epgFor(date.toDate)
       val epgGames: Seq[EpgGame] = epg.gamesForTeam(team)
 
       for (epgGame <- epgGames) {
+        _log.info(epgGame.ind())
         if (epgGame.ind() == "F") {
-          val game = gameFactory.gameFor(date.toDate, team)
-          game.fetchAll()
+          try {
+            val game = gameFactory.gameFor(date.toDate, team)
+            game.fetchAll()
+          } catch {
+            case e => {
+              _log.error("Error fetching", e)
+            }
+          }
         }
       }
 
