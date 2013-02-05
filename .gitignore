@@ -8,3 +8,4 @@ boot/
 *.iws
 .DS_Store
 scala-gameday-api-cache/
+scala-gameday-api.log*
