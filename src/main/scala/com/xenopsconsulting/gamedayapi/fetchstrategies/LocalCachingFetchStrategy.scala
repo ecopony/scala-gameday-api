@@ -52,11 +52,15 @@ object LocalCachingFetchStrategy extends FetchStrategy {
   }
 
   def fetchInningScores(date: Date, team: String, gid: String = null) = {
-      <xml/>
+    val inningScores = XML.loadString(_http(url(inningsUrl(date, team, gid)) as_str))
+    cacheContent(date, gameDirectoryPath(date, team, gid), "inning/inning_Scores.xml", inningScores)
+    inningScores
   }
 
   def fetchGameEvents(date: Date, team: String, gid: String = null) = {
-      <xml/>
+    val gameEvents = XML.loadString(_http(url(gameEventsUrl(date, team, gid)) as_str))
+    cacheContent(date, gameDirectoryPath(date, team, gid), "game_events.xml", gameEvents)
+    gameEvents
   }
 
   private def cacheContent(date: Date, path: String, fileName: String, content: Elem) {

@@ -1,7 +1,6 @@
 package com.xenopsconsulting.gamedayapi
 
 import org.scalatest.junit.AssertionsForJUnit
-import org.junit.Test
 import org.junit.Before
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -39,4 +38,11 @@ class LocalCachingFetchStrategyTest extends AssertionsForJUnit {
 //    LocalCachingFetchStrategy.fetchHitChart(date, team)
 //  }
 //
+//  @Test def testInningScoresCaching {
+//    LocalCachingFetchStrategy.fetchInningScores(date, team)
+//  }
+//
+//  @Test def testGameEventsCaching {
+//    LocalCachingFetchStrategy.fetchGameEvents(date, team)
+//  }
 }

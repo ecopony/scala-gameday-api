@@ -13,8 +13,7 @@ object DefaultFetchStrategy extends FetchStrategy {
   def fetchLineScore(date: Date, team: String, gid: String = null) = fetchXmlAsString(lineScoreUrl(date, team, gid))
   def fetchHitChart(date: Date, team: String, gid: String = null) = fetchXmlAsString(hitChartUrl(date, team, gid))
   def fetchInnings(date: Date, team: String, gid: String = null) = fetchXmlAsString(inningsUrl(date, team, gid))
-  def fetchInningScores(date: Date, team: String, gid: String = null) = fetchXmlAsString(inningScoresUrl(date, team,
-    gid))
+  def fetchInningScores(date: Date, team: String, gid: String = null) = fetchXmlAsString(inningScoresUrl(date, team, gid))
   def fetchGameEvents(date: Date, team: String, gid: String = null) = fetchXmlAsString(gameEventsUrl(date, team, gid))
 
   private def fetchXmlAsString(urlToFetch: String) = XML.loadString(http(url(urlToFetch) as_str))

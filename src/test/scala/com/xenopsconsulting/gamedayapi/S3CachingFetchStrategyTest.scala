@@ -1,5 +1,6 @@
 package com.xenopsconsulting.gamedayapi
 
+import fetchstrategies.S3CachingFetchStrategy
 import org.scalatest.junit.AssertionsForJUnit
 import org.junit.Test
 import org.junit.Before
@@ -38,5 +39,13 @@ class S3CachingFetchStrategyTest extends AssertionsForJUnit {
 //  @Test def testHitChartCaching {
 //    S3CachingFetchStrategy.fetchHitChart(date, team)
 //  }
+
+  @Test def testInningScoresCaching {
+    S3CachingFetchStrategy.fetchInningScores(date, team)
+  }
+
+  @Test def testGameEventsCaching {
+    S3CachingFetchStrategy.fetchGameEvents(date, team)
+  }
 
 }
