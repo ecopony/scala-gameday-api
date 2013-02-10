@@ -1,7 +1,7 @@
 package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import org.scalatest.junit.AssertionsForJUnit
-import org.junit.Before
+import org.junit.{Test, Before}
 import java.text.SimpleDateFormat
 import java.util.Date
 

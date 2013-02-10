@@ -13,12 +13,12 @@ class Fetcher(fetchStrategy: FetchStrategy) {
     this(LocalCachingFetchStrategy)
   }
 
-  def fetchByYearAndTeam(year: Int, team: String) {
+  def fetchByYearAndTeam(year: Int, team: String, gameCallback: (Game) => Unit) {
     val scheduleYear: ScheduleYear = new ScheduleYear(year)
     var date: DateTime = new DateTime(scheduleYear.openingDay())
     val finalDay: DateTime = new DateTime(scheduleYear.finalDay())
     val epgFactory: EpgFactory = new EpgFactory(fetchStrategy)
-    val gameFactory: GameFactory = new GameFactory(LocalCachingFetchStrategy)
+    val gameFactory: GameFactory = new GameFactory(fetchStrategy)
 
     while(date.compareTo(finalDay) <= 0) {
       _log.info("Fetching game(s) for " + date)
@@ -31,6 +31,7 @@ class Fetcher(fetchStrategy: FetchStrategy) {
           try {
             val game = gameFactory.gameFor(date.toDate, team)
             game.fetchAll()
+            gameCallback(game)
           } catch {
             case e => {
               _log.error("Error fetching", e)

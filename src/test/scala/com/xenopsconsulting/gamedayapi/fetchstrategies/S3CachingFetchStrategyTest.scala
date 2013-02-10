@@ -11,7 +11,7 @@ class S3CachingFetchStrategyTest extends AssertionsForJUnit {
   var team: String = _
 
   @Before def initialize {
-    date = new SimpleDateFormat("yyy-MM-dd").parse("2011-05-06")
+    date = new SimpleDateFormat("yyy-MM-dd").parse("2011-05-07")
     team = "sea"
   }
 
@@ -38,13 +38,13 @@ class S3CachingFetchStrategyTest extends AssertionsForJUnit {
 //  @Test def testHitChartCaching {
 //    S3CachingFetchStrategy.fetchHitChart(date, team)
 //  }
-
-  @Test def testInningScoresCaching {
-    S3CachingFetchStrategy.fetchInningScores(date, team)
-  }
-
-  @Test def testGameEventsCaching {
-    S3CachingFetchStrategy.fetchGameEvents(date, team)
-  }
+//
+//  @Test def testInningScoresCaching {
+//    S3CachingFetchStrategy.fetchInningScores(date, team)
+//  }
+//
+//  @Test def testGameEventsCaching {
+//    S3CachingFetchStrategy.fetchGameEvents(date, team)
+//  }
 
 }

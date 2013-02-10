@@ -28,7 +28,7 @@ abstract class XmlRepresentation(date:Date, team:String) {
     }
   }
 
-  protected def gid = {
+  def gid():String = {
     if (_gid == null) _gid = fetchStrategy.fetchGid(date, team)
     _gid
   }
