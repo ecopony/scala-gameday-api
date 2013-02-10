@@ -49,7 +49,7 @@ class InningTest extends AssertionsForJUnit {
     assertEquals(11, inning.atBats.size)
     assertEquals("1", inning.atBats.head.num)
     assertEquals("11", inning.atBats.last.num)
-    assertEquals(AtBat(<atbat_node/>).getClass, inning.atBats.head.getClass)
+    assertEquals(AtBat(<atbat_node/>, "top").getClass, inning.atBats.head.getClass)
   }
 
   @Test def testHomeTeamAtBats {

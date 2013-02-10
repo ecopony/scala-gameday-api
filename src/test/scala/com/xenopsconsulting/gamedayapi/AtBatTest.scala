@@ -108,4 +108,9 @@ class AtBatTest extends AssertionsForJUnit {
     assertEquals("1", top_first_at_bats.head.inning.num)
   }
 
+  @Test def testHalf {
+    assertEquals("top", top_first_at_bats.head.half)
+    assertEquals("bottom", bottom_first_at_bats.last.half)
+  }
+
 }

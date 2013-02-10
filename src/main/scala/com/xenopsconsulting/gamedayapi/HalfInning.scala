@@ -4,6 +4,6 @@ import xml.Node
 
 case class HalfInning(halfInningNode: Node, inning: Inning) {
 
-  def atBats() = (halfInningNode \ "atbat").map (AtBat(_, inning))
+  def atBats() = (halfInningNode \ "atbat").map (AtBat(_, halfInningNode.label, inning))
 
 }

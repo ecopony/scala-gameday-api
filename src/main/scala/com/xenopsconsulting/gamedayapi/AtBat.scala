@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
 
-case class AtBat(atBatNode: Node, inning: Inning = null) {
+case class AtBat(atBatNode: Node, half: String, inning: Inning = null) {
 
   def pitches() = (atBatNode \ "pitch").map (Pitch(_, this))
   def runners() = (atBatNode \ "runner").map (Runner(_, this))

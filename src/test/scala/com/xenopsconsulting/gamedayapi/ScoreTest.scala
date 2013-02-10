@@ -63,4 +63,8 @@ class ScoreTest extends AssertionsForJUnit {
     assertEquals(1, score.atBat.runners.size)
   }
 
+  @Test def testHalf {
+    assertEquals("bottom", score.half())
+  }
+
 }
