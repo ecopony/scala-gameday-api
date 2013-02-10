@@ -1,4 +1,4 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import org.scalatest.junit.AssertionsForJUnit
 import org.junit.Before

@@ -1,6 +1,5 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
-import fetchstrategies.S3CachingFetchStrategy
 import org.scalatest.junit.AssertionsForJUnit
 import org.junit.Test
 import org.junit.Before

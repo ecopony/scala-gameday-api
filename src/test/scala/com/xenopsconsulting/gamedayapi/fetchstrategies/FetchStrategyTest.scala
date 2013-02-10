@@ -1,4 +1,4 @@
-package com.xenopsconsulting.gamedayapi
+package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import org.scalatest.junit.AssertionsForJUnit
 import org.junit.Test
@@ -6,6 +6,7 @@ import org.junit.Assert._
 import org.junit.Before
 import java.text.SimpleDateFormat
 import java.util.Date
+import com.xenopsconsulting.gamedayapi.TestFetchStrategy
 
 class FetchStrategyTest extends AssertionsForJUnit {
   var date: Date = _
