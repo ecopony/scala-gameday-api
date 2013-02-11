@@ -27,7 +27,7 @@ class Fetcher(fetchStrategy: FetchStrategy) {
 
       for (epgGame <- epgGames) {
         _log.info(epgGame.ind())
-        if (epgGame.ind() == "F") {
+        if (epgGame.ind() == "F" && epgGame.gameType() == "R") {
           try {
             val game = gameFactory.gameFor(date.toDate, team)
             game.fetchAll()

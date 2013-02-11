@@ -23,6 +23,10 @@ class EpgGameTest extends AssertionsForJUnit {
     assertEquals("F", epgGame.ind())
   }
 
+  @Test def testGameType {
+    assertEquals("R", epgGame.gameType())
+  }
+
   @Test def testHomeCode {
     assertEquals("sea", epgGame.homeCode)
   }
