@@ -7,7 +7,7 @@ class MySQLDatabaseImporterTest {
   @Test
   def testCreate() {
 //    MySQLDatabaseImporter.createTables()
-//    MySQLDatabaseImporter.importPitchesByYearAndTeam(2012, "sea")
+//    MySQLDatabaseImporter.importPitchesByYearAndTeam(2013, "sea")
   }
 
 }

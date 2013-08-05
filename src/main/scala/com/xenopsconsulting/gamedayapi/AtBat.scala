@@ -2,7 +2,7 @@ package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
 
-case class AtBat(atBatNode: Node, half: String, inning: Inning = null) {
+case class AtBat(atBatNode: Node, half: String, inning: Inning = null) extends GamedayNode {
 
   def pitches() = (atBatNode \ "pitch").map (Pitch(_, this))
   def runners() = (atBatNode \ "runner").map (Runner(_, this))
@@ -12,7 +12,7 @@ case class AtBat(atBatNode: Node, half: String, inning: Inning = null) {
   def b() = ( atBatNode \ "@b" ).text
   def s() = ( atBatNode \ "@s" ).text
   def o() = ( atBatNode \ "@o" ).text
-  def startTfs() = ( atBatNode \ "@start_tfs" ).text
+  def startTfs():Option[Int] = parseInt(( atBatNode \ "@start_tfs" ).text)
   def startTfsZulu() = ( atBatNode \ "@start_tfs_zulu" ).text
   def batter() = ( atBatNode \ "@batter" ).text
   def stand() = ( atBatNode \ "@stand" ).text

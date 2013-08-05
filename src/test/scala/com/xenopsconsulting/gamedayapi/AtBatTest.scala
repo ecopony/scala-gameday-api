@@ -43,7 +43,7 @@ class AtBatTest extends AssertionsForJUnit {
   }
 
   @Test def testStartTfs {
-    assertEquals("220954", top_first_at_bats.head.startTfs)
+    assertEquals(220954, top_first_at_bats.head.startTfs.get, 1)
   }
 
   @Test def testStartTfsZulu {

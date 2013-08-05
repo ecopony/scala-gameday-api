@@ -63,83 +63,83 @@ class PitchTest extends AssertionsForJUnit {
   }
 
   @Test def testStartSpeed {
-    assertEquals("91.6", first_at_bat_pitches.head.startSpeed)
+    assertEquals(91.6, first_at_bat_pitches.head.startSpeed.get, 1)
   }
 
   @Test def testEndSpeed {
-    assertEquals("84.3", first_at_bat_pitches.head.endSpeed)
+    assertEquals(84.3, first_at_bat_pitches.head.endSpeed.get, 1)
   }
 
   @Test def testSzTop {
-    assertEquals("3.19", first_at_bat_pitches.head.szTop)
+    assertEquals(3.19, first_at_bat_pitches.head.szTop().get, 1)
   }
 
   @Test def testSzBot {
-    assertEquals("1.52", first_at_bat_pitches.head.szBot)
+    assertEquals(1.52, first_at_bat_pitches.head.szBot().get, 1)
   }
 
   @Test def testPfxX {
-    assertEquals("-3.39", first_at_bat_pitches.head.pfxX)
+    assertEquals(-3.39, first_at_bat_pitches.head.pfxX().get, 1)
   }
 
   @Test def testPfxZ {
-    assertEquals("3.96", first_at_bat_pitches.head.pfxZ)
+    assertEquals(3.96, first_at_bat_pitches.head.pfxZ().get, 1)
   }
 
   @Test def testPx {
-    assertEquals("-0.311", first_at_bat_pitches.head.px)
+    assertEquals(-0.311, first_at_bat_pitches.head.px().get, 1)
   }
 
   @Test def testPz {
-    assertEquals("3.362", first_at_bat_pitches.head.pz)
+    assertEquals(3.362, first_at_bat_pitches.head.pz().get, 1)
   }
 
   @Test def testX0 {
-    assertEquals("-2.411", first_at_bat_pitches.head.x0)
+    assertEquals(-2.411, first_at_bat_pitches.head.x0().get, 1)
   }
 
   @Test def testY0 {
-    assertEquals("50.0", first_at_bat_pitches.head.y0)
+    assertEquals(50.0, first_at_bat_pitches.head.y0().get, 1)
   }
 
   @Test def testZ0 {
-    assertEquals("5.765", first_at_bat_pitches.head.z0)
+    assertEquals(5.765, first_at_bat_pitches.head.z0().get, 1)
   }
 
   @Test def testVx0 {
-    assertEquals("6.728", first_at_bat_pitches.head.vx0)
+    assertEquals(6.728, first_at_bat_pitches.head.vx0().get, 1)
   }
 
   @Test def testVy0 {
-    assertEquals("-134.21", first_at_bat_pitches.head.vy0)
+    assertEquals(-134.21, first_at_bat_pitches.head.vy0().get, 1)
   }
 
   @Test def testVz0 {
-    assertEquals("-1.659", first_at_bat_pitches.head.vz0)
+    assertEquals(-1.659, first_at_bat_pitches.head.vz0().get, 1)
   }
 
   @Test def testAx {
-    assertEquals("-6.173", first_at_bat_pitches.head.ax)
+    assertEquals(-6.173, first_at_bat_pitches.head.ax().get, 1)
   }
 
   @Test def testAy {
-    assertEquals("29.604", first_at_bat_pitches.head.ay)
+    assertEquals(29.604, first_at_bat_pitches.head.ay().get, 1)
   }
 
   @Test def testAz {
-    assertEquals("-24.898", first_at_bat_pitches.head.az)
+    assertEquals(-24.898, first_at_bat_pitches.head.az().get, 1)
   }
 
   @Test def testBreakY {
-    assertEquals("23.8", first_at_bat_pitches.head.breakY)
+    assertEquals(23.8, first_at_bat_pitches.head.breakY().get, 1)
   }
 
   @Test def testBreakAngle {
-    assertEquals("10.6", first_at_bat_pitches.head.breakAngle)
+    assertEquals(10.6, first_at_bat_pitches.head.breakAngle().get, 1)
   }
 
   @Test def testBreakLength {
-    assertEquals("5.7", first_at_bat_pitches.head.breakLength)
+    assertEquals(5.7, first_at_bat_pitches.head.breakLength().get, 1)
   }
 
   @Test def testPitchType {
@@ -147,11 +147,11 @@ class PitchTest extends AssertionsForJUnit {
   }
 
   @Test def testTypeConfidence {
-    assertEquals(".901", first_at_bat_pitches.head.typeConfidence)
+    assertEquals(.901, first_at_bat_pitches.head.typeConfidence.get, 1)
   }
 
   @Test def testZone {
-    assertEquals("11", first_at_bat_pitches.head.zone)
+    assertEquals(11, first_at_bat_pitches.head.zone().get, 1)
   }
 
   @Test def testNasty {
@@ -159,11 +159,11 @@ class PitchTest extends AssertionsForJUnit {
   }
 
   @Test def testSpinDir {
-    assertEquals("220.310", first_at_bat_pitches.head.spinDir)
+    assertEquals(220.310, first_at_bat_pitches.head.spinDir().get, 1)
   }
 
   @Test def testSpinRate {
-    assertEquals("1031.450", first_at_bat_pitches.head.spinRate)
+    assertEquals(1031.450, first_at_bat_pitches.head.spinRate().get, 1)
   }
 
   @Test def testCc {
