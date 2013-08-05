@@ -7,7 +7,7 @@ case class Pitch(pitchNode: Node, atBat:AtBat) extends GamedayNode {
   def des() = pna("@des")
   def id() = pna("@id")
   def theType() = pna("@type")
-  def tfs() = pna("@tfs")
+  def tfs(): Option[Int] = parseInt(pna("@tfs"))
   def tfsZulu() = pna("@tfs_zulu")
   def x() = pna("@x")
   def y() = pna("@y")

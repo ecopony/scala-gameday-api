@@ -60,7 +60,7 @@ object MySQLDatabaseImporter {
             StringFormattable(atBat.pThrows()), StringFormattable(atBat.des()), StringFormattable(atBat.event()),
             StringFormattable(pitch.des()), IntFormattable(pitch.id().toInt), StringFormattable(pitch.pitchType()),
             Nullable(getFloatFormattable(pitch.typeConfidence())),
-            IntFormattable(pitch.tfs().toInt), FloatFormattable(pitch.x().toFloat), FloatFormattable(pitch.y().toFloat),
+            Nullable(getIntFormattable(pitch.tfs())), FloatFormattable(pitch.x().toFloat), FloatFormattable(pitch.y().toFloat),
             StringFormattable(pitch.svId()), Nullable(getFloatFormattable(pitch.startSpeed())),
             Nullable(getFloatFormattable(pitch.endSpeed())), Nullable(getFloatFormattable(pitch.szTop())),
             Nullable(getFloatFormattable(pitch.szBot())), Nullable(getFloatFormattable(pitch.pfxX())),
