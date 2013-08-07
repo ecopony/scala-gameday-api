@@ -191,6 +191,13 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
     boxScore().awayBatters ++ boxScore().homeBatters
   }
 
+  /**
+   * A convenience method for getting at the year of the game.
+   *
+   * @return The four digit year.
+   */
+  def year():Int = gid().split("_").tail.head.toInt
+
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")

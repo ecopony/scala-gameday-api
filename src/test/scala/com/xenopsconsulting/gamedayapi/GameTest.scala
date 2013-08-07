@@ -215,4 +215,8 @@ class GameTest extends AssertionsForJUnit {
     game.fetchAll() // No assertions, just make sure it doesn't fail. Mock verification could be added.
   }
 
+  @Test def testYear {
+    assertEquals(2011, game.year())
+  }
+
 }

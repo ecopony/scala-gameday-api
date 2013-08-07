@@ -23,7 +23,7 @@ object MySQLDatabaseImporter {
   def createTables() {
     database.transaction { tx =>
       tx.execute("DROP TABLE IF EXISTS pitches;")
-      tx.execute("CREATE TABLE pitches (gid varchar(40), inning int, half varchar(6), at_bat_num int, at_bat_b int, " +
+      tx.execute("CREATE TABLE pitches (gid varchar(40), year int, inning int, half varchar(6), at_bat_num int, at_bat_b int, " +
         "at_bat_s int, at_bat_o int, at_bat_start_tfs int, batter int, stand char(1), b_height varchar(4), pitcher int, " +
         "p_throws char(1), at_bat_des varchar(400), at_bat_event varchar(20), pitch_des varchar(40), pitch_id int, " +
         "pitch_type char(2), type_confidence DECIMAL(4, 3), pitch_tfs int, pitch_x DECIMAL(5, 2), pitch_y DECIMAL(5, 2), " +
@@ -51,9 +51,9 @@ object MySQLDatabaseImporter {
         val atBat = pitch.atBat
 
         try {
-          tx.execute("insert into pitches values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
+          tx.execute("insert into pitches values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?," +
             " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            StringFormattable(gid), IntFormattable(atBat.inning.num.toInt), StringFormattable(atBat.half),
+            StringFormattable(gid), IntFormattable(game.year()), IntFormattable(atBat.inning.num.toInt), StringFormattable(atBat.half),
             IntFormattable(atBat.num().toInt), IntFormattable(atBat.b().toInt), IntFormattable(atBat.s().toInt),
             IntFormattable(atBat.o().toInt), Nullable(getIntFormattable(atBat.startTfs())), IntFormattable(atBat.batter().toInt),
             StringFormattable(atBat.stand()), StringFormattable(atBat.bHeight()), IntFormattable(atBat.pitcher().id().toInt),
