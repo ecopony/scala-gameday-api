@@ -11,7 +11,7 @@ Example Usage
 
 NOTE: This library is in active development and the API may change at any time without warning.
 
-Prerequisites: git, Scala, Maven
+Prerequisites: git, Scala 2.9, Maven
 
 To build:
 ---------
@@ -27,7 +27,7 @@ Example console session:
     > import java.text.SimpleDateFormat
     > var date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-15")
     > var team = "sea"
-    > var game = new Game(date, team)
+    > var game = Game(date, team)
     > game.homeTeamNameFull # res1: String = Seattle Mariners
 
 Typing 'game.' and then tabbing for tab-completion will show all methods available on a game instance.
