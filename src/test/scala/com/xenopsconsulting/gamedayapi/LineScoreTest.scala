@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class LineScoreTest extends AssertionsForJUnit {
+  var game: Game = _
   var lineScore: LineScore = _
   var date: Date = _
   var team: String = _
@@ -15,8 +16,8 @@ class LineScoreTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    lineScore = new LineScore(date, team)
-    lineScore.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
+    lineScore = game.boxScore().lineScore()
   }
 
   @Test def testGameId {
@@ -328,7 +329,8 @@ class LineScoreTest extends AssertionsForJUnit {
   }
 
   @Test def testSavePitcherReturnsPlaceholderWhenMissing {
-    lineScore.fetchStrategy = TestEmptyXmlFetchStrategy
+    game = new Game(date, team) with TestEmptyXmlFetchStrategyProvider
+    lineScore = game.boxScore().lineScore()
     assertNotNull(lineScore.savePitcher)
   }
 

@@ -1,13 +1,11 @@
 package com.xenopsconsulting.gamedayapi
 
-import java.util.Date
 import xml.Node
 
-case class GameEvents(date: Date, team: String, game: Game = null) extends XmlRepresentation(date: Date,
-  team: String) {
+case class GameEvents(game: Game) extends GamedayRepresentation {
 
   def fetch {
-    _xml = fetchStrategy.fetchGameEvents(date, team, gid)
+    _xml = game.fetchStrategy.fetchGameEvents()
   }
 
   def inning(number: Int) = {

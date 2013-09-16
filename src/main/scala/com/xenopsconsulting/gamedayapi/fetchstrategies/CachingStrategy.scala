@@ -4,6 +4,7 @@ import java.util.Date
 import xml.{XML, Elem}
 import org.joda.time.DateTime
 import dispatch.{Http, url}
+import org.slf4j.LoggerFactory
 
 abstract class CachingStrategy extends FetchStrategy {
   val _http = new Http
@@ -11,98 +12,98 @@ abstract class CachingStrategy extends FetchStrategy {
   def fetchCachedFile(date: Date, path: String, fileName: String): Option[Elem]
   def cacheContent(date: Date, path: String, fileName: String, content: Elem)
 
-  def fetchEpg(date: Date): Elem = {
-    val cachedEpg = fetchCachedFile(date, datePath(date), "epg.xml")
+  def fetchEpg(): Elem = {
+    val cachedEpg = fetchCachedFile(date, datePath(), "epg.xml")
     cachedEpg match {
       case Some(n) => cachedEpg.get
       case None => {
-        val epg = XML.loadString(_http(url(epgUrl(date)) as_str))
-        cacheContent(date, datePath(date), "epg.xml", epg)
+        val epg = XML.loadString(_http(url(epgUrl()) as_str))
+        cacheContent(date, datePath(), "epg.xml", epg)
         epg
       }
     }
   }
 
-  def fetchGame(date: Date, team: String, gid: String = null): Elem = {
-    val cachedGame = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "game.xml")
+  def fetchGame(): Elem = {
+    val cachedGame = fetchCachedFile(date, gameDirectoryPath(), "game.xml")
     cachedGame match {
       case Some(n) => cachedGame.get
       case None => {
-        val game = XML.loadString(_http(url(gameUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "game.xml", game)
+        val game = XML.loadString(_http(url(gameUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "game.xml", game)
         game
       }
     }
   }
 
-  def fetchBoxScore(date: Date, team: String, gid: String = null): Elem = {
-    val cachedBoxScore = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "boxscore.xml")
+  def fetchBoxScore(): Elem = {
+    val cachedBoxScore = fetchCachedFile(date, gameDirectoryPath(), "boxscore.xml")
     cachedBoxScore match {
       case Some(n) => cachedBoxScore.get
       case None => {
-        val boxScore = XML.loadString(_http(url(boxScoreUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "boxscore.xml", boxScore)
+        val boxScore = XML.loadString(_http(url(boxScoreUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "boxscore.xml", boxScore)
         boxScore
       }
     }
   }
 
-  def fetchLineScore(date: Date, team: String, gid: String = null): Elem = {
-    val cachedLineScore = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "linescore.xml")
+  def fetchLineScore(): Elem = {
+    val cachedLineScore = fetchCachedFile(date, gameDirectoryPath(), "linescore.xml")
     cachedLineScore match {
       case Some(n) => cachedLineScore.get
       case None => {
-        val lineScore = XML.loadString(_http(url(lineScoreUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "linescore.xml", lineScore)
+        val lineScore = XML.loadString(_http(url(lineScoreUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "linescore.xml", lineScore)
         lineScore
       }
     }
   }
 
-  def fetchHitChart(date: Date, team: String, gid: String = null) = {
-    val cachedHitChart = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "inning/inning_hit.xml")
+  def fetchHitChart() = {
+    val cachedHitChart = fetchCachedFile(date, gameDirectoryPath(), "inning/inning_hit.xml")
 
     cachedHitChart match {
       case Some(n) => cachedHitChart.get
       case None => {
-        val hitChart = XML.loadString(_http(url(hitChartUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "inning/inning_hit.xml", hitChart)
+        val hitChart = XML.loadString(_http(url(hitChartUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "inning/inning_hit.xml", hitChart)
         hitChart
       }
     }
   }
 
-  def fetchInnings(date: Date, team: String, gid: String = null) = {
-    val cachedInnings = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "inning/inning_all.xml")
+  def fetchInnings() = {
+    val cachedInnings = fetchCachedFile(date, gameDirectoryPath(), "inning/inning_all.xml")
     cachedInnings match {
       case Some(n) => cachedInnings.get
       case None => {
-        val innings = XML.loadString(_http(url(inningsUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "inning/inning_all.xml", innings)
+        val innings = XML.loadString(_http(url(inningsUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "inning/inning_all.xml", innings)
         innings
       }
     }
   }
 
-  def fetchInningScores(date: Date, team: String, gid: String = null) = {
-    val cachedInningScores = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "inning/inning_Scores.xml")
+  def fetchInningScores() = {
+    val cachedInningScores = fetchCachedFile(date, gameDirectoryPath(), "inning/inning_Scores.xml")
     cachedInningScores match {
       case Some(n) => cachedInningScores.get
       case None => {
-        val inningScores = XML.loadString(_http(url(inningScoresUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "inning/inning_Scores.xml", inningScores)
+        val inningScores = XML.loadString(_http(url(inningScoresUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "inning/inning_Scores.xml", inningScores)
         inningScores
       }
     }
   }
 
-  def fetchGameEvents(date: Date, team: String, gid: String = null) = {
-    val cachedGameEvents = fetchCachedFile(date, gameDirectoryPath(date, team, gid), "game_events.xml")
+  def fetchGameEvents() = {
+    val cachedGameEvents = fetchCachedFile(date, gameDirectoryPath(), "game_events.xml")
     cachedGameEvents match {
       case Some(n) => cachedGameEvents.get
       case None => {
-        val gameEvents = XML.loadString(_http(url(gameEventsUrl(date, team, gid)) as_str))
-        cacheContent(date, gameDirectoryPath(date, team), "game_events.xml", gameEvents)
+        val gameEvents = XML.loadString(_http(url(gameEventsUrl()) as_str))
+        cacheContent(date, gameDirectoryPath(), "game_events.xml", gameEvents)
         gameEvents
       }
     }

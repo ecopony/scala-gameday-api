@@ -1,16 +1,24 @@
 package com.xenopsconsulting.gamedayapi
 
-import fetchstrategies.{DefaultFetchStrategy, FetchStrategy}
+import com.xenopsconsulting.gamedayapi.fetchstrategies.{FetchStrategyProvider, FetchStrategy}
 import xml.{Node, Elem}
 import java.util.Date
-import java.text.SimpleDateFormat
+
+object Epg {
+  def apply(date: Date) = {
+    new Epg(date) with FetchStrategyProvider
+  }
+}
 
 class Epg(date: Date) {
-  protected var _xml:Elem = null
-  var fetchStrategy: FetchStrategy = DefaultFetchStrategy
+  this: FetchStrategyProvider =>
 
-  def fetch() {
-    _xml = fetchStrategy.fetchEpg(date)
+  val fetchStrategy: FetchStrategy = newEpgFetchStrategy(date)
+
+  protected var _xml:Elem = null
+
+  def fetch():Unit = {
+    _xml = fetchStrategy.fetchEpg()
   }
 
   def xml():Elem = {

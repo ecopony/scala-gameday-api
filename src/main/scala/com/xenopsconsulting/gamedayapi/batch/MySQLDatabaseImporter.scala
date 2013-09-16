@@ -1,12 +1,7 @@
 package com.xenopsconsulting.gamedayapi.batch
 
-import com.xenopsconsulting.gamedayapi.fetchstrategies.{LocalCachingFetchStrategy, FetchStrategy}
-import com.xenopsconsulting.gamedayapi._
-import org.joda.time.DateTime
-import com.xenopsconsulting.gamedayapi.ScheduleYear
 import org.slf4j.LoggerFactory
 import net.noerd.prequel._
-import com.xenopsconsulting.gamedayapi.Game
 import net.noerd.prequel.DatabaseConfig
 import scala.Some
 import com.xenopsconsulting.gamedayapi.Game
@@ -21,6 +16,7 @@ object MySQLDatabaseImporter {
   )
 
   def createTables() {
+    _log.info("Recreating pitch table")
     database.transaction { tx =>
       tx.execute("DROP TABLE IF EXISTS pitches;")
       tx.execute("CREATE TABLE pitches (gid varchar(40), year int, inning int, half varchar(6), at_bat_num int, at_bat_b int, " +
@@ -36,16 +32,16 @@ object MySQLDatabaseImporter {
   }
 
   def importPitchesByYearAndTeam(year: Int, team: String) {
-    val fetcher: Fetcher = new Fetcher(LocalCachingFetchStrategy)
+    val fetcher: Fetcher = new Fetcher()
     fetcher.fetchByYearAndTeam(year, team, importPitches)
   }
 
   def importPitches(game: Game) {
     database.transaction { tx =>
-      val gid: String = game.gid();
+      val gid: String = game.fetchStrategy.gid();
 
-      println("---------------------------------------------------------------------------------------")
-      println(gid)
+      _log.info("---------------------------------------------------------------------------------------")
+      _log.info(gid)
 
       for (pitch <- game.pitches()) {
         val atBat = pitch.atBat

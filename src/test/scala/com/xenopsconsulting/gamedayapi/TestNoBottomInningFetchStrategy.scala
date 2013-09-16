@@ -4,7 +4,9 @@ import fetchstrategies.FetchStrategy
 import xml.Elem
 import java.util.Date
 
-object TestNoBottomInningFetchStrategy extends FetchStrategy {
+class TestNoBottomInningFetchStrategy(date: Date, team: String) extends FetchStrategy {
+  val _date = date
+  val _team = team
 
   /*
     All test XML file is bound to the following:
@@ -13,27 +15,27 @@ object TestNoBottomInningFetchStrategy extends FetchStrategy {
       posted here http://gdx.mlb.com/components/copyright.txt-->
    */
 
-  def fetchEpg(date: Date): Elem = {
+  def fetchEpg(): Elem = {
     <epg/>
   }
 
-  def fetchGame(date: Date, team: String, gid: String = null): Elem = {
+  def fetchGame(): Elem = {
     <game/>
   }
 
-  def fetchBoxScore(date: Date, team: String, gid: String = null): Elem = {
+  def fetchBoxScore(): Elem = {
     <boxscore/>
   }
 
-  def fetchLineScore(date: Date, team: String, gid: String = null): Elem = {
+  def fetchLineScore(): Elem = {
     <game/>
   }
 
-  def fetchHitChart(date: Date, team: String, gid: String = null): Elem = {
+  def fetchHitChart(): Elem = {
     <hitchart/>
   }
 
-  def fetchInnings(date: Date, team: String, gid: String = null): Elem = {
+  def fetchInnings(): Elem = {
     <game atBat="123660" deck="340192" hole="453056" ind="F">
       <inning num="1" away_team="bos" home_team="sea" next="Y">
         <top>
@@ -60,11 +62,11 @@ object TestNoBottomInningFetchStrategy extends FetchStrategy {
     </game>
   }
 
-  def fetchInningScores(date: Date, team: String, gid: String = null) = {
+  def fetchInningScores() = {
     <scores/>
   }
 
-  def fetchGameEvents(date: Date, team: String, gid: String = null) = {
+  def fetchGameEvents() = {
     <game/>
   }
 }

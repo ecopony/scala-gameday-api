@@ -1,20 +1,56 @@
 package com.xenopsconsulting.gamedayapi
 
 import java.util.Date
+import com.xenopsconsulting.gamedayapi.fetchstrategies.{FetchStrategy, FetchStrategyProvider}
 
-case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
-  private var _boxScore:BoxScore = _
-  private var _hitChart:HitChart = _
-  private var _innings:Innings = _
-  private var _inningScores:InningScores = _
-  private var _gameEvents:GameEvents = _
+object Game {
+  def apply(date: Date, team: String) = {
+    new Game(date, team) with FetchStrategyProvider
+  }
+}
+
+class Game(date: Date, team: String) extends GamedayRepresentation {
+  this: FetchStrategyProvider =>
+
+  val fetchStrategy: FetchStrategy = newFetchStrategy(date, team)
+
+  private var _boxScore: BoxScore = _
+  private var _hitChart: HitChart = _
+  private var _innings: Innings = _
+  private var _inningScores: InningScores = _
+  private var _gameEvents: GameEvents = _
 
   /**
    * Fetches the game file from gameday servers. Does not need to be invoked directly, as it will be invoked lazily
    * by methods in need of game data. Invoking will replace any previously loaded XML for this game.
    */
-  def fetch() {
-    _xml = fetchStrategy.fetchGame(date, team, gid)
+  def fetch():Unit = {
+    _xml = fetchStrategy.fetchGame()
+  }
+
+  def boxScore():BoxScore = {
+    if (_boxScore == null) _boxScore = new BoxScore(this)
+    _boxScore
+  }
+
+  def hitChart() = {
+    if (_hitChart == null) _hitChart = new HitChart(this)
+    _hitChart
+  }
+
+  def innings() = {
+    if (_innings == null) _innings = new Innings(this)
+    _innings
+  }
+
+  def inningScores() = {
+    if (_inningScores == null) _inningScores = new InningScores(this)
+    _inningScores
+  }
+
+  def gameEvents() = {
+    if (_gameEvents == null) _gameEvents = new GameEvents(this)
+    _gameEvents
   }
 
   /**
@@ -24,38 +60,13 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    * retrieved without having to touch all child objects through the API.
    */
   def fetchAll() {
-    this.fetch()
+    fetch()
     boxScore().fetch()
     boxScore().lineScore().fetch()
     gameEvents().fetch()
     hitChart().fetch()
     inningScores().fetch()
     innings().fetch()
-  }
-
-  def boxScore() = {
-    if (_boxScore == null) initializeBoxScore()
-    _boxScore
-  }
-  
-  def hitChart() = {
-    if (_hitChart == null) initializeHitChart()
-    _hitChart
-  }
-
-  def innings() = {
-    if (_innings == null) initializeInnings()
-    _innings
-  }
-
-  def inningScores() = {
-    if (_inningScores == null) initializeInningScores()
-    _inningScores
-  }
-  
-  def gameEvents() = {
-    if (_gameEvents == null) initializeGameEvents()
-    _gameEvents
   }
 
   def gameTimeEt():String = (gameNode \ "@game_time_et").text
@@ -196,31 +207,12 @@ case class Game(date: Date, team: String) extends XmlRepresentation(date: Date, 
    *
    * @return The four digit year.
    */
-  def year():Int = gid().split("_").tail.head.toInt
+  def year():Int = {
+    fetchStrategy.gid().split("_").tail.head.toInt
+  }
 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
   private def stadiumNode = (gameNode \ "stadium")
-
-  private def initializeBoxScore() {
-    _boxScore = BoxScore(date, team)
-    _boxScore.initializeWith(gid, fetchStrategy)
-  }
-  private def initializeHitChart() {
-    _hitChart = HitChart(date, team)
-    _hitChart.initializeWith(gid, fetchStrategy)
-  }
-  private def initializeInnings() {
-    _innings = Innings(date, team, this)
-    _innings.initializeWith(gid, fetchStrategy)
-  }
-  private def initializeInningScores() {
-    _inningScores = InningScores(date, team)
-    _inningScores.initializeWith(gid, fetchStrategy)
-  }
-  private def initializeGameEvents() {
-    _gameEvents = GameEvents(date, team, this)
-    _gameEvents.initializeWith(gid, fetchStrategy)
-  }
 
 }

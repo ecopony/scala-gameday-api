@@ -1,22 +1,21 @@
 package com.xenopsconsulting.gamedayapi
 
 import scala.xml._
-import java.util.Date
 
 object BoxScore {
   private val Home = "home"
   private val Away = "away"
 }
 
-case class BoxScore(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
+class BoxScore(game: Game) extends GamedayRepresentation {
   private var _lineScore:LineScore = _
 
   def fetch {
-    _xml = fetchStrategy.fetchBoxScore(date, team, gid)
+    _xml = game.fetchStrategy.fetchBoxScore()
   }
 
   def lineScore() = {
-    if (_lineScore == null) initializeLineScore()
+    if (_lineScore == null) _lineScore = new LineScore(game)
     _lineScore
   }
 
@@ -143,8 +142,4 @@ case class BoxScore(date: Date, team: String) extends XmlRepresentation(date: Da
    */
   private def abna(attribute: String) = (battingNode(BoxScore.Away) \ attribute).text
 
-  private def initializeLineScore() {
-    _lineScore = new LineScore(date, team)
-    _lineScore.initializeWith(gid, fetchStrategy)
-  }
 }

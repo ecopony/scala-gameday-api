@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class InningTest extends AssertionsForJUnit {
+  var game: Game = _
   var innings: Innings = _
   var inning: Inning = _
   var date: Date = _
@@ -16,8 +17,8 @@ class InningTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    innings = Innings(date, team)
-    innings.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
+    innings = game.innings()
     inning = innings.inning(1).get
   }
 
@@ -65,8 +66,8 @@ class InningTest extends AssertionsForJUnit {
   @Test def testAtBatsNoBottom {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    innings = Innings(date, team)
-    innings.fetchStrategy = TestNoBottomInningFetchStrategy
+    game = new Game(date, team) with TestNoBottomInningFetchStrategyProvider
+    innings = game.innings()
     inning = innings.inning(1).get
     assertEquals(3, inning.atBats.size)
   }

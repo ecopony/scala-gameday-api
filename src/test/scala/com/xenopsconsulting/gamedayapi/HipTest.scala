@@ -16,8 +16,7 @@ class HipTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    game = new Game(date, team)
-    game.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
     hip = game.hitChart.hips.head
   }
 

@@ -12,7 +12,10 @@ import com.amazonaws.services.s3.model.{PutObjectRequest, ObjectMetadata, GetObj
 import org.joda.time.DateTime
 
 
-object S3CachingFetchStrategy extends CachingStrategy {
+class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
+  val _date = date
+  val _team = team
+
   var _s3Client = new AmazonS3Client(new BasicAWSCredentials("", ""))
   var _bucketPrefix = "<change-me>-gameday-files-"
 
@@ -22,7 +25,7 @@ object S3CachingFetchStrategy extends CachingStrategy {
         val s3Object = _s3Client.getObject(new GetObjectRequest(bucket(date), key(path, fileName)));
         Some(XML.load(s3Object.getObjectContent))
       } catch {
-        case e => {
+        case e : Throwable => {
           None
         }
       }
@@ -48,6 +51,5 @@ object S3CachingFetchStrategy extends CachingStrategy {
   private def key(path: String, fileName: String) = {
     (path + "-" + fileName).replaceAll("/", "-").replaceFirst("-", "")
   }
-
 
 }

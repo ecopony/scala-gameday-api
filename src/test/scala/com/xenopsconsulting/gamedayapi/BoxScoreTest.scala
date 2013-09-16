@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class BoxScoreTest extends AssertionsForJUnit {
+  var game: Game = _
   var boxScore: BoxScore = _
   var date: Date = _
   var team: String = _
@@ -15,12 +16,8 @@ class BoxScoreTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    boxScore = new BoxScore(date, team)
-    boxScore.fetchStrategy = TestFetchStrategy
-  }
-
-  @Test def testFetchStrategyPropagation {
-    assertEquals(TestFetchStrategy.getClass, boxScore.lineScore.fetchStrategy.getClass)
+    game = new Game(date, team) with TestFetchStrategyProvider
+    boxScore = game.boxScore()
   }
 
   @Test def testLineScoreExists {

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class ScoreTest extends AssertionsForJUnit {
+  var game: Game = _
   var inningScores: InningScores = _
   var score: Score = _
   var date: Date = _
@@ -16,8 +17,8 @@ class ScoreTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    inningScores = InningScores(date, team)
-    inningScores.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
+    inningScores = game.inningScores()
     score = inningScores.scores.head
   }
 

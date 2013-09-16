@@ -4,7 +4,9 @@ import fetchstrategies.FetchStrategy
 import xml.Elem
 import java.util.Date
 
-object TestMissingStatsFetchStrategy extends FetchStrategy {
+class TestMissingStatsFetchStrategy(date: Date, team: String) extends FetchStrategy {
+  val _date = date
+  val _team = team
 
   /*
     All test XML file is bound to the following:
@@ -13,7 +15,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
       posted here http://gdx.mlb.com/components/copyright.txt-->
    */
 
-  def fetchEpg(date: Date): Elem = {
+  def fetchEpg(): Elem = {
     <epg date="20110813" last_modified="2011-08-14T17:52:23Z" display_time_zone="ET">
       <game calendar_event_id="14-288681-2011-08-13" start="2011-08-13T13:07:00-0400"
             id="2011/08/13/anamlb-tormlb-1"
@@ -1158,7 +1160,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </epg>
   }
 
-  def fetchGame(date: Date, team: String, gid: String = null): Elem = {
+  def fetchGame(): Elem = {
     <game type="R" local_game_time="19:10" game_pk="288682" game_time_et="10:10 PM" gameday_sw="P">
         <team type="home" code="sea" file_code="sea" abbrev="SEA" id="136" name="Seattle" name_full="Seattle Mariners" name_brief="Mariners" w="51" l="67" division_id="200" league_id="103" league="AL"/>
         <team type="away" code="bos" file_code="bos" abbrev="BOS" id="111" name="Boston" name_full="Boston Red Sox" name_brief="Red Sox" w="73" l="45" division_id="201" league_id="103" league="AL"/>
@@ -1166,7 +1168,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </game>
   }
 
-  def fetchBoxScore(date: Date, team: String, gid: String = null): Elem = {
+  def fetchBoxScore(): Elem = {
     <boxscore game_id="2011/08/13/bosmlb-seamlb-1" game_pk="288682" venue_id="680" venue_name="Safeco Field" home_sport_code="mlb" away_team_code="bos" home_team_code="sea" away_id="111" home_id="136" away_fname="Boston Red Sox" home_fname="Seattle Mariners" away_sname="Boston" home_sname="Seattle" date="August 13, 2011" away_wins="73" away_loss="45" home_wins="51" home_loss="67" status_ind="F">
       <linescore away_team_runs="4" home_team_runs="5" away_team_hits="10" home_team_hits="9" away_team_errors="0" home_team_errors="1">
           <inning_line_score away="0" home="5" inning="1"/>
@@ -1228,7 +1230,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </boxscore>
   }
 
-  def fetchLineScore(date: Date, team: String, gid: String = null): Elem = {
+  def fetchLineScore(): Elem = {
     <game id="2011/08/13/bosmlb-seamlb-1" venue="Safeco Field" game_pk="288682"
           time="10:10"
           time_zone="ET"
@@ -1346,7 +1348,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </game>
   }
 
-  def fetchHitChart(date: Date, team: String, gid: String = null): Elem = {
+  def fetchHitChart(): Elem = {
     <hitchart>
         <hip des="Pop Out" x="108.43" y="146.59" batter="453056" pitcher="433587" type="O" team="A" inning="1"/>
         <hip des="Groundout" x="135.54" y="161.65" batter="408307" pitcher="433587" type="O" team="A" inning="1"/>
@@ -1399,7 +1401,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </hitchart>
   }
 
-  def fetchInnings(date: Date, team: String, gid: String = null): Elem = {
+  def fetchInnings(): Elem = {
     <game atBat="123660" deck="340192" hole="453056" ind="F">
       <inning num="1" away_team="bos" home_team="sea" next="Y">
         <top>
@@ -1489,7 +1491,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </game>
   }
 
-  def fetchInningScores(date: Date, team: String, gid: String = null) = {
+  def fetchInningScores() = {
     <scores away_team="bos" home_team="sea">
       <score inn="1" atbat_num="4" top_inning="N" home="1" away="0" pbp="Ichiro Suzuki homers (2) on a line drive to right field. ">
         <atbat num="4" b="0" s="0" o="0" start_tfs="221601" start_tfs_zulu="2011-08-14T02:16:01Z" batter="400085" stand="L" b_height="5-11" pitcher="277417" p_throws="R" des="Ichiro Suzuki homers (2) on a line drive to right field. " event="Home Run" score="T" home_team_runs="1" away_team_runs="0">
@@ -1536,7 +1538,7 @@ object TestMissingStatsFetchStrategy extends FetchStrategy {
     </scores>
   }
 
-  def fetchGameEvents(date: Date, team: String, gid: String = null) = {
+  def fetchGameEvents() = {
     <game>
       <inning num="1">
         <top>

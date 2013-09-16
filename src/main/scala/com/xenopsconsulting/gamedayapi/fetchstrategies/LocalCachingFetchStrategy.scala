@@ -7,19 +7,24 @@ import dispatch._
 import java.text.SimpleDateFormat
 import java.io.{File, PrintWriter}
 import com.amazonaws.services.s3.model.GetObjectRequest
+import org.slf4j.LoggerFactory
 
 /**
  * Caches gameday files on the local filesystem.
  */
-object LocalCachingFetchStrategy extends CachingStrategy {
+class LocalCachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
+  private val _log = LoggerFactory.getLogger(getClass)
+
   var _path = "./scala-gameday-api-cache/"
+  val _date = date
+  val _team = team
 
   def fetchCachedFile(date: Date, path: String, fileName: String) = {
     try {
       val cachedXml = XML.loadFile(_path + localDirectory(date) + "/" + key(path, fileName))
       Some(cachedXml)
     } catch {
-      case e => {
+      case e : Throwable => {
         None
       }
     }

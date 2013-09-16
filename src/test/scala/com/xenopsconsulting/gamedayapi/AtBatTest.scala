@@ -19,8 +19,7 @@ class AtBatTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    game = Game(date, team)
-    game.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
     innings = game.innings
     top_first_at_bats = innings.inning(1).get.top.atBats
     bottom_first_at_bats = innings.inning(1).get.bottom.atBats

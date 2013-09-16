@@ -16,8 +16,7 @@ class GameStatsTest extends AssertionsForJUnit {
   @Before def initialize() {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sfn"
-    game = Game(date, team)
-    game.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
     gameStats = GameStats(game)
   }
 
@@ -27,8 +26,7 @@ class GameStatsTest extends AssertionsForJUnit {
   }
 
   @Test def testMissingNasty() {
-    game = Game(date, team)
-    game.fetchStrategy = TestMissingStatsFetchStrategy
+    game = new Game(date, team) with TestMissingStatsFetchStrategyProvider
     gameStats = GameStats(game)
     assertEquals(None, gameStats.nastiestPitch())
   }
@@ -39,8 +37,7 @@ class GameStatsTest extends AssertionsForJUnit {
   }
 
   @Test def testMissingFastest() {
-    game = Game(date, team)
-    game.fetchStrategy = TestMissingStatsFetchStrategy
+    game = new Game(date, team) with TestMissingStatsFetchStrategyProvider
     gameStats = GameStats(game)
     assertEquals(None, gameStats.fastestPitch())
   }
@@ -51,8 +48,7 @@ class GameStatsTest extends AssertionsForJUnit {
   }
 
   @Test def testMissingSlowest() {
-    game = Game(date, team)
-    game.fetchStrategy = TestMissingStatsFetchStrategy
+    game = new Game(date, team) with TestMissingStatsFetchStrategyProvider
     gameStats = GameStats(game)
     assertEquals(None, gameStats.slowestPitch())
   }

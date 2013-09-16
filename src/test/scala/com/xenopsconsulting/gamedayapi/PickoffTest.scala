@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class PickoffTest extends AssertionsForJUnit {
+  var game: Game = _
   var innings: Innings = _
   var inning: Inning = _
   var date: Date = _
@@ -18,8 +19,8 @@ class PickoffTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    innings = new Innings(date, team)
-    innings.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
+    innings = game.innings()
     bottom_first_at_bats = innings.inning(1).get.bottom.atBats
   }
 

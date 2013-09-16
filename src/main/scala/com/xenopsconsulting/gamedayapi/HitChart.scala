@@ -1,11 +1,10 @@
 package com.xenopsconsulting.gamedayapi
 
-import java.util.Date
 
-case class HitChart(date: Date, team: String) extends XmlRepresentation(date: Date, team: String) {
+case class HitChart(game: Game) extends GamedayRepresentation {
 
   def fetch {
-    _xml = fetchStrategy.fetchHitChart(date, team, gid)
+    _xml = game.fetchStrategy.fetchHitChart()
   }
 
   def hips() = (hitChartNode \ "hip").map(Hip(_))

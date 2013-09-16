@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class LineScoreInningTest extends AssertionsForJUnit {
+  var game: Game = _
   var lineScoreInning: LineScoreInning = _
   var date: Date = _
   var team: String = _
@@ -15,8 +16,8 @@ class LineScoreInningTest extends AssertionsForJUnit {
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
     team = "sea"
-    val lineScore = new LineScore(date, team)
-    lineScore.fetchStrategy = TestFetchStrategy
+    game = new Game(date, team) with TestFetchStrategyProvider
+    val lineScore = game.boxScore().lineScore()
     lineScoreInning = lineScore.innings.head
   }
 

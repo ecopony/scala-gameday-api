@@ -7,7 +7,7 @@ abstract class GamedayNode {
       val result = attribute.toInt
       Some(result)
     } catch {
-      case e => {
+      case e : Throwable => {
         None
       }
     }
@@ -18,7 +18,7 @@ abstract class GamedayNode {
       val result = attribute.toFloat
       Some(result)
     } catch {
-      case e => {
+      case e : Throwable => {
         None
       }
     }

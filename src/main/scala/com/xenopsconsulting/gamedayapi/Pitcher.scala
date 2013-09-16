@@ -34,7 +34,7 @@ case class Pitcher(pitcherNode: Node) {
   def inningsPitched() = {
     val actual_innings = (out().toDouble / 3)
     val whole_inning = actual_innings.toInt.toString
-    val inning_part = actual_innings.toString.split("""\.""").tail.head.first.toString
+    val inning_part = actual_innings.toString.split("""\.""").tail.head.substring(0,1)
     inning_part match {
       case "3" => whole_inning + " 1/3"
       case "6" => whole_inning + " 2/3"

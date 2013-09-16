@@ -13,8 +13,7 @@ class EpgTest extends AssertionsForJUnit {
 
   @Before def initialize {
     date = new SimpleDateFormat("yyy-MM-dd").parse("2011-08-13")
-    epg = new Epg(date)
-    epg.fetchStrategy = TestFetchStrategy
+    epg = new Epg(date) with TestFetchStrategyProvider
   }
 
   @Test
