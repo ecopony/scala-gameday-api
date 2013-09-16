@@ -1,6 +1,6 @@
 package com.xenopsconsulting.gamedayapi.batch
 
-import com.xenopsconsulting.gamedayapi.fetchstrategies.{CachingFetchStrategyProvider, FetchStrategyProvider, LocalCachingFetchStrategy, FetchStrategy}
+import com.xenopsconsulting.gamedayapi.fetchstrategies.{LocalCachingFetchStrategyProvider}
 import com.xenopsconsulting.gamedayapi._
 import org.joda.time.DateTime
 import com.xenopsconsulting.gamedayapi.ScheduleYear
@@ -19,14 +19,14 @@ class Fetcher() {
     while(date.compareTo(finalDay) <= 0) {
       _log.info("Fetching game(s) for " + date)
 
-      val epg: Epg = new Epg(date.toDate) with CachingFetchStrategyProvider
+      val epg: Epg = new Epg(date.toDate) with LocalCachingFetchStrategyProvider
       val epgGames: Seq[EpgGame] = epg.gamesForTeam(team)
 
       for (epgGame <- epgGames) {
         _log.info(epgGame.ind())
         if (epgGame.ind() == "F" && epgGame.gameType() == "R") {
           try {
-            val game = new Game (date.toDate, team) with CachingFetchStrategyProvider
+            val game = new Game (date.toDate, team) with LocalCachingFetchStrategyProvider
             game.fetchAll()
             gameCallback(game)
           } catch {

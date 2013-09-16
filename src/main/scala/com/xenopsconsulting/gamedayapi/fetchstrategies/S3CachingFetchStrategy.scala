@@ -2,14 +2,12 @@ package com.xenopsconsulting.gamedayapi.fetchstrategies
 
 import scala.xml._
 import java.util.Date
-import dispatch._
 
 import java.text.SimpleDateFormat
 import java.io.ByteArrayInputStream
 import com.amazonaws.services.s3.AmazonS3Client
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.services.s3.model.{PutObjectRequest, ObjectMetadata, GetObjectRequest}
-import org.joda.time.DateTime
 
 
 class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
@@ -19,8 +17,8 @@ class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
   var _s3Client = new AmazonS3Client(new BasicAWSCredentials("", ""))
   var _bucketPrefix = "<change-me>-gameday-files-"
 
-  def fetchCachedFile(date: Date, path: String, fileName: String) = {
-    if (canCache(date)) {
+  def fetchCachedFile(path: String, fileName: String) = {
+    if (canCache()) {
       try {
         val s3Object = _s3Client.getObject(new GetObjectRequest(bucket(date), key(path, fileName)));
         Some(XML.load(s3Object.getObjectContent))
@@ -34,8 +32,8 @@ class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
     }
   }
 
-  def cacheContent(date: Date, path: String, fileName: String, content: Elem) {
-    if (canCache(date)) {
+  def cacheContent(path: String, fileName: String, content: Elem) {
+    if (canCache()) {
       val streamBytes = content.toString.getBytes
       val gamedayStream = new ByteArrayInputStream(streamBytes)
       val metadata = new ObjectMetadata()

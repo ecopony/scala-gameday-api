@@ -12,5 +12,4 @@ trait FetchStrategyProvider {
     new DefaultFetchStrategy(date, null)
   }
 
-
 }
