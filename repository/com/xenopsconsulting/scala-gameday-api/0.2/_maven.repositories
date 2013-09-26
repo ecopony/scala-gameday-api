@@ -1,0 +1,5 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Thu Sep 26 14:12:30 PDT 2013
+scala-gameday-api-0.2.jar>=
+scala-gameday-api-0.2-sources.jar>=
+scala-gameday-api-0.2.pom>=
