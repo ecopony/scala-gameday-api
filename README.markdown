@@ -6,6 +6,8 @@ application that MLB.com provides.
 
 This library is currently under active development, and is not yet a full representaion of the data available.
 
+Documentation and examples are available in the [project wiki](https://github.com/ecopony/scala-gameday-api/wiki).
+
 Example Usage
 =============
 
@@ -31,6 +33,8 @@ Example console session:
     > game.homeTeamNameFull # res1: String = Seattle Mariners
 
 Typing 'game.' and then tabbing for tab-completion will show all methods available on a game instance.
+
+See the [project wiki](https://github.com/ecopony/scala-gameday-api/wiki) for more information.
 
 
 Usage Restriction
