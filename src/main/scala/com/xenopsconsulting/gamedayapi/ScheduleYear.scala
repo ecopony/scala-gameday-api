@@ -27,7 +27,7 @@ case class ScheduleYear(year: Int) {
   }
 
   def teams() = {
-    _scheduleLines.map(ScheduleGame(_).homeTeam()).distinct
+    _scheduleLines.map(ScheduleGame(_).homeTeam().toLowerCase).distinct
   }
 
   private def readGamesFromFile() = {

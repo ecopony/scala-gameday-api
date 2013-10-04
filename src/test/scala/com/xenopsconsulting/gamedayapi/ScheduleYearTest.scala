@@ -45,7 +45,7 @@ class ScheduleYearTest extends AssertionsForJUnit {
   @Test def testTeamsForYear {
     val teams = schedule.teams()
     assertEquals(30, teams.size)
-    assertEquals("CIN", teams.head)
+    assertEquals("cin", teams.head)
   }
 
 }
