@@ -27,7 +27,11 @@ class LocalCachingFetchStrategy(date: Date, team: String) extends CachingStrateg
   }
 
   def cacheContent(path: String, fileName: String, content: Elem) {
-    val writer = new PrintWriter(new File(_path + localDirectory() + "/" + key(path, fileName)))
+    val directoryName =  _path + localDirectory()
+    val directory = new File(directoryName)
+    if (!directory.exists()) directory.mkdir()
+
+    val writer = new PrintWriter(new File(directoryName + "/" + key(path, fileName)))
     writer.write(content.toString())
     writer.close()
   }
