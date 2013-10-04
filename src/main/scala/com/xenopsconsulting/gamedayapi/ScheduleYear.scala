@@ -26,6 +26,10 @@ case class ScheduleYear(year: Int) {
     (_scheduleLines filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) filter teamMatches(team) map(ScheduleGame(_))
   }
 
+  def teams() = {
+    _scheduleLines.map(ScheduleGame(_).homeTeam()).distinct
+  }
+
   private def readGamesFromFile() = {
     scala.io.Source.fromInputStream(getClass.getResourceAsStream(scheduleFileName())).getLines().toList
   }

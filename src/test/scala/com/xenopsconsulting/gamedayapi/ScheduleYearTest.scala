@@ -5,7 +5,6 @@ import org.junit.Test
 import org.junit.Assert._
 import org.junit.Before
 import java.text.SimpleDateFormat
-import java.util.Date
 
 class ScheduleYearTest extends AssertionsForJUnit {
   var schedule: ScheduleYear = _
@@ -41,6 +40,12 @@ class ScheduleYearTest extends AssertionsForJUnit {
 
     games = schedule.gamesForDayAndTeam(new SimpleDateFormat("yyy-MM-dd").parse("2011-03-31"), "sea")
     assertEquals(0, games.size)
+  }
+
+  @Test def testTeamsForYear {
+    val teams = schedule.teams()
+    assertEquals(30, teams.size)
+    assertEquals("CIN", teams.head)
   }
 
 }
