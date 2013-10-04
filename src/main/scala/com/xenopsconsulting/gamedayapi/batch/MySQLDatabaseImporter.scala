@@ -31,6 +31,11 @@ object MySQLDatabaseImporter {
     }
   }
 
+  def importPitchesByYearsAndTeam(years: List[Int], team: String) {
+    val fetcher: Fetcher = new Fetcher()
+    fetcher.fetchByYearsAndTeam(years, team, importPitches)
+  }
+
   def importPitchesByYearAndTeam(year: Int, team: String) {
     val fetcher: Fetcher = new Fetcher()
     fetcher.fetchByYearAndTeam(year, team, importPitches)

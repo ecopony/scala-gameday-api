@@ -10,6 +10,12 @@ class Fetcher() {
 
   private val _log = LoggerFactory.getLogger(getClass)
 
+  def fetchByYearsAndTeam(years: List[Int], team: String, gameCallback: (Game) => Unit) {
+    for (year <- years) {
+      fetchByYearAndTeam(year, team, gameCallback);
+    }
+  }
+
   def fetchByYearAndTeam(year: Int, team: String, gameCallback: (Game) => Unit) {
     _log.info("Fetching for year " + year + " and team " + team)
     val scheduleYear: ScheduleYear = new ScheduleYear(year)
