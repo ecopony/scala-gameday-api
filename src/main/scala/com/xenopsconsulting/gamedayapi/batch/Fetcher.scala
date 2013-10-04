@@ -12,7 +12,15 @@ class Fetcher() {
 
   def fetchByYearsAndTeam(years: List[Int], team: String, gameCallback: (Game) => Unit) {
     for (year <- years) {
-      fetchByYearAndTeam(year, team, gameCallback);
+      fetchByYearAndTeam(year, team, gameCallback)
+    }
+  }
+
+  def fetchByYear(year: Int, gameCallback: (Game) => Unit) {
+    val scheduleYear: ScheduleYear = new ScheduleYear(year)
+
+    for (team <- scheduleYear.teams()) {
+      fetchByYearAndTeam(year, team, gameCallback)
     }
   }
 

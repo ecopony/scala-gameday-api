@@ -41,6 +41,11 @@ object MySQLDatabaseImporter {
     fetcher.fetchByYearAndTeam(year, team, importPitches)
   }
 
+  def importPitchesByYear(year: Int) {
+    val fetcher: Fetcher = new Fetcher()
+    fetcher.fetchByYear(year, importPitches)
+  }
+
   def importPitches(game: Game) {
     database.transaction { tx =>
       val gid: String = game.fetchStrategy.gid();

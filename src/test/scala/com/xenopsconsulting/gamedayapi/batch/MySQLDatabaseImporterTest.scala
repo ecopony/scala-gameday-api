@@ -9,6 +9,7 @@ class MySQLDatabaseImporterTest {
 //    MySQLDatabaseImporter.createTables()
 //    MySQLDatabaseImporter.importPitchesByYearAndTeam(2011, "sea")
 //    MySQLDatabaseImporter.importPitchesByYearsAndTeam(List(2010, 2011, 2012, 2013), "sea")
+//    MySQLDatabaseImporter.importPitchesByYear(2013)
   }
 
 }
