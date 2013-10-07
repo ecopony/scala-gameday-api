@@ -36,7 +36,29 @@ case class AtBat(atBatNode: Node, half: String, inning: Inning = null) extends G
    */
   def pitcher() = {
     val game = inning.game
-    (game.pitchers().find (_.id == ( atBatNode \ "@pitcher" ).text)).get
+    game.pitchers().find(_.id == (atBatNode \ "@pitcher").text).get
+  }
+
+  /**
+   * Convenience method that returns the three-letter code for the batting team of the at-bat.
+   */
+  def battingTeam() = {
+    if (half == "top") {
+      inning.awayTeam
+    } else {
+      inning.homeTeam
+    }
+  }
+
+  /**
+   * Convenience method that returns the three-letter code for the pitching team of the at-bat.
+   */
+  def pitchingTeam() = {
+    if (half == "top") {
+      inning.homeTeam
+    } else {
+      inning.awayTeam
+    }
   }
 
 }

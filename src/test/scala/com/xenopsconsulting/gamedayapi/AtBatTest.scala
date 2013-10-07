@@ -112,4 +112,14 @@ class AtBatTest extends AssertionsForJUnit {
     assertEquals("bottom", bottom_first_at_bats.last.half)
   }
 
+  @Test def battingTeam {
+    assertEquals("bos", top_first_at_bats.head.battingTeam())
+    assertEquals("sea", bottom_first_at_bats.head.battingTeam())
+  }
+
+  @Test def pitchingTeam {
+    assertEquals("sea", top_first_at_bats.head.pitchingTeam())
+    assertEquals("bos", bottom_first_at_bats.head.pitchingTeam())
+  }
+
 }
