@@ -27,14 +27,14 @@ class Epg(date: Date) {
   }
 
   def games(): Seq[EpgGame] = {
-    gameNodes.map(EpgGame(_))
+    gameNodes().map(EpgGame)
   }
 
   def gamesForTeam(team: String): Seq[EpgGame] = {
-    (gameNodes filter idMatches(team) map(EpgGame(_)))
+    gameNodes filter idMatches(team) map EpgGame
   }
 
-  private def gameNodes() = (xml \\ "game")
+  private def gameNodes() = xml \\ "game"
 
   private def idMatches(code: String)(gameNode: Node) = gameNode.attribute("id").get.text.contains(code + "mlb")
 

@@ -7,7 +7,7 @@ case class ScheduleYear(year: Int) {
   val _scheduleLines: List[String] = readGamesFromFile()
 
   def games() = {
-    _scheduleLines map(ScheduleGame(_))
+    _scheduleLines map(ScheduleGame)
   }
 
   def openingDay() = {
@@ -19,11 +19,11 @@ case class ScheduleYear(year: Int) {
   }
 
   def gamesForDay(date: Date) = {
-    (_scheduleLines filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) map(ScheduleGame(_))
+    (_scheduleLines filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) map ScheduleGame
   }
 
   def gamesForDayAndTeam(date: Date, team: String) = {
-    (_scheduleLines filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) filter teamMatches(team) map(ScheduleGame(_))
+    (_scheduleLines filter dayMatches(new SimpleDateFormat("yyyyMMdd").format(date))) filter teamMatches(team) map ScheduleGame
   }
 
   def teams() = {
@@ -40,6 +40,6 @@ case class ScheduleYear(year: Int) {
 
   private def dayMatches(dateString: String)(scheduleLine: String) = scheduleLine.contains(dateString)
 
-  private def teamMatches(team: String)(scheduleLine: String) = scheduleLine.contains(team.toUpperCase())
+  private def teamMatches(team: String)(scheduleLine: String) = scheduleLine.contains(team.toUpperCase)
 
 }

@@ -66,7 +66,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def pitches() = {
-    atBats().flatMap(_.pitches)
+    atBats().flatMap(_.pitches())
   }
 
   /**
@@ -76,7 +76,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def homeTeamPitches() = {
-    top().atBats().flatMap(_.pitches)
+    top().atBats().flatMap(_.pitches())
   }
 
   /**
@@ -86,7 +86,7 @@ case class Inning(inningNode: Node, game: Game = null) {
    * @return A list of Pitch objects
    */
   def awayTeamPitches() = {
-    bottom().atBats().flatMap(_.pitches)
+    bottom().atBats().flatMap(_.pitches())
   }
 
 }

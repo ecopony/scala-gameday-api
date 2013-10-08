@@ -84,11 +84,11 @@ trait FetchStrategy {
 
   protected def datePath() = {
     val urlBuffer: StringBuilder = new StringBuilder("/year_")
-    urlBuffer.append(new SimpleDateFormat("yyyy").format(date))
+    urlBuffer.append(new SimpleDateFormat("yyyy").format(date()))
     urlBuffer.append("/month_")
-    urlBuffer.append(new SimpleDateFormat("MM").format(date))
+    urlBuffer.append(new SimpleDateFormat("MM").format(date()))
     urlBuffer.append("/day_")
-    urlBuffer.append(new SimpleDateFormat("dd").format(date))
+    urlBuffer.append(new SimpleDateFormat("dd").format(date()))
     urlBuffer.toString()
   }
 

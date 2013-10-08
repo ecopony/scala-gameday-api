@@ -4,7 +4,7 @@ import xml.Node
 
 case class Innings(game: Game) extends GamedayRepresentation {
 
-  def fetch {
+  def fetch() {
     try {
       _xml = game.fetchStrategy.fetchInnings()
     } catch {
@@ -43,7 +43,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of AtBat objects
    */
   def atBats() = {
-    all().flatMap(_.atBats)
+    all().flatMap(_.atBats())
   }
 
   /**
@@ -53,7 +53,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of AtBat objects
    */
   def homeTeamAtBats() = {
-    all().flatMap(_.homeTeamAtBats)
+    all().flatMap(_.homeTeamAtBats())
   }
 
   /**
@@ -63,7 +63,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of AtBat objects
    */
   def awayTeamAtBats() = {
-    all().flatMap(_.awayTeamAtBats)
+    all().flatMap(_.awayTeamAtBats())
   }
 
   /**
@@ -73,7 +73,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of Pitches objects
    */
   def pitches() = {
-    all().flatMap(_.pitches)
+    all().flatMap(_.pitches())
   }
 
   /**
@@ -83,7 +83,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of Pitch objects
    */
   def homeTeamPitches() = {
-    all().flatMap(_.homeTeamPitches)
+    all().flatMap(_.homeTeamPitches())
   }
 
   /**
@@ -93,7 +93,7 @@ case class Innings(game: Game) extends GamedayRepresentation {
    * @return A list of Pitch objects
    */
   def awayTeamPitches() = {
-    all().flatMap(_.awayTeamPitches)
+    all().flatMap(_.awayTeamPitches())
   }
 
 }

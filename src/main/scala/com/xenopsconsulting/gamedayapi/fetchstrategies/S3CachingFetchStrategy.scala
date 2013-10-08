@@ -18,7 +18,7 @@ class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
   var _bucketPrefix = "<change-me>-gameday-files-"
 
   def fetchCachedFile(path: String, fileName: String) = {
-    if (canCache()) {
+    if (canCache) {
       try {
         val s3Object = _s3Client.getObject(new GetObjectRequest(bucket(date), key(path, fileName)));
         Some(XML.load(s3Object.getObjectContent))
@@ -33,8 +33,8 @@ class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
   }
 
   def cacheContent(path: String, fileName: String, content: Elem) {
-    if (canCache()) {
-      val streamBytes = content.toString.getBytes
+    if (canCache) {
+      val streamBytes = content.toString().getBytes
       val gamedayStream = new ByteArrayInputStream(streamBytes)
       val metadata = new ObjectMetadata()
       metadata.setContentLength(streamBytes.length)

@@ -93,7 +93,7 @@ class BoxScore(game: Game) extends GamedayRepresentation {
 
   def gameInfo() = (boxScoreNode \\ "game_info").text
 
-  private def boxScoreNode():NodeSeq = (xml \\ "boxscore")
+  private def boxScoreNode():NodeSeq = xml \\ "boxscore"
 
   private def pitchingNode(home_or_away: String):NodeSeq = {
     boxScoreNode \ "pitching" \\ "_" filter attributeValueEquals(home_or_away)
@@ -104,11 +104,11 @@ class BoxScore(game: Game) extends GamedayRepresentation {
   }
 
   private def pitcherList(home_or_away: String) = {
-    (pitchingNode(home_or_away) \ "pitcher").map(Pitcher(_))
+    (pitchingNode(home_or_away) \ "pitcher").map(Pitcher)
   }
 
   private def batterList(home_or_away: String) = {
-    (battingNode(home_or_away) \ "batter" \\ "_" filter boExists() ).map(Batter(_))
+    (battingNode(home_or_away) \ "batter" \\ "_" filter boExists() ).map(Batter)
   }
 
   /**

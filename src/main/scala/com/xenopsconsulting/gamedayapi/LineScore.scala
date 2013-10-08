@@ -11,7 +11,7 @@ class LineScore(game: Game) extends GamedayRepresentation {
   }
 
   def innings() = {
-    (gameNode \ "linescore").map(LineScoreInning(_))
+    (gameNode \ "linescore").map(LineScoreInning)
   }
 
   def winningPitcher() = {
@@ -30,7 +30,7 @@ class LineScore(game: Game) extends GamedayRepresentation {
 
   def savePitcher() = {
     if (_savePitcher == null) {
-      val savePitcherSeq = (gameNode \ "save_pitcher")
+      val savePitcherSeq = gameNode \ "save_pitcher"
       if (savePitcherSeq.length != 0) {
         _savePitcher = LineScorePitcher(savePitcherSeq.head)
       } else {

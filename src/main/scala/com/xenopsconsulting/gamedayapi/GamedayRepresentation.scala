@@ -24,7 +24,7 @@ abstract class GamedayRepresentation {
     }
   }
 
-  protected def gameNode() = (xml \\ "game")
+  protected def gameNode() = xml \\ "game"
 
   protected def attributeValueEquals(value: String)(node: Node) = node.attributes.exists(_.value.text == value)
 }

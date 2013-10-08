@@ -7,8 +7,8 @@ case class HitChart(game: Game) extends GamedayRepresentation {
     _xml = game.fetchStrategy.fetchHitChart()
   }
 
-  def hips() = (hitChartNode \ "hip").map(Hip(_))
+  def hips() = (hitChartNode \ "hip").map(Hip)
 
-  private def hitChartNode() = (xml \\ "hitchart")
+  private def hitChartNode() = xml \\ "hitchart"
 
 }

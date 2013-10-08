@@ -213,6 +213,6 @@ class Game(date: Date, team: String) extends GamedayRepresentation {
 
   private def homeTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "home" }).get
   private def awayTeamNode = ((gameNode \ "team") find { _.attribute("type").get.text == "away" }).get
-  private def stadiumNode = (gameNode \ "stadium")
+  private def stadiumNode = gameNode \ "stadium"
 
 }

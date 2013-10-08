@@ -107,10 +107,10 @@ abstract class CachingStrategy extends FetchStrategy {
     }
   }
 
-  protected def canCache():Boolean = {
+  protected def canCache:Boolean = {
     val now = new DateTime()
-    val convertedDate = new DateTime(date)
-    val okToCacheAfter = convertedDate.plusDays(1).toMutableDateTime()
+    val convertedDate = new DateTime(date())
+    val okToCacheAfter = convertedDate.plusDays(1).toMutableDateTime
     okToCacheAfter.addHours(3)
 
     if (now.isAfter(okToCacheAfter)) {
