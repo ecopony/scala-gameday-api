@@ -37,8 +37,7 @@ class Fetcher() {
       val epgGames: Seq[EpgGame] = epg.gamesForTeam(team)
 
       for (epgGame <- epgGames) {
-        _log.info(epgGame.ind())
-        if (epgGame.ind() == "F" && epgGame.gameType() == "R") {
+        if (epgGame.ind().head.toString != "D" && epgGame.gameType() == "R") {
           try {
             val game = new Game (date.toDate, team) with LocalCachingFetchStrategyProvider
             game.fetchAll()
