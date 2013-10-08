@@ -72,14 +72,21 @@ trait FetchStrategy {
   }
 
   protected def gameDirectoryPath() = {
-    val pathBuffer: StringBuilder = new StringBuilder(datePath())
+    val pathBuffer: StringBuilder = new StringBuilder(datePathFromGid())
     pathBuffer.append("/")
-    if(gid == null) {
-      pathBuffer.append(fetchGid())
-    } else {
-      pathBuffer.append(gid)
-    }
+    pathBuffer.append(gid())
     pathBuffer.toString()
+  }
+
+  protected def datePathFromGid() = {
+    val gidParts = gid().split("_")
+    val dateBuffer: StringBuilder = new StringBuilder("/year_")
+    dateBuffer.append(gidParts(1))
+    dateBuffer.append("/month_")
+    dateBuffer.append(gidParts(2))
+    dateBuffer.append("/day_")
+    dateBuffer.append(gidParts(3))
+    dateBuffer.toString()
   }
 
   protected def datePath() = {
