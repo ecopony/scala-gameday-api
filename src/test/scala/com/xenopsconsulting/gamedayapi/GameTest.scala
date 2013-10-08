@@ -142,6 +142,10 @@ class GameTest extends AssertionsForJUnit {
     assertEquals("Seattle, WA", game.location)
   }
 
+  @Test def official {
+    assertTrue(game.isOfficial())
+  }
+
   @Test def testBoxScoreExists {
     assertNotNull(game.boxScore)
   }

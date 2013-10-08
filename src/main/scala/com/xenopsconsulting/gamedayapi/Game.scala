@@ -116,6 +116,14 @@ class Game(date: Date, team: String) extends GamedayRepresentation {
   def stadiumName():String = (stadiumNode \ "@name").text
   def location():String = (stadiumNode \ "@location").text
 
+  def isOfficial():Boolean = {
+    if ((gameType() == "R" || gameType() == "L") && boxScore().statusInd() != "P") {
+      true
+    } else {
+      false
+    }
+  }
+
   /**
    * A convenience method for accessing all pitches thrown in the game by both teams, in
    * the order in which they were thrown.
