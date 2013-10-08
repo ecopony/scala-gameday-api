@@ -50,8 +50,10 @@ object MySQLDatabaseImporter {
     database.transaction { tx =>
       val gid: String = game.fetchStrategy.gid();
 
-      _log.info("---------------------------------------------------------------------------------------")
       _log.info(gid)
+
+      val gameCount = tx.selectInt("select count(*) from pitches where gid = ?", StringFormattable(gid))
+      if (gameCount > 0) return
 
       for (pitch <- game.pitches()) {
         val atBat = pitch.atBat
