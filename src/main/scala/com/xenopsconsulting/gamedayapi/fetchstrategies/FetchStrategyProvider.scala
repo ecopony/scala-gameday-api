@@ -4,8 +4,8 @@ import java.util.Date
 
 trait FetchStrategyProvider {
 
-  def newFetchStrategy(date: Date, team: String): FetchStrategy = {
-    new DefaultFetchStrategy(date, team)
+  def newFetchStrategy(date: Date, team: String, nightcap: Boolean = false): FetchStrategy = {
+    new DefaultFetchStrategy(date, team, nightcap)
   }
 
   def newEpgFetchStrategy(date: Date): FetchStrategy = {

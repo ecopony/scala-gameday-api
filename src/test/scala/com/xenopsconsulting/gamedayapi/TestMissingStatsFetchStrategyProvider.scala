@@ -5,8 +5,8 @@ import java.util.Date
 
 trait TestMissingStatsFetchStrategyProvider extends TestFetchStrategyProvider {
 
-   override def newFetchStrategy(date: Date, team: String): FetchStrategy = {
-     new TestMissingStatsFetchStrategy(date, team)
+   override def newFetchStrategy(date: Date, team: String, nightcap: Boolean = false): FetchStrategy = {
+     new TestMissingStatsFetchStrategy(date, team, false)
    }
 
  }

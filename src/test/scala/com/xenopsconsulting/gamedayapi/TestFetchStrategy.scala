@@ -4,9 +4,10 @@ import fetchstrategies.FetchStrategy
 import xml.Elem
 import java.util.Date
 
-class TestFetchStrategy(date: Date, team: String) extends FetchStrategy {
+class TestFetchStrategy(date: Date, team: String, nightcap: Boolean = false) extends FetchStrategy {
   val _date = date
   val _team = team
+  val _nightcap = nightcap
 
   /*
     All test XML file is bound to the following:

@@ -5,8 +5,8 @@ import java.util.Date
 
 trait TestFetchStrategyProvider extends FetchStrategyProvider {
 
-  override def newFetchStrategy(date: Date, team: String): FetchStrategy = {
-    new TestFetchStrategy(date, team)
+  override def newFetchStrategy(date: Date, team: String, nightcap: Boolean = false): FetchStrategy = {
+    new TestFetchStrategy(date, team, false)
   }
 
   override def newEpgFetchStrategy(date: Date): FetchStrategy = {

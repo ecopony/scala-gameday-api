@@ -10,9 +10,10 @@ import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.services.s3.model.{PutObjectRequest, ObjectMetadata, GetObjectRequest}
 
 
-class S3CachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
+class S3CachingFetchStrategy(date: Date, team: String, nightcap: Boolean = false) extends CachingStrategy {
   val _date = date
   val _team = team
+  val _nightcap = nightcap
 
   var _s3Client = new AmazonS3Client(new BasicAWSCredentials("", ""))
   var _bucketPrefix = "<change-me>-gameday-files-"

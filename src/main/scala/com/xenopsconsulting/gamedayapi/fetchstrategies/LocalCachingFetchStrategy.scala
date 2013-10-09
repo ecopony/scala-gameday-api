@@ -9,11 +9,12 @@ import java.io.{File, PrintWriter}
 /**
  * Caches gameday files on the local filesystem.
  */
-class LocalCachingFetchStrategy(date: Date, team: String) extends CachingStrategy {
+class LocalCachingFetchStrategy(date: Date, team: String, nightcap: Boolean = false) extends CachingStrategy {
 
   var _path = "./scala-gameday-api-cache/"
   val _date = date
   val _team = team
+  val _nightcap = nightcap
 
   def fetchCachedFile(path: String, fileName: String) = {
     try {

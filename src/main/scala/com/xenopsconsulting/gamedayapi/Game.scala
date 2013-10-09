@@ -4,15 +4,15 @@ import java.util.Date
 import com.xenopsconsulting.gamedayapi.fetchstrategies.{FetchStrategy, FetchStrategyProvider}
 
 object Game {
-  def apply(date: Date, team: String) = {
-    new Game(date, team) with FetchStrategyProvider
+  def apply(date: Date, team: String, nightcap: Boolean = false) = {
+    new Game(date, team, nightcap) with FetchStrategyProvider
   }
 }
 
-class Game(date: Date, team: String) extends GamedayRepresentation {
+class Game(date: Date, team: String, nightcap: Boolean = false) extends GamedayRepresentation {
   this: FetchStrategyProvider =>
 
-  val fetchStrategy: FetchStrategy = newFetchStrategy(date, team)
+  val fetchStrategy: FetchStrategy = newFetchStrategy(date, team, nightcap)
 
   private var _boxScore: BoxScore = _
   private var _hitChart: HitChart = _

@@ -8,11 +8,13 @@ trait FetchStrategy {
   private val base_mlb_url: String = "http://gd2.mlb.com/components/game/mlb"
   val _date: Date
   val _team: String
+  val _nightcap: Boolean
 
   protected var _gid: String = _
 
   def date() = _date
   def team() = _team
+  def nightcap() = _nightcap
 
   def gid():String = {
     if (_gid == null) _gid = fetchGid()
@@ -29,7 +31,13 @@ trait FetchStrategy {
   def fetchGameEvents(): Elem
 
   def fetchGid() = {
-    "gid_" + ((fetchEpg() \ "game" \\ "@gameday") find { _.text contains "_" + team + "mlb_" }).getOrElse("")
+    val gidsForTeam = (fetchEpg() \ "game" \\ "@gameday") filter { _.text contains "_" + team + "mlb_" }
+
+    if (gidsForTeam.size == 2 && nightcap()) {
+      "gid_" + gidsForTeam(1)
+    } else {
+      "gid_" + gidsForTeam(0)
+    }
   }
 
   def epgUrl() = {

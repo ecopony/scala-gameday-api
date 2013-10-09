@@ -4,10 +4,11 @@ import scala.xml._
 import dispatch._
 import java.util.Date
 
-class DefaultFetchStrategy(date: Date, team: String) extends FetchStrategy {
+class DefaultFetchStrategy(date: Date, team: String, nightcap: Boolean = false) extends FetchStrategy {
   val http = new Http
   val _date = date
   val _team = team
+  val _nightcap = nightcap
 
   def fetchEpg() = fetchXmlAsString(epgUrl())
   def fetchGame() = fetchXmlAsString(gameUrl())

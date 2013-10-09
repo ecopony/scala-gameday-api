@@ -25,21 +25,24 @@ class Fetcher() {
   }
 
   def fetchByYearAndTeam(year: Int, team: String, gameCallback: (Game) => Unit) {
-    _log.info("Fetching for year " + year + " and team " + team)
+    _log.info("[" + year + "-" + team + "]")
     val scheduleYear: ScheduleYear = new ScheduleYear(year)
     var date: DateTime = new DateTime(scheduleYear.openingDay())
     val finalDay: DateTime = new DateTime(scheduleYear.finalDay())
+    var epgGameCount = 0
+    var importedGameCount = 0
 
     while(date.compareTo(finalDay) <= 0) {
-      _log.info("Fetching game(s) for " + date)
-
       val epg: Epg = new Epg(date.toDate) with LocalCachingFetchStrategyProvider
       val epgGames: Seq[EpgGame] = epg.gamesForTeam(team)
 
       for (epgGame <- epgGames) {
+
+        epgGameCount = epgGameCount+1
         if (epgGame.ind().head.toString != "D" && epgGame.gameType() == "R") {
+          importedGameCount = importedGameCount+1
           try {
-            val game = new Game (date.toDate, team) with LocalCachingFetchStrategyProvider
+            val game = new Game (date.toDate, team, epgGame.nightcap()) with LocalCachingFetchStrategyProvider
             game.fetchAll()
             gameCallback(game)
           } catch {
@@ -48,6 +51,8 @@ class Fetcher() {
             }
           }
         }
+        _log.info("[" + importedGameCount.toString + "-" + epgGameCount.toString + "] " +
+          epgGame.gid() + " " + epgGame.ind() + " " + epgGame.gameType())
       }
 
       date = date.plusDays(1)
