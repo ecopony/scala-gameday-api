@@ -38,4 +38,20 @@ class EpgGameTest extends AssertionsForJUnit {
     assertEquals("bos", epgGame.awayCode)
   }
 
+  @Test def id {
+    assertEquals("2011/08/13/bosmlb-seamlb-1", epgGame.id())
+  }
+
+  @Test def gameday {
+    assertEquals("2011_08_13_bosmlb_seamlb_1", epgGame.gameday())
+  }
+
+  @Test def gid {
+    assertEquals("gid_2011_08_13_bosmlb_seamlb_1", epgGame.gid())
+  }
+
+  @Test def nightcap {
+    assertFalse(epgGame.nightcap())
+  }
+
 }
