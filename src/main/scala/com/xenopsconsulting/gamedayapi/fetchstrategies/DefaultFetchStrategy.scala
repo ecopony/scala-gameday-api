@@ -1,11 +1,9 @@
 package com.xenopsconsulting.gamedayapi.fetchstrategies
 
-import scala.xml._
-import dispatch._
+import dispatch._, Defaults._
 import java.util.Date
 
 class DefaultFetchStrategy(date: Date, team: String, nightcap: Boolean = false) extends FetchStrategy {
-  val http = new Http
   val _date = date
   val _team = team
   val _nightcap = nightcap
@@ -19,6 +17,9 @@ class DefaultFetchStrategy(date: Date, team: String, nightcap: Boolean = false) 
   def fetchInningScores() = fetchXmlAsString(inningScoresUrl())
   def fetchGameEvents() = fetchXmlAsString(gameEventsUrl())
 
-  private def fetchXmlAsString(urlToFetch: String) = XML.loadString(http(url(urlToFetch) as_str))
+  private def fetchXmlAsString(urlToFetch: String) = {
+    val response = Http(url(urlToFetch) OK as.xml.Elem)
+    response()
+  }
 
 }
